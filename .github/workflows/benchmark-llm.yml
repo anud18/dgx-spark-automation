@@ -56,11 +56,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create output directory
-        run: |
-          mkdir -p ~/benchmark_result/${{ inputs.output_dir_name }}
-          echo "Created output directory: ~/benchmark_result/${{ inputs.output_dir_name }}"
-
       - name: Generate random seed
         id: seed
         run: |
@@ -73,6 +68,18 @@ jobs:
           fi
           echo "random_seed=$SEED" >> $GITHUB_OUTPUT
 
+      - name: Set output directory
+        id: output
+        run: |
+          OUTPUT_DIR="${{ inputs.output_dir_name }}_${{ steps.seed.outputs.random_seed }}"
+          echo "output_dir=$OUTPUT_DIR" >> $GITHUB_OUTPUT
+          echo "Output directory will be: $OUTPUT_DIR"
+
+      - name: Create output directory
+        run: |
+          mkdir -p ~/benchmark_result/${{ steps.output.outputs.output_dir }}
+          echo "Created output directory: ~/benchmark_result/${{ steps.output.outputs.output_dir }}"
+
       - name: Run benchmark
         run: |
           echo "=== Benchmark Configuration ==="
@@ -83,7 +90,7 @@ jobs:
           echo "Concurrency: ${{ inputs.concurrency }}"
           echo "Number of Requests: ${{ inputs.num_requests }}"
           echo "Random Seed: ${{ steps.seed.outputs.random_seed }}"
-          echo "Output Directory: ${{ inputs.output_dir_name }}"
+          echo "Output Directory: ${{ steps.output.outputs.output_dir }}"
           echo "=============================="
           echo ""
 
@@ -98,7 +105,7 @@ jobs:
             --concurrency ${{ inputs.concurrency }} \
             --num-requests ${{ inputs.num_requests }} \
             --num-warmup-requests 1 \
-            --artifact-dir ${{ inputs.output_dir_name }} \
+            --artifact-dir ${{ steps.output.outputs.output_dir }} \
             --streaming \
             --random-seed ${{ steps.seed.outputs.random_seed }}"
 
@@ -106,11 +113,11 @@ jobs:
         if: success()
         run: |
           echo "=== Benchmark Complete ==="
-          echo "Results saved to: ~/benchmark_result/${{ inputs.output_dir_name }}"
+          echo "Results saved to: ~/benchmark_result/${{ steps.output.outputs.output_dir }}"
           echo ""
-          if [ -d ~/benchmark_result/${{ inputs.output_dir_name }} ]; then
+          if [ -d ~/benchmark_result/${{ steps.output.outputs.output_dir }} ]; then
             echo "Output files:"
-            ls -lh ~/benchmark_result/${{ inputs.output_dir_name }}
+            ls -lh ~/benchmark_result/${{ steps.output.outputs.output_dir }}
           fi
 
       - name: Upload benchmark results
@@ -118,7 +125,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: benchmark-results-${{ github.run_number }}
-          path: ~/benchmark_result/${{ inputs.output_dir_name }}
+          path: ~/benchmark_result/${{ steps.output.outputs.output_dir }}
           retention-days: 30
 
       - name: Cleanup on failure
