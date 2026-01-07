@@ -1,0 +1,176 @@
+name: Deploy LLM Inference Engine
+
+on:
+  workflow_dispatch:
+    inputs:
+      backend:
+        description: 'Select the LLM inference backend'
+        required: true
+        type: choice
+        options:
+          - vLLM
+          - SGLang
+          - TensorRT
+      model:
+        description: 'Model to deploy (e.g., Qwen/Qwen3-4B, openai/gpt-oss-120b)'
+        required: true
+        type: string
+        default: 'Qwen/Qwen3-4B'
+      port:
+        description: 'Port to expose the inference engine'
+        required: true
+        type: string
+        default: '8080'
+      gpu:
+        description: 'GPU allocation (e.g., "0,1" for GPU 0 and 1, or "all" for all GPUs)'
+        required: true
+        type: string
+        default: 'all'
+      image:
+        description: 'Docker image to use for deployment (default: backend-specific default image)'
+        required: false
+        type: string
+        default: 'default'
+
+jobs:
+  deploy-inference-engine:
+    runs-on: ${{ inputs.runner || 'spark-1697' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker
+        run: |
+          docker --version
+          echo "Docker setup complete"
+
+      - name: Determine Docker image
+        id: image
+        run: |
+          if [ "${{ inputs.image }}" == "default" ]; then
+            case "${{ inputs.backend }}" in
+              vLLM)
+                IMAGE="nvcr.io/nvidia/vllm:25.11-py3"
+                ;;
+              SGLang)
+                IMAGE="lmsysorg/sglang:spark"
+                ;;
+              TensorRT)
+                IMAGE="nvcr.io/nvidia/tensorrt-llm/release:spark-single-gpu-dev"
+                ;;
+            esac
+          else
+            IMAGE="${{ inputs.image }}"
+          fi
+          echo "docker_image=$IMAGE" >> $GITHUB_OUTPUT
+          echo "Using Docker image: $IMAGE"
+
+      - name: Pull Docker image
+        run: |
+          echo "Pulling Docker image: ${{ steps.image.outputs.docker_image }}"
+          docker pull ${{ steps.image.outputs.docker_image }}
+
+      - name: Deploy inference engine
+        run: |
+          echo "Deploying LLM Inference Engine"
+          echo "Backend: ${{ inputs.backend }}"
+          echo "Model: ${{ inputs.model }}"
+          echo "Port: ${{ inputs.port }}"
+          echo "GPU Allocation: ${{ inputs.gpu }}"
+          echo "Image: ${{ steps.image.outputs.docker_image }}"
+
+          # Construct GPU environment variable
+          if [ "${{ inputs.gpu }}" == "all" ]; then
+            GPU_DEVICES="all"
+          else
+            GPU_DEVICES="${{ inputs.gpu }}"
+          fi
+
+          # Run Docker container based on backend
+          case "${{ inputs.backend }}" in
+            vLLM)
+              docker run -d \
+                --name llm-inference-engine \
+                --ipc=host \
+                --gpus "$GPU_DEVICES" \
+                -v $HOME/.cache/huggingface/:/root/.cache/huggingface/ \
+                --ulimit memlock=-1 \
+                --ulimit stack=67108864 \
+                -p ${{ inputs.port }}:8000 \
+                ${{ steps.image.outputs.docker_image }} \
+                vllm serve ${{ inputs.model }}
+              ;;
+            SGLang)
+              docker run -d \
+                --name llm-inference-engine \
+                --gpus "$GPU_DEVICES" \
+                -p ${{ inputs.port }}:30000 \
+                -e CUDA_VISIBLE_DEVICES=$GPU_DEVICES \
+                -v $HOME/.cache/huggingface/:/root/.cache/huggingface/ \
+                ${{ steps.image.outputs.docker_image }} \
+                python -m sglang.launch_server \
+                --model-path ${{ inputs.model }} \
+                --host 0.0.0.0 \
+                --port 30000
+              ;;
+            TensorRT)
+              docker run -d \
+                --name llm-inference-engine \
+                --gpus "$GPU_DEVICES" \
+                -p ${{ inputs.port }}:8000 \
+                -e CUDA_VISIBLE_DEVICES=$GPU_DEVICES \
+                -v $HOME/.cache/huggingface/:/root/.cache/huggingface/ \
+                ${{ steps.image.outputs.docker_image }} \
+                trtllm-build \
+                --checkpoint_dir ${{ inputs.model }} \
+                --output_dir /tmp/engine
+              ;;
+          esac
+
+          # Wait for container to start
+          sleep 5
+
+          # Check if container is running
+          if docker ps | grep -q llm-inference-engine; then
+            echo "✓ Inference engine deployed successfully"
+            docker logs llm-inference-engine
+          else
+            echo "✗ Failed to deploy inference engine"
+            docker logs llm-inference-engine
+            exit 1
+          fi
+
+      - name: Verify deployment
+        run: |
+          echo "Waiting for inference engine to be ready..."
+          for i in {1..30}; do
+            if curl -s http://localhost:${{ inputs.port }}/health > /dev/null 2>&1 || \
+               curl -s http://localhost:${{ inputs.port }}/v1/models > /dev/null 2>&1; then
+              echo "✓ Inference engine is ready on port ${{ inputs.port }}"
+              exit 0
+            fi
+            echo "Attempt $i/30 - Waiting for inference engine..."
+            sleep 2
+          done
+          echo "✗ Inference engine failed to start within timeout"
+          exit 1
+
+      - name: Display deployment info
+        if: success()
+        run: |
+          echo "=== Deployment Summary ==="
+          echo "Backend: ${{ inputs.backend }}"
+          echo "Model: ${{ inputs.model }}"
+          echo "Port: ${{ inputs.port }}"
+          echo "GPU: ${{ inputs.gpu }}"
+          echo "Image: ${{ steps.image.outputs.docker_image }}"
+          echo "Container: llm-inference-engine"
+          echo ""
+          echo "Access the inference engine at: http://localhost:${{ inputs.port }}"
+
+      - name: Cleanup on failure
+        if: failure()
+        run: |
+          echo "Cleaning up failed deployment..."
+          docker stop llm-inference-engine || true
+          docker rm llm-inference-engine || true
