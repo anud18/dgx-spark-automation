@@ -147,18 +147,11 @@ jobs:
 
       - name: Verify deployment
         run: |
-          echo "Waiting for inference engine to be ready..."
-          for i in {1..30}; do
-            if curl -s http://localhost:${{ inputs.port }}/health > /dev/null 2>&1 || \
-               curl -s http://localhost:${{ inputs.port }}/v1/models > /dev/null 2>&1; then
-              echo "✓ Inference engine is ready on port ${{ inputs.port }}"
-              exit 0
-            fi
-            echo "Attempt $i/30 - Waiting for inference engine..."
-            sleep 2
-          done
-          echo "✗ Inference engine failed to start within timeout"
-          exit 1
+          echo "Waiting for inference engine to be ready (timeout: 400s)..."
+          timeout 400 bash -c 'until curl -s http://localhost:${{ inputs.port }}/health > /dev/null 2>&1 || curl -s http://localhost:${{ inputs.port }}/v1/models > /dev/null 2>&1; do
+            echo "Waiting for inference engine..."
+            sleep 5
+          done' && echo "✓ Inference engine is ready on port ${{ inputs.port }}" || (echo "✗ Inference engine failed to start within 400s timeout"; exit 1)
 
       - name: Display deployment info
         if: success()
