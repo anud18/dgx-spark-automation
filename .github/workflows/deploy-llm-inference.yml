@@ -31,10 +31,15 @@ on:
         required: false
         type: string
         default: 'default'
+      runner:
+        description: 'Runner to use for deployment (e.g., spark-1697, ubuntu-latest)'
+        required: false
+        type: string
+        default: 'spark-1697'
 
 jobs:
   deploy-inference-engine:
-    runs-on: ${{ inputs.runner || 'spark-1697' }}
+    runs-on: ${{ inputs.runner }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
