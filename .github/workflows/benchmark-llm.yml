@@ -1,0 +1,128 @@
+name: Benchmark LLM Model
+
+on:
+  workflow_dispatch:
+    inputs:
+      runner:
+        description: 'Runner to use for benchmarking'
+        required: false
+        type: string
+        default: 'spark-1697'
+      model:
+        description: 'Model to benchmark (e.g., Qwen/Qwen3-4B)'
+        required: true
+        type: string
+        default: 'Qwen/Qwen3-4B'
+      url_and_port:
+        description: 'URL and port of the model server (e.g., 192.168.100.98:8080)'
+        required: true
+        type: string
+        default: '192.168.100.98:8080'
+      isl:
+        description: 'Input sequence length'
+        required: true
+        type: string
+        default: '64'
+      osl:
+        description: 'Output sequence length'
+        required: true
+        type: string
+        default: '64'
+      concurrency:
+        description: 'Number of concurrent requests'
+        required: true
+        type: string
+        default: '10'
+      num_requests:
+        description: 'Total number of requests to send'
+        required: true
+        type: string
+        default: '20'
+      random_seed:
+        description: 'Random seed for generating inputs (default: random)'
+        required: false
+        type: string
+        default: 'default'
+      output_dir_name:
+        description: 'Directory name to save benchmark results'
+        required: true
+        type: string
+        default: 'benchmark-results'
+
+jobs:
+  benchmark:
+    runs-on: ${{ inputs.runner }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create output directory
+        run: |
+          mkdir -p ~/benchmark_result/${{ inputs.output_dir_name }}
+          echo "Created output directory: ~/benchmark_result/${{ inputs.output_dir_name }}"
+
+      - name: Generate random seed
+        id: seed
+        run: |
+          if [ "${{ inputs.random_seed }}" == "default" ]; then
+            SEED=$RANDOM
+            echo "Generated random seed: $SEED"
+          else
+            SEED="${{ inputs.random_seed }}"
+            echo "Using provided seed: $SEED"
+          fi
+          echo "random_seed=$SEED" >> $GITHUB_OUTPUT
+
+      - name: Run benchmark
+        run: |
+          echo "=== Benchmark Configuration ==="
+          echo "Model: ${{ inputs.model }}"
+          echo "URL and Port: ${{ inputs.url_and_port }}"
+          echo "Input Sequence Length: ${{ inputs.isl }}"
+          echo "Output Sequence Length: ${{ inputs.osl }}"
+          echo "Concurrency: ${{ inputs.concurrency }}"
+          echo "Number of Requests: ${{ inputs.num_requests }}"
+          echo "Random Seed: ${{ steps.seed.outputs.random_seed }}"
+          echo "Output Directory: ${{ inputs.output_dir_name }}"
+          echo "=============================="
+          echo ""
+
+          docker run --rm -it \
+            -v ~/benchmark_result:/app \
+            nvcr.io/nvidia/ai-dynamo/aiperf:0.3.0 \
+            "aiperf profile \
+            --model ${{ inputs.model }} \
+            --url ${{ inputs.url_and_port }} \
+            --isl ${{ inputs.isl }} \
+            --osl ${{ inputs.osl }} \
+            --concurrency ${{ inputs.concurrency }} \
+            --num-requests ${{ inputs.num_requests }} \
+            --num-warmup-requests 1 \
+            --artifact-dir ${{ inputs.output_dir_name }} \
+            --streaming \
+            --random-seed ${{ steps.seed.outputs.random_seed }}"
+
+      - name: Display benchmark results
+        if: success()
+        run: |
+          echo "=== Benchmark Complete ==="
+          echo "Results saved to: ~/benchmark_result/${{ inputs.output_dir_name }}"
+          echo ""
+          if [ -d ~/benchmark_result/${{ inputs.output_dir_name }} ]; then
+            echo "Output files:"
+            ls -lh ~/benchmark_result/${{ inputs.output_dir_name }}
+          fi
+
+      - name: Upload benchmark results
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results-${{ github.run_number }}
+          path: ~/benchmark_result/${{ inputs.output_dir_name }}
+          retention-days: 30
+
+      - name: Cleanup on failure
+        if: failure()
+        run: |
+          echo "Benchmark failed. Cleaning up..."
+          docker ps -a | grep aiperf || true
