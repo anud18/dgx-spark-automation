@@ -87,7 +87,7 @@ jobs:
           echo "=============================="
           echo ""
 
-          docker run --rm -it \
+          docker run --rm  \
             -v ~/benchmark_result:/app \
             nvcr.io/nvidia/ai-dynamo/aiperf:0.3.0 \
             "aiperf profile \
