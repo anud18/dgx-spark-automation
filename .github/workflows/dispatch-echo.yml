@@ -1,0 +1,17 @@
+name: Dispatch Echo Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      runner:
+        description: 'Enter the runner name for this workflow'
+        required: false
+        default: 'spark-1697'
+        type: string
+
+jobs:
+  echo-job:
+    runs-on: ${{ inputs.runner }}
+    steps:
+      - name: Echo Hello World
+        run: echo "helloworld"
