@@ -103,7 +103,8 @@ jobs:
                 --ulimit stack=67108864 \
                 -p ${{ inputs.port }}:8000 \
                 ${{ steps.image.outputs.docker_image }} \
-                vllm serve ${{ inputs.model }}
+                vllm serve ${{ inputs.model }} \
+                --trust_remote_code
               ;;
             SGLang)
               docker run -d \
@@ -148,7 +149,7 @@ jobs:
       - name: Verify deployment
         run: |
           echo "Waiting for inference engine to be ready (timeout: 400s)..."
-          timeout 400 bash -c 'until curl -s http://localhost:${{ inputs.port }}/health > /dev/null 2>&1 || curl -s http://localhost:${{ inputs.port }}/v1/models > /dev/null 2>&1; do
+          timeout 1400 bash -c 'until curl -s http://localhost:${{ inputs.port }}/health > /dev/null 2>&1 || curl -s http://localhost:${{ inputs.port }}/v1/models > /dev/null 2>&1; do
             echo "Waiting for inference engine..."
             sleep 5
           done' && echo "✓ Inference engine is ready on port ${{ inputs.port }}" || (echo "✗ Inference engine failed to start within 400s timeout"; exit 1)
