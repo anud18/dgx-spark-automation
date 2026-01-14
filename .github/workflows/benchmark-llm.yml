@@ -3,6 +3,11 @@ name: Benchmark LLM Model
 on:
   workflow_dispatch:
     inputs:
+      note:
+        description: 'Optional note to prefix the output directory name'
+        required: false
+        type: string
+        default: ''
       runner:
         description: 'Runner to use for benchmarking'
         required: false
@@ -43,11 +48,6 @@ on:
         required: false
         type: string
         default: 'default'
-      output_dir_name:
-        description: 'Directory name to save benchmark results'
-        required: true
-        type: string
-        default: 'benchmark-results'
 
 jobs:
   benchmark:
@@ -102,7 +102,16 @@ jobs:
       - name: Set output directory
         id: output
         run: |
-          OUTPUT_DIR="${{ inputs.output_dir_name }}_${{ steps.seed.outputs.random_seed }}"
+          # Extract model name without path prefix (e.g., Qwen/Qwen3-0.6B -> Qwen3-0.6B)
+          MODEL_SHORT=$(echo "${{ steps.model.outputs.model_name }}" | sed 's/.*\///')
+
+          # Build output directory name
+          if [ -n "${{ inputs.note }}" ]; then
+            OUTPUT_DIR="${{ inputs.note }}-${MODEL_SHORT}-seed-${{ steps.seed.outputs.random_seed }}-isl-${{ inputs.isl }}-osl-${{ inputs.osl }}-concurrency-${{ inputs.concurrency }}"
+          else
+            OUTPUT_DIR="${MODEL_SHORT}-seed-${{ steps.seed.outputs.random_seed }}-isl-${{ inputs.isl }}-osl-${{ inputs.osl }}-concurrency-${{ inputs.concurrency }}"
+          fi
+
           echo "output_dir=$OUTPUT_DIR" >> $GITHUB_OUTPUT
           echo "Output directory will be: $OUTPUT_DIR"
 
