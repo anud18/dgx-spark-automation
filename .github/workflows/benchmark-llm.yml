@@ -34,10 +34,10 @@ on:
         type: string
         default: '10'
       num_requests:
-        description: 'Total number of requests to send'
+        description: 'Total number of requests to send (or "default" for concurrency * 2)'
         required: true
         type: string
-        default: '20'
+        default: 'default'
       random_seed:
         description: 'Random seed for generating inputs (default: random)'
         required: false
@@ -87,6 +87,18 @@ jobs:
           fi
           echo "model_name=$MODEL_NAME" >> $GITHUB_OUTPUT
 
+      - name: Calculate num_requests
+        id: requests
+        run: |
+          if [ "${{ inputs.num_requests }}" == "default" ]; then
+            NUM_REQUESTS=$(( ${{ inputs.concurrency }} * 2 ))
+            echo "Using default num_requests: $NUM_REQUESTS (concurrency * 2)"
+          else
+            NUM_REQUESTS="${{ inputs.num_requests }}"
+            echo "Using provided num_requests: $NUM_REQUESTS"
+          fi
+          echo "num_requests=$NUM_REQUESTS" >> $GITHUB_OUTPUT
+
       - name: Set output directory
         id: output
         run: |
@@ -107,7 +119,7 @@ jobs:
           echo "Input Sequence Length: ${{ inputs.isl }}"
           echo "Output Sequence Length: ${{ inputs.osl }}"
           echo "Concurrency: ${{ inputs.concurrency }}"
-          echo "Number of Requests: ${{ inputs.num_requests }}"
+          echo "Number of Requests: ${{ steps.requests.outputs.num_requests }}"
           echo "Random Seed: ${{ steps.seed.outputs.random_seed }}"
           echo "Output Directory: ${{ steps.output.outputs.output_dir }}"
           echo "=============================="
@@ -122,7 +134,7 @@ jobs:
             --isl ${{ inputs.isl }} \
             --osl ${{ inputs.osl }} \
             --concurrency ${{ inputs.concurrency }} \
-            --num-requests ${{ inputs.num_requests }} \
+            --num-requests ${{ steps.requests.outputs.num_requests }} \
             --num-warmup-requests 1 \
             --artifact-dir ${{ steps.output.outputs.output_dir }} \
             --streaming \
