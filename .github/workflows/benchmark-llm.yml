@@ -9,10 +9,10 @@ on:
         type: string
         default: 'spark-1697'
       model:
-        description: 'Model to benchmark (e.g., Qwen/Qwen3-4B)'
+        description: 'Model to benchmark (e.g., Qwen/Qwen3-4B, or "default" to auto-detect)'
         required: true
         type: string
-        default: 'Qwen/Qwen3-4B'
+        default: 'default'
       url_and_port:
         description: 'URL and port of the model server (e.g., 192.168.100.98:8080)'
         required: true
@@ -68,6 +68,25 @@ jobs:
           fi
           echo "random_seed=$SEED" >> $GITHUB_OUTPUT
 
+      - name: Detect model from v1/models endpoint
+        id: model
+        run: |
+          if [ "${{ inputs.model }}" == "default" ]; then
+            echo "Model is set to 'default', querying v1/models endpoint..."
+            RESPONSE=$(curl -s "http://${{ inputs.url_and_port }}/v1/models")
+            MODEL_NAME=$(echo "$RESPONSE" | grep -o '"id"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed 's/"id"[[:space:]]*:[[:space:]]*"\([^"]*\)"/\1/')
+            if [ -z "$MODEL_NAME" ]; then
+              echo "Error: Failed to detect model from v1/models endpoint"
+              echo "Response: $RESPONSE"
+              exit 1
+            fi
+            echo "Detected model: $MODEL_NAME"
+          else
+            MODEL_NAME="${{ inputs.model }}"
+            echo "Using provided model: $MODEL_NAME"
+          fi
+          echo "model_name=$MODEL_NAME" >> $GITHUB_OUTPUT
+
       - name: Set output directory
         id: output
         run: |
@@ -83,7 +102,7 @@ jobs:
       - name: Run benchmark
         run: |
           echo "=== Benchmark Configuration ==="
-          echo "Model: ${{ inputs.model }}"
+          echo "Model: ${{ steps.model.outputs.model_name }}"
           echo "URL and Port: ${{ inputs.url_and_port }}"
           echo "Input Sequence Length: ${{ inputs.isl }}"
           echo "Output Sequence Length: ${{ inputs.osl }}"
@@ -98,7 +117,7 @@ jobs:
             -v ~/benchmark_result:/app \
             nvcr.io/nvidia/ai-dynamo/aiperf:0.3.0 \
             "aiperf profile \
-            --model ${{ inputs.model }} \
+            --model ${{ steps.model.outputs.model_name }} \
             --url ${{ inputs.url_and_port }} \
             --isl ${{ inputs.isl }} \
             --osl ${{ inputs.osl }} \
