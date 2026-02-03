@@ -36,18 +36,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install lm-eval
-        run: |
-          pip install lm-eval
-
+      
       - name: Run LM Evaluation
         run: |
+          uv venv
+          source .venv/bin/activate
+          uv pip install "lm_eval[api]"
+          uv pip install transformers
           lm_eval \
             --model local-completions \
             --model_args model=${{ inputs.model }},base_url=${{ inputs.base_url }},num_concurrent=${{ inputs.num_concurrent }} \
