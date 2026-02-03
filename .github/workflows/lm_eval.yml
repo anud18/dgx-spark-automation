@@ -1,0 +1,63 @@
+name: LM Evaluation
+
+on:
+  workflow_dispatch:
+    inputs:
+      runner:
+        description: 'Runner to execute the workflow (e.g., ubuntu-latest, self-hosted, gpu-runner)'
+        required: true
+        type: string
+        default: 'ubuntu-latest'
+      base_url:
+        description: 'Base URL for the API endpoint (e.g., http://localhost:8355/v1/completions)'
+        required: true
+        default: 'http://localhost:8355/v1/completions'
+      model:
+        description: 'Model name (e.g., nvidia/Qwen3-8B-FP4)'
+        required: true
+        default: 'nvidia/Qwen3-8B-FP4'
+      task:
+        description: 'Evaluation task (e.g., mmlu_redux_generative)'
+        required: true
+        default: 'mmlu_redux_generative'
+      num_concurrent:
+        description: 'Number of concurrent requests'
+        required: false
+        default: '64'
+      output_path:
+        description: 'Output directory path'
+        required: false
+        default: 'output/mmlu_redux'
+
+jobs:
+  evaluate:
+    runs-on: ${{ inputs.runner }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install lm-eval
+        run: |
+          pip install lm-eval
+
+      - name: Run LM Evaluation
+        run: |
+          lm_eval \
+            --model local-completions \
+            --model_args model=${{ inputs.model }},base_url=${{ inputs.base_url }},num_concurrent=${{ inputs.num_concurrent }} \
+            --task ${{ inputs.task }} \
+            --output_path ${{ inputs.output_path }}
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lm-eval-results-${{ inputs.task }}-${{ github.run_number }}
+          path: ${{ inputs.output_path }}
+          retention-days: 30
