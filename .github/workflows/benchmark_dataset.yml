@@ -42,7 +42,7 @@ on:
         description: 'Output directory path'
         required: false
         type: string
-        default: 'output/benchmark'
+        default: 'output'
 
 jobs:
   benchmark:
