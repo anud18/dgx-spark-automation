@@ -71,6 +71,6 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: benchmark-results-${{ inputs.dataset }}-rate${{ inputs.rate }}-${{ github.run_number }}
+          name: benchmark-results
           path: ${{ inputs.output_path }}
           retention-days: 30
