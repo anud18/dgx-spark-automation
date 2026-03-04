@@ -36,6 +36,11 @@ on:
         required: false
         type: string
         default: 'spark-1697'
+      gpu_memory_utilization:
+        description: 'Fraction of GPU memory to use for vLLM (0 to 1, default: 0.9)'
+        required: false
+        type: number
+        default: '0.9'
 
 jobs:
   deploy-inference-engine:
@@ -104,7 +109,8 @@ jobs:
                 -p ${{ inputs.port }}:8000 \
                 ${{ steps.image.outputs.docker_image }} \
                 vllm serve ${{ inputs.model }} \
-                --trust_remote_code
+                --trust_remote_code \
+                --gpu-memory-utilization ${{ inputs.gpu_memory_utilization }}
               ;;
             SGLang)
               docker run -d \
@@ -162,6 +168,7 @@ jobs:
           echo "Model: ${{ inputs.model }}"
           echo "Port: ${{ inputs.port }}"
           echo "GPU: ${{ inputs.gpu }}"
+          echo "GPU Memory Utilization: ${{ inputs.gpu_memory_utilization }}"
           echo "Image: ${{ steps.image.outputs.docker_image }}"
           echo "Container: llm-inference-engine"
           echo ""
