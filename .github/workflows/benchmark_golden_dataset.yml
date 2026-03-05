@@ -58,12 +58,75 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Collect machine info
+        run: |
+          mkdir -p ${{ inputs.output_path }}
+          TIMESTAMP=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+
+          # CPU info
+          CPU_MODEL=$(lscpu | grep 'Model name' | sed 's/Model name:\s*//')
+          CPU_SOCKETS=$(lscpu | grep '^Socket(s):' | awk '{print $2}')
+          CPU_CORES_PER_SOCKET=$(lscpu | grep '^Core(s) per socket:' | awk '{print $4}')
+          CPU_THREADS_PER_CORE=$(lscpu | grep '^Thread(s) per core:' | awk '{print $4}')
+          CPU_TOTAL_CORES=$((CPU_SOCKETS * CPU_CORES_PER_SOCKET))
+          CPU_TOTAL_THREADS=$((CPU_TOTAL_CORES * CPU_THREADS_PER_CORE))
+          CPU_ARCH=$(lscpu | grep '^Architecture:' | awk '{print $2}')
+          MEM_TOTAL=$(free -b | awk '/^Mem:/{print $2}')
+          MEM_AVAIL=$(free -b | awk '/^Mem:/{print $7}')
+
+          # GPU info
+          GPU_JSON="[]"
+          if command -v nvidia-smi &> /dev/null; then
+            GPU_JSON=$(nvidia-smi --query-gpu=index,name,driver_version,memory.total,compute_cap,uuid \
+              --format=csv,noheader,nounits | python3 -c "
+          import sys, json
+          rows = []
+          for line in sys.stdin:
+              parts = [p.strip() for p in line.split(',')]
+              if len(parts) >= 6:
+                  rows.append({
+                      'index': int(parts[0]),
+                      'name': parts[1],
+                      'driver_version': parts[2],
+                      'memory_total_mib': int(parts[3]),
+                      'compute_capability': parts[4],
+                      'uuid': parts[5]
+                  })
+          print(json.dumps(rows))
+          ")
+          fi
+
+          python3 - <<PYEOF
+          import json, os
+          data = {
+              'timestamp': '${TIMESTAMP}',
+              'os': '$(uname -s)',
+              'kernel': '$(uname -r)',
+              'hostname': '$(hostname)',
+              'cpu': {
+                  'model': '${CPU_MODEL}',
+                  'architecture': '${CPU_ARCH}',
+                  'sockets': int('${CPU_SOCKETS}' or 0),
+                  'cores_per_socket': int('${CPU_CORES_PER_SOCKET}' or 0),
+                  'threads_per_core': int('${CPU_THREADS_PER_CORE}' or 0),
+                  'total_cores': int('${CPU_TOTAL_CORES}' or 0),
+                  'total_threads': int('${CPU_TOTAL_THREADS}' or 0),
+              },
+              'memory': {
+                  'total_bytes': int('${MEM_TOTAL}' or 0),
+                  'available_bytes': int('${MEM_AVAIL}' or 0),
+              },
+              'gpus': json.loads('${GPU_JSON}'),
+          }
+          with open('${{ inputs.output_path }}/machine_info.json', 'w') as f:
+              json.dump(data, f, indent=2)
+          PYEOF
+
       - name: Run Benchmark
         run: |
           ~/.local/bin/uv venv
           source .venv/bin/activate
           ~/.local/bin/uv pip install guidellm
-          mkdir -p ${{ inputs.output_path }}
           guidellm benchmark \
             --target "${{ inputs.target_url }}" \
             --data ${{ inputs.dataset }} \
@@ -73,10 +136,56 @@ jobs:
             --data-column-mapper '{"text_column": "${{ inputs.data_column }}"}' \
             --output-dir ${{ inputs.output_path }}
 
-      - name: Upload results
+      - name: Upload results as artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: benchmark-results
           path: ${{ inputs.output_path }}
           retention-days: 30
+
+      - name: Push results to benchmark-results branch
+        if: always()
+        run: |
+          TIMESTAMP=$(date -u '+%Y%m%dT%H%M%SZ')
+          RESULT_DIR="results/${TIMESTAMP}_${{ inputs.runner }}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Fetch and switch to benchmark-results branch (create orphan if not exists)
+          if git fetch origin benchmark-results:benchmark-results 2>/dev/null; then
+            git checkout benchmark-results
+          else
+            git checkout --orphan benchmark-results
+            git rm -rf . --quiet 2>/dev/null || true
+          fi
+
+          # Copy results into timestamped directory
+          mkdir -p "${RESULT_DIR}"
+          cp -r ${{ inputs.output_path }}/. "${RESULT_DIR}/"
+
+          # Write run metadata as JSON
+          python3 - <<PYEOF
+          import json
+          metadata = {
+              'runner': '${{ inputs.runner }}',
+              'target_url': '${{ inputs.target_url }}',
+              'dataset': '${{ inputs.dataset }}',
+              'rate_type': '${{ inputs.rate_type }}',
+              'rate': '${{ inputs.rate }}',
+              'max_seconds': '${{ inputs.max_seconds }}',
+              'data_column': '${{ inputs.data_column }}',
+              'timestamp': '${TIMESTAMP}',
+              'workflow_run_id': '${{ github.run_id }}',
+              'workflow_run_url': 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}',
+          }
+          with open('${RESULT_DIR}/run_metadata.json', 'w') as f:
+              json.dump(metadata, f, indent=2)
+          PYEOF
+
+          git add "${RESULT_DIR}"
+          git commit -m "benchmark: add results for ${TIMESTAMP} on ${{ inputs.runner }}" || echo "Nothing to commit"
+          git push origin benchmark-results
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
