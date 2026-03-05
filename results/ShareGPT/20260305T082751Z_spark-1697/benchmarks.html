@@ -1,0 +1,2461 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><title>GuideLLM</title><meta name="description" content="LLM Benchmarking Tool"/><link rel="manifest" href="https://blog.vllm.ai/guidellm/ui/v0.5.0/manifest.json"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="icon" href="https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon.png"/><link rel="apple-touch-icon" href="https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon-192x192.png"/><script>window.runInfo = {
+  "model": {
+    "name": "N/A",
+    "size": 0
+  },
+  "task": "N/A",
+  "timestamp": 1772698665.1827238,
+  "dataset": {
+    "name": "N/A"
+  }
+};
+ window.workloadDetails = {
+  "prompts": {
+    "samples": [
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'give me an example as to how will we use in an complex lending mortgage application with customer, front office banker and back office tasks'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'Copy only and make it funnier'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'classes in python'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'Continue writing please'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'Programming language : java using spring boot , latest version of spring state machine and temporal, tasks getCustomerInformation,scanDocuments - front office , approve customer onboarding - backoffice, collateral valuation - backoffice, credit assesement system tasks in background, openaccount - system tasks .State persistance can be done in temporal'}]}]}, 'files': None}"
+    ],
+    "tokenDistributions": {
+      "statistics": {
+        "mean": 29.92592592592592,
+        "median": 22.0,
+        "mode": 19.0,
+        "variance": 598.3966294336662,
+        "min": 10.0,
+        "max": 199.0,
+        "count": 567,
+        "percentiles": {
+          "p001": 10.0,
+          "p01": 10.0,
+          "p05": 11.0,
+          "p10": 13.0,
+          "p25": 16.0,
+          "p50": 22.0,
+          "p75": 32.0,
+          "p90": 55.0,
+          "p95": 84.0,
+          "p99": 134.0,
+          "p999": 199.0
+        },
+        "pdf": null,
+        "stdDev": 24.46214686885978,
+        "totalSum": 16967.999999999996
+      },
+      "buckets": [
+        {
+          "value": 10.0,
+          "count": 7
+        },
+        {
+          "value": 11.0,
+          "count": 27
+        },
+        {
+          "value": 12.0,
+          "count": 16
+        },
+        {
+          "value": 13.0,
+          "count": 23
+        },
+        {
+          "value": 14.0,
+          "count": 22
+        },
+        {
+          "value": 15.0,
+          "count": 31
+        },
+        {
+          "value": 16.0,
+          "count": 30
+        },
+        {
+          "value": 17.0,
+          "count": 27
+        },
+        {
+          "value": 18.0,
+          "count": 26
+        },
+        {
+          "value": 19.0,
+          "count": 32
+        },
+        {
+          "value": 20.0,
+          "count": 20
+        },
+        {
+          "value": 21.0,
+          "count": 21
+        },
+        {
+          "value": 22.0,
+          "count": 16
+        },
+        {
+          "value": 23.0,
+          "count": 19
+        },
+        {
+          "value": 24.0,
+          "count": 16
+        },
+        {
+          "value": 25.0,
+          "count": 18
+        },
+        {
+          "value": 26.0,
+          "count": 11
+        },
+        {
+          "value": 27.0,
+          "count": 18
+        },
+        {
+          "value": 28.0,
+          "count": 11
+        },
+        {
+          "value": 29.0,
+          "count": 11
+        },
+        {
+          "value": 30.0,
+          "count": 6
+        },
+        {
+          "value": 31.0,
+          "count": 8
+        },
+        {
+          "value": 32.0,
+          "count": 10
+        },
+        {
+          "value": 33.0,
+          "count": 2
+        },
+        {
+          "value": 34.0,
+          "count": 8
+        },
+        {
+          "value": 35.0,
+          "count": 7
+        },
+        {
+          "value": 36.0,
+          "count": 5
+        },
+        {
+          "value": 37.0,
+          "count": 7
+        },
+        {
+          "value": 38.0,
+          "count": 2
+        },
+        {
+          "value": 39.0,
+          "count": 5
+        },
+        {
+          "value": 40.0,
+          "count": 2
+        },
+        {
+          "value": 41.0,
+          "count": 7
+        },
+        {
+          "value": 42.0,
+          "count": 2
+        },
+        {
+          "value": 43.0,
+          "count": 1
+        },
+        {
+          "value": 44.0,
+          "count": 3
+        },
+        {
+          "value": 45.0,
+          "count": 5
+        },
+        {
+          "value": 46.0,
+          "count": 6
+        },
+        {
+          "value": 47.0,
+          "count": 2
+        },
+        {
+          "value": 48.0,
+          "count": 3
+        },
+        {
+          "value": 49.0,
+          "count": 5
+        },
+        {
+          "value": 50.0,
+          "count": 2
+        },
+        {
+          "value": 51.0,
+          "count": 4
+        },
+        {
+          "value": 55.0,
+          "count": 7
+        },
+        {
+          "value": 56.0,
+          "count": 1
+        },
+        {
+          "value": 57.0,
+          "count": 3
+        },
+        {
+          "value": 58.0,
+          "count": 1
+        },
+        {
+          "value": 59.0,
+          "count": 1
+        },
+        {
+          "value": 61.0,
+          "count": 2
+        },
+        {
+          "value": 62.0,
+          "count": 2
+        },
+        {
+          "value": 65.0,
+          "count": 2
+        },
+        {
+          "value": 66.0,
+          "count": 1
+        },
+        {
+          "value": 69.0,
+          "count": 2
+        },
+        {
+          "value": 72.0,
+          "count": 2
+        },
+        {
+          "value": 73.0,
+          "count": 1
+        },
+        {
+          "value": 75.0,
+          "count": 1
+        },
+        {
+          "value": 76.0,
+          "count": 2
+        },
+        {
+          "value": 78.0,
+          "count": 1
+        },
+        {
+          "value": 80.0,
+          "count": 1
+        },
+        {
+          "value": 82.0,
+          "count": 1
+        },
+        {
+          "value": 83.0,
+          "count": 2
+        },
+        {
+          "value": 84.0,
+          "count": 2
+        },
+        {
+          "value": 85.0,
+          "count": 2
+        },
+        {
+          "value": 86.0,
+          "count": 1
+        },
+        {
+          "value": 87.0,
+          "count": 1
+        },
+        {
+          "value": 88.0,
+          "count": 1
+        },
+        {
+          "value": 89.0,
+          "count": 2
+        },
+        {
+          "value": 98.0,
+          "count": 2
+        },
+        {
+          "value": 101.0,
+          "count": 1
+        },
+        {
+          "value": 102.0,
+          "count": 1
+        },
+        {
+          "value": 103.0,
+          "count": 2
+        },
+        {
+          "value": 106.0,
+          "count": 2
+        },
+        {
+          "value": 107.0,
+          "count": 1
+        },
+        {
+          "value": 110.0,
+          "count": 1
+        },
+        {
+          "value": 111.0,
+          "count": 1
+        },
+        {
+          "value": 116.0,
+          "count": 1
+        },
+        {
+          "value": 120.0,
+          "count": 1
+        },
+        {
+          "value": 125.0,
+          "count": 1
+        },
+        {
+          "value": 130.0,
+          "count": 1
+        },
+        {
+          "value": 134.0,
+          "count": 1
+        },
+        {
+          "value": 141.0,
+          "count": 1
+        },
+        {
+          "value": 142.0,
+          "count": 1
+        },
+        {
+          "value": 158.0,
+          "count": 2
+        },
+        {
+          "value": 199.0,
+          "count": 1
+        }
+      ],
+      "bucketWidth": 1
+    }
+  },
+  "generations": {
+    "samples": [
+      "Certainly! Here's a **real-world example** of how a **complex mortgage lending application** flows through the interaction between the **customer**, **front office banker**, and **back office teams**, illustrating the end-to-end process with clear roles and responsibilities.  ---  ### \ud83c\udfe1 Example: Complex Mortgage Application \u2013 A High-Value, Multi-Property, Refinancing Loan  #### \ud83d\udccc Customer Background: A mid-sized real estate developer named **Alex Johnson** is applying for a **$3.5 million mortgage loan** to refinance two commercial properties in different states (one in California, one in Texas). The loan is for a **10-year term**, with a **5% interest rate**, and includes **bridge financing** for a third property under development. The application is complex due to: - Multiple property valuations - Non-traditional income sources (development profits, rental income) - Foreign-owned equity stake (non-US citizen) - Complex debt service and LTV (Loan-to-Value) ratios - Need for environmental and zoning compliance checks  ---  ### \ud83d\udd01 Step-by-Step Workflow  #### 1. **Customer Engagement (Front Office \u2013 Relationship Manager)** - **Action**: Alex Johnson meets with **Front Office Banker (Sarah Chen)** to discuss loan needs. - **Tasks**:   - Understand loan purpose, property details, and financing timeline.   - Identify required documentation (e.g., tax returns, property appraisals, bank statements, equity proof).   - Explain loan terms, fees, and underwriting criteria.   - Set up a **loan file** in the CRM (e.g., Salesforce or Fiserv) with a unique ID (e.g., MORT-2024-00789). - **Output**: A signed **Loan Proposal Agreement** and initial application form.  > \u2705 *Sarah ensures the customer understands the complexity and timelines. She acts as the primary point of contact and builds trust.*  ---  #### 2. **Front Office Tasks (Banker & Loan Officer)** - **Action**: Sarah begins the **pre-qualification and documentation collection**. - **Tasks**:   - Requests:     - 3 years of audited financial statements     - Property tax and insurance records     - Title reports and zoning compliance documents     - Proof of development revenue (e.g., signed contracts, project timelines)     - Foreign ownership verification (via U.S. Department of State forms)   - Conducts a **credit check** and **income verification**.   - Identifies **risk flags** (e.g., high LTV on Texas property, foreign ownership).   - Initiates **underwriting workflow** in the Lending Management System (LMS). - **Output**: A preliminary **Risk Assessment Report** and a **Loan Package** sent to back office.  > \ud83d\udd0d *Sarah flags potential issues early (e.g., 'Texas property has a pending environmental issue') and alerts compliance.*  ---  #### 3. **Back Office Processing (Multiple Teams)** The back office now takes over with specialized functions:  | Team | Task | |------|------| | **Appraisal Team** | Orders independent appraisals from certified appraisers for both properties. Reviews for consistency and market comparables. | | **Valuation & LTV Team** | Calculates LTV ratios, determines if loan is over 80% LTV (which triggers higher scrutiny). | | **Credit & Risk Team** | Reviews credit history, debt-to-income ratio, and income stability. Uses AI-driven scoring models. | | **Compliance & Legal** | Checks for foreign ownership compliance, anti-money laundering (AML), and fair lending laws. | | **Title & Escrow** | Verifies title ownership, checks for liens, and confirms property status. | | **Insurance & Property Management** | Confirms flood, fire, and liability insurance coverage. | | **Regulatory & Government Liaison** | Coordinates with state regulators (e.g., California\u2019s Department of Real Estate) on zoning and land use. |  > \ud83d\udcca *Back office uses automated tools (e.g., Fiserv, Cognizant Lending Platform) to track status, flag delays, and generate reports.*  ---  #### 4. **Internal Review & Decision (Back Office + Front Office)** - The **Underwriting Committee** reviews the package. - A **risk dashboard** shows:   - LTV: 78% (within acceptable range)   - Debt-to-Income: 42% (acceptable)   - Foreign ownership: Requires additional documentation - **Decision**: Approve loan with **conditional clauses**:   - Foreign ownership must be verified by a U.S. Embassy notary.   - Environmental report must be submitted within 10 days.   - Insurance must be updated by Q1 2025.  > \ud83d\udce2 *Sarah receives the decision and informs Alex Johnson with clear next steps.*  ---  #### 5. **Customer Communication & Closing (Front Office)** - Sarah calls Alex to:   - Explain the conditions.   - Schedule a **closing meeting** with title company and attorney.   - Provide a **closing checklist** (e.g., submit environmental report, sign loan documents). - Updates the CRM with final status: **'Loan Approved \u2013 Conditions Pending'**.  ---  #### 6. **Closing & Post-Closing (Back Office & Front Office)** - Back Office:   - Coordinates with title company and escrow agent.   - Processes disbursement in 3 business days. - Front Office:   - Sends final confirmation to customer.   - Logs the loan in the customer relationship system.  > \u2705 Loan is closed successfully with a **$3.5M disbursement** to Alex Johnson.  ---  ### \ud83c\udfaf Why This Workflow Matters in a Complex Case: | Element | Benefit | |--------|--------| | **Front Office as Gatekeeper** | Builds trust, identifies risks early, ensures customer needs are met | | **Back Office as Compliance Engine** | Ensures regulatory, financial, and operational standards are met | | **System Integration** | Real-time tracking of appraisals, credit scores, and compliance checks | | **Transparency** | All parties (customer, banker, back office) have visibility via shared dashboards |  ---  ### \ud83d\udca1 Key Takeaway: In a **complex mortgage**, the **front office** drives customer experience and initial risk assessment, while the **back office** ensures compliance, accuracy, and regulatory adherence. Their collaboration \u2014 supported by digital systems \u2014 enables a **secure, efficient, and customer-centric** lending process.  This model scales well to other complex cases (e.g., jumbo loans, bridge financing, multi-family properties, or cross-border lending).  ---  Let me know if you'd like a visual flowchart or a version tailored to a specific type of loan (e.g., FHA, VA, or jumbo).",
+      "Sure! Here's a version that\u2019s *way* funnier \u2014 just copy and paste, no problem:  ---  Why did the coffee file a police report?   Because it got mugged! \ud83d\udea8\u2615    What did the ocean say to the shore?   Nothing\u2026 it just waved. \ud83c\udf0a\ud83d\udc4b    Why don\u2019t skeletons fight each other?   They don\u2019t have the guts. \ud83d\udc80\ud83d\ude05    I told my dog he was a great listener.   He just sat there\u2026 with a look of pure *bark*! \ud83d\udc36\ud83d\udc40    Why did the scarecrow win an award?   Because he was outstanding in his field! \ud83c\udf3e\ud83c\udfc6    How does a penguin build its house?   Igloos it together. \u2744\ufe0f\ud83c\udfe1    What do you call a fake noodle?   An impasta! \ud83c\udf5d\ud83d\ude04    Why did the bicycle fall over?   Because it was two-tired. \ud83d\udeb2\ud83d\ude02    I\u2019m reading a book on anti-gravity.   It\u2019s impossible to put down! \ud83d\udcda\ud83d\ude80    ---  Copy, paste, and enjoy the chaos! \ud83d\ude02",
+      "In Python, **classes** are a fundamental building block of object-oriented programming (OOP). A class is a blueprint or template for creating objects (also known as instances). It defines the structure, properties (attributes), and behaviors (methods) that the objects created from it will have.  ---  ### \ud83d\udd27 Basic Syntax of a Class in Python  ```python class ClassName:     # Attributes (variables)     attribute = value      # Methods (functions)     def method_name(self):         # method body         pass ```  ---  ### \u2705 Example: A Simple Class  ```python class Dog:     # Class attribute (shared by all instances)     species = 'Canis lupus familiaris'      def __init__(self, name, age):         # Instance attributes (unique to each object)         self.name = name         self.age = age      def bark(self):         return f'{self.name} says Woof!'      def description(self):         return f'{self.name} is {self.age} years old and a {self.species}' ```  ---  ### \ud83d\ude80 Creating Objects (Instances)  ```python # Create instances of the Dog class dog1 = Dog('Buddy', 3) dog2 = Dog('Luna', 7)  # Use the methods print(dog1.bark())  # Output: Buddy says Woof! print(dog2.description())  # Output: Luna is 7 years old and a Canis lupus familiaris ```  ---  ### \ud83d\udd0d Key Concepts in Python Classes  | Concept | Description | |--------|-------------| | **`__init__` method** | Constructor: runs when a new object is created. Initializes instance attributes. | | **Instance attributes** | Variables defined inside `__init__` that belong to each object. | | **Class attributes** | Variables defined outside methods that are shared across all instances. | | **Methods** | Functions defined inside a class that operate on instances. | | **`self`** | A reference to the current instance. First parameter in all instance methods. |  ---  ### \ud83d\udcdd Class vs Instance Attributes  ```python class Car:     # Class attribute     wheels = 4      def __init__(self, brand):         # Instance attribute         self.brand = brand  car1 = Car('Toyota') car2 = Car('BMW')  print(car1.wheels)  # 4 (shared) print(car2.wheels)  # 4 (shared)  car1.wheels = 6     # Now car1 has 6 wheels, car2 still has 4 print(car2.wheels)  # 4 ```  > \u26a0\ufe0f Modifying a class attribute affects all instances unless overridden.  ---  ### \ud83c\udf1f Inheritance (Extending Classes)  ```python class Animal:     def speak(self):         return 'Some sound'  class Dog(Animal):     def speak(self):         return 'Woof!'  class Cat(Animal):     def speak(self):         return 'Meow!'  dog = Dog() cat = Cat()  print(dog.speak())  # Woof! print(cat.speak())  # Meow! ```  > Child classes can override parent methods.  ---  ### \ud83d\udd0d Special Methods (Dunder Methods)  These are built-in methods that allow custom behavior:  | Method | Purpose | |-------|--------| | `__init__()` | Constructor | | `__str__()` | What `print(obj)` returns | | `__repr__()` | Developer-friendly string representation | | `__len__()` | Returns length of object | | `__add__()` | Defines how two objects can be added |  ```python class Person:     def __init__(self, name):         self.name = name      def __str__(self):         return f'Person named {self.name}'      def __repr__(self):         return f'Person('{self.name}')'  p = Person('Alice') print(p)  # Output: Person named Alice ```  ---  ### \ud83d\udcda Summary  - Classes define blueprints for objects. - Use `class` keyword to define a class. - `__init__` initializes instance attributes. - Methods are functions inside a class. - Inheritance allows reusing and extending functionality. - Dunder methods enable custom behavior (like `str`, `len`, etc.).  ---  \u2705 **Why use classes in Python?** - Encapsulate data and behavior. - Promote code reuse via inheritance. - Improve readability and maintainability. - Enable modular and scalable software design.  ---  Let me know if you'd like to explore: - Encapsulation - Polymorphism - Static methods - Class variables vs instance variables - Properties and decorators - Abstract classes  Happy coding! \ud83d\udc0d",
+      "Of course! Could you please provide the text you'd like me to continue? I'm ready to help you with that. \ud83d\ude0a",
+      "You're looking to design a **robust, scalable, and stateful customer onboarding system** using **Java with Spring Boot**, leveraging the **latest versions of Spring State Machine** and **Temporal** for **state persistence and orchestration**.  Let\u2019s break down your requirements and build a well-structured, production-ready architecture using modern Java (Spring Boot 3.x), **Spring State Machine 2.6+**, and **Temporal (v2.0+)**.  ---  ## \u2705 Goals 1. **Model the customer onboarding workflow** with clear states and transitions. 2. **Use Spring State Machine** for defining state logic and transitions. 3. **Use Temporal** for:    - State persistence (in a distributed environment).    - Workflow orchestration (e.g., tasks like scanning documents, approval, valuation).    - Background processing (credit assessment, open account). 4. **Decouple front-office and back-office tasks**. 5. **Support retry, timeouts, and monitoring**.  ---  ## \ud83d\ude80 Tech Stack (Latest as of 2024)  | Component | Version | |--------|--------| | Java | 17+ (prefer 17 or 21) | | Spring Boot | 3.3.x | | Spring State Machine | 2.6.0+ | | Temporal | 2.0+ (with Java SDK) | | Database | PostgreSQL / MySQL (for persistence) | | Optional | Redis (for caching, Temporal worker caching) |  > \u2705 Temporal is ideal for **long-running workflows**, **state persistence**, and **retries** \u2014 perfect for onboarding.  ---  ## \ud83d\udd27 System Architecture Overview  ``` +-------------------+ |  Front Office     | |  - Get Customer Info | |  - Scan Documents  | +-------------------+           \u2193 +-------------------+ |  Temporal Workflow | |  - Start Onboarding | |  - State Machine   | |  - Task Orchestration | +-------------------+           \u2193 +-------------------+ |  Back Office Tasks | |  - Approve Onboarding | |  - Collateral Valuation | |  - Credit Assessment (background) | +-------------------+           \u2193 +-------------------+ |  Open Account     | +-------------------+ ```  ---  ## 1. \ud83d\udce6 Project Setup (Spring Boot + Temporal)  ### `pom.xml` (Key Dependencies)  ```xml <dependencies>     <!-- Spring Boot -->     <dependency>         <groupId>org.springframework.boot</groupId>         <artifactId>spring-boot-starter-web</artifactId>     </dependency>     <dependency>         <groupId>org.springframework.boot</groupId>         <artifactId>spring-boot-starter-data-jpa</artifactId>     </dependency>     <dependency>         <groupId>org.springframework.boot</groupId>         <artifactId>spring-boot-starter-actuator</artifactId>     </dependency>      <!-- Spring State Machine -->     <dependency>         <groupId>org.springframework.statemachine</groupId>         <artifactId>spring-statemachine-core</artifactId>         <version>2.6.0</version>     </dependency>      <!-- Temporal Java SDK -->     <dependency>         <groupId>io.temporal</groupId>         <artifactId>temporal-java-sdk</artifactId>         <version>2.0.0</version>     </dependency>      <!-- H2 (for dev), PostgreSQL in prod -->     <dependency>         <groupId>com.h2database</groupId>         <artifactId>h2</artifactId>         <scope>runtime</scope>     </dependency>      <!-- Optional: for Redis (caching or Temporal worker cache) -->     <dependency>         <groupId>org.springframework.boot</groupId>         <artifactId>spring-boot-starter-data-redis</artifactId>     </dependency> </dependencies> ```  ---  ## 2. \ud83d\udcda Domain Model: Customer Onboarding State  ```java // CustomerOnboarding.java @Entity @Table(name = 'customer_onboarding') public class CustomerOnboarding {      @Id     @GeneratedValue(strategy = GenerationType.IDENTITY)     private Long id;      private String customerId;     private String status; // e.g., 'PENDING', 'DOCUMENTS_SCANNED', 'APPROVED', 'VALUATION_IN_PROGRESS', 'OPEN_ACCOUNT'     private LocalDateTime createdAt;     private LocalDateTime updatedAt;     private String documentsUrl; // scanned documents     private String collateralDetails;     private String creditScore;     private String approvalRemarks;      // Getters and Setters } ```  ---  ## 3. \ud83d\udd04 State Machine Definition (Spring State Machine)  ```java // CustomerOnboardingStateMachine.java @Configuration @EnableStateMachine public class CustomerOnboardingStateMachine {      @Bean     public StateMachineCustomerOnboardingService stateMachineService() {         return new StateMachineCustomerOnboardingService();     }      @Bean     public StateMachineConfigurerAdapter<CustomerOnboardingState, CustomerOnboardingEvent> stateMachineConfigurer() {         return new StateMachineConfigurerAdapter<>() {             @Override             public void configure(StateMachineStateConfigurer<CustomerOnboardingState, CustomerOnboardingEvent> states) {                 states                     .withStates()                     .initial(CustomerOnboardingState.PENDING)                     .state(CustomerOnboardingState.DOCUMENTS_SCANNED)                     .state(CustomerOnboardingState.VALUATION_IN_PROGRESS)                     .state(CustomerOnboardingState.CREDIT_ASSESSMENT)                     .state(CustomerOnboardingState.APPROVAL_PENDING)                     .state(CustomerOnboardingState.APPROVED)                     .state(CustomerOnboardingState.OPEN_ACCOUNT)                     .state(CustomerOnboardingState.REJECTED);             }              @Override             public void configure(StateMachineTransitionConfigurer<CustomerOnboardingState, CustomerOnboardingEvent> transitions) {                 transitions                     .withTransitions()                     .source(CustomerOnboardingState.PENDING)                     .target(CustomerOnboardingState.DOCUMENTS_SCANNED)                     .event(CustomerOnboardingEvent.SCAN_DOCUMENTS)                     .and()                     .source(CustomerOnboardingState.DOCUMENTS_SCANNED)                     .target(CustomerOnboardingState.VALUATION_IN_PROGRESS)                     .event(CustomerOnboardingEvent.VALUATE_COLLATERAL)                     .and()                     .source(CustomerOnboardingState.VALUATION_IN_PROGRESS)                     .target(CustomerOnboardingState.CREDIT_ASSESSMENT)                     .event(CustomerOnboardingEvent.CREDIT_ASSESSMENT)                     .and()                     .source(CustomerOnboardingState.CREDIT_ASSESSMENT)                     .target(CustomerOnboardingState.APPROVAL_PENDING)                     .event(CustomerOnboardingEvent.SUBMIT_FOR_APPROVAL)                     .and()                     .source(CustomerOnboardingState.APPROVAL_PENDING)                     .target(CustomerOnboardingState.APPROVED)                     .event(CustomerOnboardingEvent.APPROVE_ONBOARDING)                     .and()                     .source(CustomerOnboardingState.APPROVAL_PENDING)                     .target(CustomerOnboardingState.REJECTED)                     .event(CustomerOnboardingEvent.REJECT_ONBOARDING)                     .and()                     .source(CustomerOnboardingState.APPROVED)                     .target(CustomerOnboardingState.OPEN_ACCOUNT)                     .event(CustomerOnboardingEvent.OPEN_ACCOUNT);             }         };     } } ```  ---  ## 4. \ud83d\udd04 Temporal Workflow: Onboarding Orchestration  ### Step 1: Define Workflow (Temporal Workflow)  ```java // OnboardingWorkflow.java @TemporalWorkflow public class OnboardingWorkflow {      @TemporalActivity     public void scanDocuments(String customerId) {         // Call front-office service         String documentsUrl = frontOfficeService.scanDocuments(customerId);         updateCustomerState(customerId, CustomerOnboardingState.DOCUMENTS_SCANNED, documentsUrl);     }      @TemporalActivity     public void evaluateCollateral(String customerId) {         // Back-office task         String valuation = collateralService.evaluate(customerId);         updateCustomerState(customerId, CustomerOnboardingState.VALUATION_IN_PROGRESS, valuation);     }      @TemporalActivity     public void performCreditAssessment(String customerId) {         // Background task         String creditScore = creditAssessmentService.assess(customerId);         updateCustomerState(customerId, CustomerOnboardingState.CREDIT_ASSESSMENT, creditScore);     }      @TemporalActivity     public void approveOnboarding(String customerId) {         // Back-office approval         String remarks = backOfficeService.approve(customerId);         updateCustomerState(customerId, CustomerOnboardingState.APPROVED, remarks);     }      @TemporalActivity     public void openAccount(String customerId) {         // Final action         accountService.openAccount(customerId);         updateCustomerState(customerId, CustomerOnboardingState.OPEN_ACCOUNT, null);     }      private void updateCustomerState(String customerId, CustomerOnboardingState state, String data) {         // Save to DB via repository         CustomerOnboarding onboarding = customerOnboardingRepository.findByCustomerId(customerId);         onboarding.setStatus(state.name());         onboarding.setUpdatedAt(LocalDateTime.now());         if (data != null) onboarding.setDocumentsUrl(data);         customerOnboardingRepository.save(onboarding);     } } ```  ### Step 2: Define Workflow (Temporal Workflow Interface)  ```java // OnboardingWorkflow.java (interface) public interface OnboardingWorkflow {     void startOnboarding(String customerId); } ```  ---  ## 5. \ud83d\udce1 Front Office Task: Get Customer Info & Scan Documents  ```java @RestController @RequestMapping('/api/onboarding') public class OnboardingController {      @Autowired     private OnboardingWorkflow workflow;      @PostMapping('/start')     public ResponseEntity<String> startOnboarding(@RequestBody Map<String, String> request) {         String customerId = request.get('customerId');         workflow.startOnboarding(customerId);         return ResponseEntity.ok('Onboarding started for customer: ' + customerId);     }      @PostMapping('/scan-docs')     public ResponseEntity<String> scanDocuments(@RequestBody Map<String, String> request) {         String customerId = request.get('customerId');         workflow.scanDocuments(customerId);         return ResponseEntity.ok('Documents scanned.');     } } ```  ---  ## 6. \ud83e\udde9 Background Tasks (e.g., Credit Assessment)  ```java @Service @Async public class BackgroundTaskService {      @Autowired     private CreditAssessmentService creditAssessmentService;      public void performCreditAssessmentAsync(String customerId) {         String score = creditAssessmentService.assess(customerId);         // Save to DB or send to Temporal         // Can be triggered by state machine or manually     } } ```  ---  ## 7. \ud83d\ude80 Temporal Workflow Execution (Start)  ```java // Temporal Workflow Start (in controller) @PostMapping('/start') public ResponseEntity<String> startOnboarding(@RequestBody Map<String, String> request) {     String customerId = request.get('customerId');     WorkflowClient client = WorkflowClient.newInstance('temporal-server-url');      // Start workflow     client.workflow().newWorkflowExecution(         OnboardingWorkflow.class,         customerId     ).start();      return ResponseEntity.ok('Workflow started for ' + customerId); } ```  > \u2705 Temporal will: > - Persist the state (via Temporal DB or DB + Temporal). > - Handle retries, timeouts, and failure recovery. > - Allow monitoring via Temporal UI.  ---  ## 8. \ud83d\udcca State Persistence (Temporal)  Temporal **automatically persists** the state of a workflow. The state machine transitions are stored in Temporal\u2019s **workflow history**.  You can: - Query workflow history via Temporal UI. - Retrieve current state from `workflow.getWorkflowExecution()`.  > You can also **sync state to DB** via a background task (e.g., on every transition).  ---  ## 9. \ud83d\udd10 Security & Monitoring  - Add **Spring Security** to protect endpoints. - Add **Actuator** for health checks and metrics. - Use **Logging** (SLF4J + Logback) with structured logs. - Monitor via **Temporal UI** or **Prometheus + Grafana**.  ---  ## \u2705 Summary of Key Features  | Feature | Implemented | |-------|------------| | Front Office Tasks (Get Info, Scan Docs) | \u2705 | | Back Office (Approve, Valuation) | \u2705 | | Background Credit Assessment | \u2705 (via @Async or Temporal) | | State Machine (Transitions) | \u2705 (Spring State Machine) | | State Persistence | \u2705 (Temporal + DB) | | Workflow Orchestration | \u2705 (Temporal) | | Retry, Timeout, Monitoring | \u2705 (Temporal built-in) |  ---  ## \ud83d\ude80 Next Steps / Improvements  1. **Add Event-Driven Architecture** (e.g., Kafka for document upload events). 2. **Add Notifications** (email/SMS on approval/rejection). 3. **Add User Interface** (React/Vue for front office). 4. **Add Audit Trail** (log all transitions). 5. **Add Workflow Cancellation** (user cancels onboarding). 6. **Add Retry Policies** (e.g., retry failed document scan). 7. **Add Webhook Support** (trigger external systems on state change).  ---  ## \ud83d\udcda References  - [Spring State Machine Docs](https://docs.spring.io/spring-statemachine/docs/current/reference/html/) - [Temporal Java SDK v2](https://docs.temporal.io/) - [Temporal Workflow Examples](https://github.com/temporalio/samples-java)  ---  ## \u2705 Final Thoughts  This design gives you: - **Clear separation** of concerns (front office vs back office). - **State visibility** via Spring State Machine and Temporal. - **Scalability** with Temporal for long-running workflows. - **Resilience** with retries, timeouts, and recovery.  Let me know if you want: - A full GitHub repo structure. - Integration with Kafka or RabbitMQ. - A diagram (Mermaid or PlantUML). - Docker setup or deployment scripts.  Happy coding! \ud83d\ude80"
+    ],
+    "tokenDistributions": {
+      "statistics": {
+        "mean": 640.3386243386244,
+        "median": 482.0,
+        "mode": 42.0,
+        "variance": 355806.4109067495,
+        "min": 2.0,
+        "max": 3653.0,
+        "count": 567,
+        "percentiles": {
+          "p001": 2.0,
+          "p01": 12.0,
+          "p05": 30.0,
+          "p10": 57.0,
+          "p25": 141.0,
+          "p50": 482.0,
+          "p75": 991.0,
+          "p90": 1443.0,
+          "p95": 1797.0,
+          "p99": 2887.0,
+          "p999": 3653.0
+        },
+        "pdf": null,
+        "stdDev": 596.4951055178487,
+        "totalSum": 363072.00000000006
+      },
+      "buckets": [
+        {
+          "value": 2.0,
+          "count": 1
+        },
+        {
+          "value": 9.0,
+          "count": 1
+        },
+        {
+          "value": 10.0,
+          "count": 1
+        },
+        {
+          "value": 11.0,
+          "count": 2
+        },
+        {
+          "value": 12.0,
+          "count": 1
+        },
+        {
+          "value": 14.0,
+          "count": 2
+        },
+        {
+          "value": 15.0,
+          "count": 1
+        },
+        {
+          "value": 17.0,
+          "count": 3
+        },
+        {
+          "value": 19.0,
+          "count": 1
+        },
+        {
+          "value": 20.0,
+          "count": 1
+        },
+        {
+          "value": 21.0,
+          "count": 1
+        },
+        {
+          "value": 22.0,
+          "count": 2
+        },
+        {
+          "value": 23.0,
+          "count": 3
+        },
+        {
+          "value": 25.0,
+          "count": 1
+        },
+        {
+          "value": 26.0,
+          "count": 1
+        },
+        {
+          "value": 28.0,
+          "count": 3
+        },
+        {
+          "value": 29.0,
+          "count": 2
+        },
+        {
+          "value": 30.0,
+          "count": 2
+        },
+        {
+          "value": 31.0,
+          "count": 1
+        },
+        {
+          "value": 33.0,
+          "count": 1
+        },
+        {
+          "value": 36.0,
+          "count": 3
+        },
+        {
+          "value": 41.0,
+          "count": 2
+        },
+        {
+          "value": 42.0,
+          "count": 4
+        },
+        {
+          "value": 44.0,
+          "count": 1
+        },
+        {
+          "value": 45.0,
+          "count": 2
+        },
+        {
+          "value": 47.0,
+          "count": 1
+        },
+        {
+          "value": 48.0,
+          "count": 2
+        },
+        {
+          "value": 49.0,
+          "count": 2
+        },
+        {
+          "value": 51.0,
+          "count": 1
+        },
+        {
+          "value": 52.0,
+          "count": 3
+        },
+        {
+          "value": 53.0,
+          "count": 1
+        },
+        {
+          "value": 54.0,
+          "count": 1
+        },
+        {
+          "value": 55.0,
+          "count": 1
+        },
+        {
+          "value": 57.0,
+          "count": 2
+        },
+        {
+          "value": 58.0,
+          "count": 2
+        },
+        {
+          "value": 61.0,
+          "count": 1
+        },
+        {
+          "value": 62.0,
+          "count": 1
+        },
+        {
+          "value": 63.0,
+          "count": 2
+        },
+        {
+          "value": 64.0,
+          "count": 2
+        },
+        {
+          "value": 66.0,
+          "count": 1
+        },
+        {
+          "value": 68.0,
+          "count": 1
+        },
+        {
+          "value": 69.0,
+          "count": 2
+        },
+        {
+          "value": 70.0,
+          "count": 1
+        },
+        {
+          "value": 74.0,
+          "count": 1
+        },
+        {
+          "value": 75.0,
+          "count": 1
+        },
+        {
+          "value": 76.0,
+          "count": 1
+        },
+        {
+          "value": 77.0,
+          "count": 1
+        },
+        {
+          "value": 78.0,
+          "count": 3
+        },
+        {
+          "value": 80.0,
+          "count": 3
+        },
+        {
+          "value": 81.0,
+          "count": 3
+        },
+        {
+          "value": 83.0,
+          "count": 2
+        },
+        {
+          "value": 84.0,
+          "count": 2
+        },
+        {
+          "value": 85.0,
+          "count": 1
+        },
+        {
+          "value": 87.0,
+          "count": 2
+        },
+        {
+          "value": 89.0,
+          "count": 2
+        },
+        {
+          "value": 90.0,
+          "count": 1
+        },
+        {
+          "value": 91.0,
+          "count": 1
+        },
+        {
+          "value": 92.0,
+          "count": 1
+        },
+        {
+          "value": 93.0,
+          "count": 2
+        },
+        {
+          "value": 94.0,
+          "count": 1
+        },
+        {
+          "value": 95.0,
+          "count": 2
+        },
+        {
+          "value": 96.0,
+          "count": 1
+        },
+        {
+          "value": 98.0,
+          "count": 1
+        },
+        {
+          "value": 99.0,
+          "count": 1
+        },
+        {
+          "value": 101.0,
+          "count": 1
+        },
+        {
+          "value": 104.0,
+          "count": 2
+        },
+        {
+          "value": 105.0,
+          "count": 1
+        },
+        {
+          "value": 106.0,
+          "count": 1
+        },
+        {
+          "value": 107.0,
+          "count": 1
+        },
+        {
+          "value": 108.0,
+          "count": 1
+        },
+        {
+          "value": 110.0,
+          "count": 1
+        },
+        {
+          "value": 111.0,
+          "count": 1
+        },
+        {
+          "value": 112.0,
+          "count": 1
+        },
+        {
+          "value": 113.0,
+          "count": 1
+        },
+        {
+          "value": 116.0,
+          "count": 1
+        },
+        {
+          "value": 117.0,
+          "count": 2
+        },
+        {
+          "value": 118.0,
+          "count": 3
+        },
+        {
+          "value": 119.0,
+          "count": 1
+        },
+        {
+          "value": 121.0,
+          "count": 2
+        },
+        {
+          "value": 122.0,
+          "count": 2
+        },
+        {
+          "value": 124.0,
+          "count": 1
+        },
+        {
+          "value": 125.0,
+          "count": 1
+        },
+        {
+          "value": 128.0,
+          "count": 1
+        },
+        {
+          "value": 130.0,
+          "count": 2
+        },
+        {
+          "value": 131.0,
+          "count": 1
+        },
+        {
+          "value": 133.0,
+          "count": 2
+        },
+        {
+          "value": 134.0,
+          "count": 2
+        },
+        {
+          "value": 135.0,
+          "count": 2
+        },
+        {
+          "value": 137.0,
+          "count": 1
+        },
+        {
+          "value": 139.0,
+          "count": 2
+        },
+        {
+          "value": 141.0,
+          "count": 4
+        },
+        {
+          "value": 143.0,
+          "count": 1
+        },
+        {
+          "value": 144.0,
+          "count": 1
+        },
+        {
+          "value": 146.0,
+          "count": 1
+        },
+        {
+          "value": 147.0,
+          "count": 3
+        },
+        {
+          "value": 152.0,
+          "count": 1
+        },
+        {
+          "value": 154.0,
+          "count": 1
+        },
+        {
+          "value": 155.0,
+          "count": 1
+        },
+        {
+          "value": 156.0,
+          "count": 2
+        },
+        {
+          "value": 157.0,
+          "count": 1
+        },
+        {
+          "value": 160.0,
+          "count": 1
+        },
+        {
+          "value": 162.0,
+          "count": 1
+        },
+        {
+          "value": 163.0,
+          "count": 1
+        },
+        {
+          "value": 164.0,
+          "count": 1
+        },
+        {
+          "value": 165.0,
+          "count": 1
+        },
+        {
+          "value": 166.0,
+          "count": 1
+        },
+        {
+          "value": 167.0,
+          "count": 1
+        },
+        {
+          "value": 168.0,
+          "count": 1
+        },
+        {
+          "value": 169.0,
+          "count": 1
+        },
+        {
+          "value": 171.0,
+          "count": 1
+        },
+        {
+          "value": 173.0,
+          "count": 1
+        },
+        {
+          "value": 174.0,
+          "count": 1
+        },
+        {
+          "value": 176.0,
+          "count": 1
+        },
+        {
+          "value": 180.0,
+          "count": 1
+        },
+        {
+          "value": 184.0,
+          "count": 1
+        },
+        {
+          "value": 189.0,
+          "count": 2
+        },
+        {
+          "value": 190.0,
+          "count": 1
+        },
+        {
+          "value": 207.0,
+          "count": 1
+        },
+        {
+          "value": 208.0,
+          "count": 2
+        },
+        {
+          "value": 209.0,
+          "count": 2
+        },
+        {
+          "value": 212.0,
+          "count": 4
+        },
+        {
+          "value": 214.0,
+          "count": 1
+        },
+        {
+          "value": 220.0,
+          "count": 1
+        },
+        {
+          "value": 222.0,
+          "count": 1
+        },
+        {
+          "value": 224.0,
+          "count": 2
+        },
+        {
+          "value": 225.0,
+          "count": 1
+        },
+        {
+          "value": 228.0,
+          "count": 1
+        },
+        {
+          "value": 230.0,
+          "count": 1
+        },
+        {
+          "value": 234.0,
+          "count": 1
+        },
+        {
+          "value": 235.0,
+          "count": 2
+        },
+        {
+          "value": 236.0,
+          "count": 1
+        },
+        {
+          "value": 241.0,
+          "count": 1
+        },
+        {
+          "value": 244.0,
+          "count": 1
+        },
+        {
+          "value": 251.0,
+          "count": 1
+        },
+        {
+          "value": 256.0,
+          "count": 1
+        },
+        {
+          "value": 257.0,
+          "count": 1
+        },
+        {
+          "value": 259.0,
+          "count": 1
+        },
+        {
+          "value": 262.0,
+          "count": 1
+        },
+        {
+          "value": 264.0,
+          "count": 2
+        },
+        {
+          "value": 271.0,
+          "count": 1
+        },
+        {
+          "value": 272.0,
+          "count": 2
+        },
+        {
+          "value": 275.0,
+          "count": 1
+        },
+        {
+          "value": 278.0,
+          "count": 1
+        },
+        {
+          "value": 282.0,
+          "count": 2
+        },
+        {
+          "value": 284.0,
+          "count": 2
+        },
+        {
+          "value": 285.0,
+          "count": 2
+        },
+        {
+          "value": 288.0,
+          "count": 1
+        },
+        {
+          "value": 295.0,
+          "count": 1
+        },
+        {
+          "value": 302.0,
+          "count": 2
+        },
+        {
+          "value": 304.0,
+          "count": 1
+        },
+        {
+          "value": 309.0,
+          "count": 1
+        },
+        {
+          "value": 315.0,
+          "count": 1
+        },
+        {
+          "value": 317.0,
+          "count": 2
+        },
+        {
+          "value": 323.0,
+          "count": 1
+        },
+        {
+          "value": 330.0,
+          "count": 1
+        },
+        {
+          "value": 332.0,
+          "count": 1
+        },
+        {
+          "value": 338.0,
+          "count": 1
+        },
+        {
+          "value": 341.0,
+          "count": 3
+        },
+        {
+          "value": 351.0,
+          "count": 1
+        },
+        {
+          "value": 355.0,
+          "count": 1
+        },
+        {
+          "value": 356.0,
+          "count": 1
+        },
+        {
+          "value": 357.0,
+          "count": 1
+        },
+        {
+          "value": 360.0,
+          "count": 1
+        },
+        {
+          "value": 362.0,
+          "count": 1
+        },
+        {
+          "value": 365.0,
+          "count": 1
+        },
+        {
+          "value": 367.0,
+          "count": 1
+        },
+        {
+          "value": 368.0,
+          "count": 1
+        },
+        {
+          "value": 369.0,
+          "count": 2
+        },
+        {
+          "value": 373.0,
+          "count": 1
+        },
+        {
+          "value": 374.0,
+          "count": 1
+        },
+        {
+          "value": 379.0,
+          "count": 1
+        },
+        {
+          "value": 381.0,
+          "count": 1
+        },
+        {
+          "value": 386.0,
+          "count": 1
+        },
+        {
+          "value": 393.0,
+          "count": 1
+        },
+        {
+          "value": 396.0,
+          "count": 2
+        },
+        {
+          "value": 405.0,
+          "count": 1
+        },
+        {
+          "value": 407.0,
+          "count": 1
+        },
+        {
+          "value": 408.0,
+          "count": 1
+        },
+        {
+          "value": 409.0,
+          "count": 1
+        },
+        {
+          "value": 411.0,
+          "count": 1
+        },
+        {
+          "value": 413.0,
+          "count": 1
+        },
+        {
+          "value": 414.0,
+          "count": 1
+        },
+        {
+          "value": 417.0,
+          "count": 1
+        },
+        {
+          "value": 419.0,
+          "count": 1
+        },
+        {
+          "value": 420.0,
+          "count": 1
+        },
+        {
+          "value": 423.0,
+          "count": 2
+        },
+        {
+          "value": 428.0,
+          "count": 2
+        },
+        {
+          "value": 430.0,
+          "count": 3
+        },
+        {
+          "value": 431.0,
+          "count": 1
+        },
+        {
+          "value": 435.0,
+          "count": 1
+        },
+        {
+          "value": 436.0,
+          "count": 2
+        },
+        {
+          "value": 449.0,
+          "count": 1
+        },
+        {
+          "value": 459.0,
+          "count": 1
+        },
+        {
+          "value": 464.0,
+          "count": 1
+        },
+        {
+          "value": 468.0,
+          "count": 2
+        },
+        {
+          "value": 469.0,
+          "count": 2
+        },
+        {
+          "value": 470.0,
+          "count": 1
+        },
+        {
+          "value": 471.0,
+          "count": 1
+        },
+        {
+          "value": 473.0,
+          "count": 2
+        },
+        {
+          "value": 479.0,
+          "count": 1
+        },
+        {
+          "value": 482.0,
+          "count": 1
+        },
+        {
+          "value": 483.0,
+          "count": 1
+        },
+        {
+          "value": 485.0,
+          "count": 2
+        },
+        {
+          "value": 487.0,
+          "count": 1
+        },
+        {
+          "value": 489.0,
+          "count": 1
+        },
+        {
+          "value": 490.0,
+          "count": 1
+        },
+        {
+          "value": 493.0,
+          "count": 1
+        },
+        {
+          "value": 500.0,
+          "count": 1
+        },
+        {
+          "value": 505.0,
+          "count": 1
+        },
+        {
+          "value": 509.0,
+          "count": 1
+        },
+        {
+          "value": 519.0,
+          "count": 1
+        },
+        {
+          "value": 522.0,
+          "count": 1
+        },
+        {
+          "value": 528.0,
+          "count": 1
+        },
+        {
+          "value": 530.0,
+          "count": 1
+        },
+        {
+          "value": 532.0,
+          "count": 1
+        },
+        {
+          "value": 533.0,
+          "count": 1
+        },
+        {
+          "value": 536.0,
+          "count": 1
+        },
+        {
+          "value": 539.0,
+          "count": 1
+        },
+        {
+          "value": 546.0,
+          "count": 1
+        },
+        {
+          "value": 549.0,
+          "count": 1
+        },
+        {
+          "value": 553.0,
+          "count": 1
+        },
+        {
+          "value": 555.0,
+          "count": 1
+        },
+        {
+          "value": 557.0,
+          "count": 1
+        },
+        {
+          "value": 561.0,
+          "count": 1
+        },
+        {
+          "value": 566.0,
+          "count": 2
+        },
+        {
+          "value": 567.0,
+          "count": 1
+        },
+        {
+          "value": 572.0,
+          "count": 2
+        },
+        {
+          "value": 574.0,
+          "count": 1
+        },
+        {
+          "value": 575.0,
+          "count": 1
+        },
+        {
+          "value": 585.0,
+          "count": 1
+        },
+        {
+          "value": 586.0,
+          "count": 1
+        },
+        {
+          "value": 590.0,
+          "count": 1
+        },
+        {
+          "value": 591.0,
+          "count": 1
+        },
+        {
+          "value": 593.0,
+          "count": 1
+        },
+        {
+          "value": 601.0,
+          "count": 1
+        },
+        {
+          "value": 605.0,
+          "count": 1
+        },
+        {
+          "value": 606.0,
+          "count": 1
+        },
+        {
+          "value": 609.0,
+          "count": 1
+        },
+        {
+          "value": 610.0,
+          "count": 2
+        },
+        {
+          "value": 611.0,
+          "count": 1
+        },
+        {
+          "value": 612.0,
+          "count": 1
+        },
+        {
+          "value": 618.0,
+          "count": 1
+        },
+        {
+          "value": 628.0,
+          "count": 1
+        },
+        {
+          "value": 637.0,
+          "count": 1
+        },
+        {
+          "value": 642.0,
+          "count": 1
+        },
+        {
+          "value": 645.0,
+          "count": 1
+        },
+        {
+          "value": 649.0,
+          "count": 1
+        },
+        {
+          "value": 653.0,
+          "count": 1
+        },
+        {
+          "value": 655.0,
+          "count": 1
+        },
+        {
+          "value": 661.0,
+          "count": 1
+        },
+        {
+          "value": 665.0,
+          "count": 1
+        },
+        {
+          "value": 666.0,
+          "count": 1
+        },
+        {
+          "value": 667.0,
+          "count": 1
+        },
+        {
+          "value": 668.0,
+          "count": 1
+        },
+        {
+          "value": 669.0,
+          "count": 1
+        },
+        {
+          "value": 672.0,
+          "count": 1
+        },
+        {
+          "value": 673.0,
+          "count": 1
+        },
+        {
+          "value": 676.0,
+          "count": 1
+        },
+        {
+          "value": 679.0,
+          "count": 1
+        },
+        {
+          "value": 685.0,
+          "count": 1
+        },
+        {
+          "value": 687.0,
+          "count": 1
+        },
+        {
+          "value": 688.0,
+          "count": 1
+        },
+        {
+          "value": 690.0,
+          "count": 1
+        },
+        {
+          "value": 695.0,
+          "count": 1
+        },
+        {
+          "value": 697.0,
+          "count": 1
+        },
+        {
+          "value": 700.0,
+          "count": 1
+        },
+        {
+          "value": 701.0,
+          "count": 1
+        },
+        {
+          "value": 707.0,
+          "count": 1
+        },
+        {
+          "value": 723.0,
+          "count": 1
+        },
+        {
+          "value": 725.0,
+          "count": 1
+        },
+        {
+          "value": 726.0,
+          "count": 1
+        },
+        {
+          "value": 728.0,
+          "count": 1
+        },
+        {
+          "value": 730.0,
+          "count": 1
+        },
+        {
+          "value": 738.0,
+          "count": 1
+        },
+        {
+          "value": 742.0,
+          "count": 1
+        },
+        {
+          "value": 755.0,
+          "count": 1
+        },
+        {
+          "value": 756.0,
+          "count": 1
+        },
+        {
+          "value": 768.0,
+          "count": 1
+        },
+        {
+          "value": 769.0,
+          "count": 1
+        },
+        {
+          "value": 771.0,
+          "count": 1
+        },
+        {
+          "value": 773.0,
+          "count": 1
+        },
+        {
+          "value": 775.0,
+          "count": 1
+        },
+        {
+          "value": 776.0,
+          "count": 1
+        },
+        {
+          "value": 777.0,
+          "count": 1
+        },
+        {
+          "value": 778.0,
+          "count": 1
+        },
+        {
+          "value": 781.0,
+          "count": 1
+        },
+        {
+          "value": 783.0,
+          "count": 1
+        },
+        {
+          "value": 784.0,
+          "count": 1
+        },
+        {
+          "value": 785.0,
+          "count": 2
+        },
+        {
+          "value": 787.0,
+          "count": 1
+        },
+        {
+          "value": 790.0,
+          "count": 1
+        },
+        {
+          "value": 791.0,
+          "count": 1
+        },
+        {
+          "value": 810.0,
+          "count": 1
+        },
+        {
+          "value": 815.0,
+          "count": 1
+        },
+        {
+          "value": 816.0,
+          "count": 1
+        },
+        {
+          "value": 822.0,
+          "count": 1
+        },
+        {
+          "value": 823.0,
+          "count": 1
+        },
+        {
+          "value": 824.0,
+          "count": 1
+        },
+        {
+          "value": 825.0,
+          "count": 1
+        },
+        {
+          "value": 826.0,
+          "count": 1
+        },
+        {
+          "value": 829.0,
+          "count": 1
+        },
+        {
+          "value": 830.0,
+          "count": 2
+        },
+        {
+          "value": 838.0,
+          "count": 1
+        },
+        {
+          "value": 841.0,
+          "count": 1
+        },
+        {
+          "value": 851.0,
+          "count": 1
+        },
+        {
+          "value": 853.0,
+          "count": 2
+        },
+        {
+          "value": 855.0,
+          "count": 1
+        },
+        {
+          "value": 856.0,
+          "count": 1
+        },
+        {
+          "value": 858.0,
+          "count": 1
+        },
+        {
+          "value": 864.0,
+          "count": 1
+        },
+        {
+          "value": 865.0,
+          "count": 1
+        },
+        {
+          "value": 866.0,
+          "count": 1
+        },
+        {
+          "value": 867.0,
+          "count": 2
+        },
+        {
+          "value": 880.0,
+          "count": 1
+        },
+        {
+          "value": 887.0,
+          "count": 2
+        },
+        {
+          "value": 905.0,
+          "count": 1
+        },
+        {
+          "value": 908.0,
+          "count": 1
+        },
+        {
+          "value": 911.0,
+          "count": 1
+        },
+        {
+          "value": 912.0,
+          "count": 1
+        },
+        {
+          "value": 914.0,
+          "count": 1
+        },
+        {
+          "value": 920.0,
+          "count": 1
+        },
+        {
+          "value": 925.0,
+          "count": 1
+        },
+        {
+          "value": 933.0,
+          "count": 1
+        },
+        {
+          "value": 941.0,
+          "count": 1
+        },
+        {
+          "value": 944.0,
+          "count": 1
+        },
+        {
+          "value": 954.0,
+          "count": 1
+        },
+        {
+          "value": 965.0,
+          "count": 1
+        },
+        {
+          "value": 967.0,
+          "count": 1
+        },
+        {
+          "value": 969.0,
+          "count": 3
+        },
+        {
+          "value": 971.0,
+          "count": 1
+        },
+        {
+          "value": 977.0,
+          "count": 1
+        },
+        {
+          "value": 991.0,
+          "count": 1
+        },
+        {
+          "value": 992.0,
+          "count": 1
+        },
+        {
+          "value": 999.0,
+          "count": 1
+        },
+        {
+          "value": 1000.0,
+          "count": 1
+        },
+        {
+          "value": 1001.0,
+          "count": 2
+        },
+        {
+          "value": 1008.0,
+          "count": 1
+        },
+        {
+          "value": 1018.0,
+          "count": 1
+        },
+        {
+          "value": 1022.0,
+          "count": 1
+        },
+        {
+          "value": 1028.0,
+          "count": 1
+        },
+        {
+          "value": 1030.0,
+          "count": 2
+        },
+        {
+          "value": 1032.0,
+          "count": 1
+        },
+        {
+          "value": 1034.0,
+          "count": 1
+        },
+        {
+          "value": 1038.0,
+          "count": 1
+        },
+        {
+          "value": 1041.0,
+          "count": 1
+        },
+        {
+          "value": 1042.0,
+          "count": 2
+        },
+        {
+          "value": 1045.0,
+          "count": 1
+        },
+        {
+          "value": 1052.0,
+          "count": 1
+        },
+        {
+          "value": 1053.0,
+          "count": 1
+        },
+        {
+          "value": 1065.0,
+          "count": 1
+        },
+        {
+          "value": 1068.0,
+          "count": 1
+        },
+        {
+          "value": 1078.0,
+          "count": 1
+        },
+        {
+          "value": 1080.0,
+          "count": 1
+        },
+        {
+          "value": 1083.0,
+          "count": 2
+        },
+        {
+          "value": 1085.0,
+          "count": 1
+        },
+        {
+          "value": 1086.0,
+          "count": 1
+        },
+        {
+          "value": 1089.0,
+          "count": 1
+        },
+        {
+          "value": 1094.0,
+          "count": 1
+        },
+        {
+          "value": 1096.0,
+          "count": 1
+        },
+        {
+          "value": 1106.0,
+          "count": 1
+        },
+        {
+          "value": 1114.0,
+          "count": 1
+        },
+        {
+          "value": 1115.0,
+          "count": 2
+        },
+        {
+          "value": 1122.0,
+          "count": 1
+        },
+        {
+          "value": 1124.0,
+          "count": 1
+        },
+        {
+          "value": 1129.0,
+          "count": 1
+        },
+        {
+          "value": 1137.0,
+          "count": 2
+        },
+        {
+          "value": 1149.0,
+          "count": 1
+        },
+        {
+          "value": 1152.0,
+          "count": 1
+        },
+        {
+          "value": 1158.0,
+          "count": 1
+        },
+        {
+          "value": 1159.0,
+          "count": 1
+        },
+        {
+          "value": 1167.0,
+          "count": 1
+        },
+        {
+          "value": 1173.0,
+          "count": 1
+        },
+        {
+          "value": 1176.0,
+          "count": 1
+        },
+        {
+          "value": 1179.0,
+          "count": 1
+        },
+        {
+          "value": 1183.0,
+          "count": 2
+        },
+        {
+          "value": 1195.0,
+          "count": 1
+        },
+        {
+          "value": 1198.0,
+          "count": 1
+        },
+        {
+          "value": 1199.0,
+          "count": 1
+        },
+        {
+          "value": 1202.0,
+          "count": 2
+        },
+        {
+          "value": 1207.0,
+          "count": 1
+        },
+        {
+          "value": 1213.0,
+          "count": 1
+        },
+        {
+          "value": 1216.0,
+          "count": 1
+        },
+        {
+          "value": 1223.0,
+          "count": 1
+        },
+        {
+          "value": 1231.0,
+          "count": 1
+        },
+        {
+          "value": 1234.0,
+          "count": 1
+        },
+        {
+          "value": 1235.0,
+          "count": 1
+        },
+        {
+          "value": 1240.0,
+          "count": 1
+        },
+        {
+          "value": 1243.0,
+          "count": 1
+        },
+        {
+          "value": 1251.0,
+          "count": 1
+        },
+        {
+          "value": 1282.0,
+          "count": 1
+        },
+        {
+          "value": 1303.0,
+          "count": 2
+        },
+        {
+          "value": 1304.0,
+          "count": 1
+        },
+        {
+          "value": 1317.0,
+          "count": 1
+        },
+        {
+          "value": 1323.0,
+          "count": 1
+        },
+        {
+          "value": 1328.0,
+          "count": 1
+        },
+        {
+          "value": 1350.0,
+          "count": 1
+        },
+        {
+          "value": 1353.0,
+          "count": 1
+        },
+        {
+          "value": 1362.0,
+          "count": 1
+        },
+        {
+          "value": 1364.0,
+          "count": 1
+        },
+        {
+          "value": 1367.0,
+          "count": 1
+        },
+        {
+          "value": 1383.0,
+          "count": 1
+        },
+        {
+          "value": 1392.0,
+          "count": 1
+        },
+        {
+          "value": 1395.0,
+          "count": 1
+        },
+        {
+          "value": 1397.0,
+          "count": 2
+        },
+        {
+          "value": 1416.0,
+          "count": 1
+        },
+        {
+          "value": 1430.0,
+          "count": 1
+        },
+        {
+          "value": 1443.0,
+          "count": 1
+        },
+        {
+          "value": 1445.0,
+          "count": 2
+        },
+        {
+          "value": 1474.0,
+          "count": 1
+        },
+        {
+          "value": 1481.0,
+          "count": 1
+        },
+        {
+          "value": 1485.0,
+          "count": 1
+        },
+        {
+          "value": 1500.0,
+          "count": 1
+        },
+        {
+          "value": 1513.0,
+          "count": 1
+        },
+        {
+          "value": 1515.0,
+          "count": 1
+        },
+        {
+          "value": 1526.0,
+          "count": 1
+        },
+        {
+          "value": 1546.0,
+          "count": 1
+        },
+        {
+          "value": 1552.0,
+          "count": 1
+        },
+        {
+          "value": 1563.0,
+          "count": 1
+        },
+        {
+          "value": 1607.0,
+          "count": 1
+        },
+        {
+          "value": 1633.0,
+          "count": 1
+        },
+        {
+          "value": 1638.0,
+          "count": 1
+        },
+        {
+          "value": 1640.0,
+          "count": 1
+        },
+        {
+          "value": 1646.0,
+          "count": 1
+        },
+        {
+          "value": 1663.0,
+          "count": 1
+        },
+        {
+          "value": 1670.0,
+          "count": 1
+        },
+        {
+          "value": 1690.0,
+          "count": 1
+        },
+        {
+          "value": 1694.0,
+          "count": 1
+        },
+        {
+          "value": 1741.0,
+          "count": 1
+        },
+        {
+          "value": 1751.0,
+          "count": 1
+        },
+        {
+          "value": 1752.0,
+          "count": 1
+        },
+        {
+          "value": 1757.0,
+          "count": 1
+        },
+        {
+          "value": 1765.0,
+          "count": 1
+        },
+        {
+          "value": 1789.0,
+          "count": 1
+        },
+        {
+          "value": 1797.0,
+          "count": 1
+        },
+        {
+          "value": 1808.0,
+          "count": 1
+        },
+        {
+          "value": 1813.0,
+          "count": 1
+        },
+        {
+          "value": 1827.0,
+          "count": 1
+        },
+        {
+          "value": 1833.0,
+          "count": 1
+        },
+        {
+          "value": 1850.0,
+          "count": 1
+        },
+        {
+          "value": 1868.0,
+          "count": 1
+        },
+        {
+          "value": 1870.0,
+          "count": 1
+        },
+        {
+          "value": 1874.0,
+          "count": 1
+        },
+        {
+          "value": 1902.0,
+          "count": 1
+        },
+        {
+          "value": 1938.0,
+          "count": 1
+        },
+        {
+          "value": 1939.0,
+          "count": 1
+        },
+        {
+          "value": 1967.0,
+          "count": 2
+        },
+        {
+          "value": 2009.0,
+          "count": 1
+        },
+        {
+          "value": 2022.0,
+          "count": 1
+        },
+        {
+          "value": 2070.0,
+          "count": 1
+        },
+        {
+          "value": 2073.0,
+          "count": 1
+        },
+        {
+          "value": 2237.0,
+          "count": 1
+        },
+        {
+          "value": 2248.0,
+          "count": 1
+        },
+        {
+          "value": 2341.0,
+          "count": 1
+        },
+        {
+          "value": 2343.0,
+          "count": 1
+        },
+        {
+          "value": 2519.0,
+          "count": 1
+        },
+        {
+          "value": 2887.0,
+          "count": 1
+        },
+        {
+          "value": 2917.0,
+          "count": 1
+        },
+        {
+          "value": 2951.0,
+          "count": 1
+        },
+        {
+          "value": 3052.0,
+          "count": 1
+        },
+        {
+          "value": 3532.0,
+          "count": 1
+        },
+        {
+          "value": 3653.0,
+          "count": 1
+        }
+      ],
+      "bucketWidth": 1
+    }
+  },
+  "server": {
+    "target": "http://localhost:8000"
+  },
+  "requestsOverTime": {
+    "requestsOverTime": {
+      "buckets": [
+        {
+          "value": 0.0,
+          "count": 567
+        }
+      ],
+      "bucketWidth": 598.5412902832031
+    },
+    "numBenchmarks": 1
+  },
+  "rateType": "concurrent"
+};
+ window.benchmarks = [
+  {
+    "itl": {
+      "mean": 47.581025010196015,
+      "median": 47.76089317807039,
+      "mode": 54.5268981898079,
+      "variance": 23.07178653444914,
+      "min": 0.0,
+      "max": 58.99141219832142,
+      "count": 362505,
+      "percentiles": {
+        "p001": 32.2510238386627,
+        "p01": 36.736715962921366,
+        "p05": 39.525943411325734,
+        "p10": 41.759082662914444,
+        "p25": 43.92149112041017,
+        "p50": 47.76089317807039,
+        "p75": 50.19753054342885,
+        "p90": 54.5268981898079,
+        "p95": 56.06599267249364,
+        "p99": 58.09737332277788,
+        "p999": 58.59629625131276
+      },
+      "pdf": null,
+      "stdDev": 4.803309956108302,
+      "totalSum": 17248359.471321106,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 47.76089317807039
+        },
+        {
+          "percentile": "p90",
+          "value": 54.5268981898079
+        },
+        {
+          "percentile": "p95",
+          "value": 56.06599267249364
+        },
+        {
+          "percentile": "p99",
+          "value": 58.09737332277788
+        }
+      ]
+    },
+    "ttft": {
+      "mean": 144.45666577239936,
+      "median": 146.1164951324463,
+      "mode": 143.74876022338867,
+      "variance": 360.48014420447157,
+      "min": 45.96900939941406,
+      "max": 195.79601287841797,
+      "count": 567,
+      "percentiles": {
+        "p001": 45.96900939941406,
+        "p01": 85.22558212280273,
+        "p05": 122.73502349853516,
+        "p10": 126.79266929626465,
+        "p25": 132.75456428527832,
+        "p50": 146.1164951324463,
+        "p75": 154.7555923461914,
+        "p90": 168.75386238098145,
+        "p95": 176.22613906860352,
+        "p99": 187.0255470275879,
+        "p999": 195.79601287841797
+      },
+      "pdf": null,
+      "stdDev": 18.986314655679536,
+      "totalSum": 81906.92949295044,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 146.1164951324463
+        },
+        {
+          "percentile": "p90",
+          "value": 168.75386238098145
+        },
+        {
+          "percentile": "p95",
+          "value": 176.22613906860352
+        },
+        {
+          "percentile": "p99",
+          "value": 187.0255470275879
+        }
+      ]
+    },
+    "throughput": {
+      "mean": 604.5676729031745,
+      "median": 461.8028856902096,
+      "mode": 17.735697612080234,
+      "variance": 286940.9002602208,
+      "min": 17.735697612080234,
+      "max": 36157.793103448275,
+      "count": 363072,
+      "percentiles": {
+        "p001": 17.735697612080234,
+        "p01": 48.665662052444866,
+        "p05": 146.81735788892752,
+        "p10": 206.38626137952423,
+        "p25": 304.62592628969185,
+        "p50": 461.8028856902096,
+        "p75": 724.8604999299969,
+        "p90": 1136.2258280554336,
+        "p95": 1516.2036558011916,
+        "p99": 2717.492952404318,
+        "p999": 5289.323472014307
+      },
+      "pdf": null,
+      "stdDev": 535.6686478227195,
+      "totalSum": 219501594.13630137,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 461.8028856902096
+        },
+        {
+          "percentile": "p90",
+          "value": 1136.2258280554336
+        },
+        {
+          "percentile": "p95",
+          "value": 1516.2036558011916
+        },
+        {
+          "percentile": "p99",
+          "value": 2717.492952404318
+        }
+      ]
+    },
+    "requestsPerSecond": 0.9433333333333335,
+    "timePerRequest": {
+      "mean": 30.613846746071307,
+      "median": 22.90360975265503,
+      "mode": 0.17207670211791992,
+      "variance": 858.8229385745485,
+      "min": 0.17207670211791992,
+      "max": 199.35072207450867,
+      "count": 567,
+      "percentiles": {
+        "p001": 0.17207670211791992,
+        "p01": 0.6639692783355713,
+        "p05": 1.5750231742858887,
+        "p10": 3.081345796585083,
+        "p25": 6.688168287277222,
+        "p50": 22.90360975265503,
+        "p75": 47.59275770187378,
+        "p90": 69.75932717323303,
+        "p95": 86.19897627830505,
+        "p99": 142.46139478683472,
+        "p999": 199.35072207450867
+      },
+      "pdf": null,
+      "stdDev": 29.305680994894974,
+      "totalSum": 17358.05110502243,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 22.90360975265503
+        },
+        {
+          "percentile": "p90",
+          "value": 69.75932717323303
+        },
+        {
+          "percentile": "p95",
+          "value": 86.19897627830505
+        },
+        {
+          "percentile": "p99",
+          "value": 142.46139478683472
+        }
+      ]
+    }
+  }
+];
+</script><style data-emotion="mui okvjfn 1sf3xto 1miunce liujld 1ytgrgl 1d1z477 1fa3xlr 1d9l5zu 1v9qozf krfyoj hw9iw8 1ha086w 1jz7ivr 1h2ruwl 7bmlev 1e2dcm1 okvapm pxadv6 1jcswl9 1xmwsk2 1a9nspn 1amffs8 d0uhtl 11ff4y3 lm0mo7 q9hp3s hdzoli 1aine2r 2wz1hu 1ka6afz 1a6ealx 1vamkkl 8atqhb j77svj rbyfcn 1drpjxy 6408au j7qwjs 0 19ldw5v 1lz028s 1ofqig9 1q9b97s isbt42 1s50f5r fkg9yc 15j76c0 1wxaqej pgugi9 mfjk8s zhbgj8 xck77d 1xr92y4 mr86mw 8w58ru">.mui-okvjfn{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto;background:linear-gradient(105deg, black, #0C0E13);padding:32px;}.mui-1sf3xto{padding-top:16px;padding-bottom:16px;}.mui-1miunce{margin:0;color:#000000;font-size:16px;font-weight:500;font-family:Spezia,sans-serif;line-height:20px;color:#2A8EFD;}@media (max-width:600px){.mui-1miunce{font-size:14px;line-height:17px;}}.mui-liujld{margin:0;color:#000000;font-size:32px;font-weight:400;font-family:Spezia,sans-serif;line-height:40px;color:#E1E2E9;margin-top:12px;margin-bottom:12px;}@media (max-width:600px){.mui-liujld{font-size:24px;line-height:30px;}}.mui-1ytgrgl{background-color:#191C20;padding:0 16px;border-radius:8px;}.mui-1d1z477{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;background-color:#191C20;padding:0 16px;border-radius:8px;}.mui-1fa3xlr{overflow:hidden;padding:8px;border-right:1px solid #42464E;padding-left:0px;}.mui-1d9l5zu{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;padding-left:0px;overflow:hidden;padding:8px;border-right:1px solid #42464E;padding-left:0px;}@media (min-width:600px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}@media (min-width:900px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}@media (min-width:1200px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}@media (min-width:1536px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}.mui-1v9qozf{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;margin-bottom:8px;}.mui-krfyoj{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;margin-bottom:8px;}.mui-hw9iw8{margin:0;color:#000000;font-size:12px;font-weight:500;font-family:Spezia Mono,sans-serif;line-height:20px;text-transform:uppercase;color:#E1E2E9;}@media (max-width:600px){.mui-hw9iw8{font-size:10px;line-height:12px;}}.mui-1ha086w{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:100%;width:auto;}.mui-1jz7ivr{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:100%;width:auto;}.mui-1h2ruwl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.mui-7bmlev{margin:0;color:#000000;font-size:22px;font-weight:400;font-family:Spezia,sans-serif;line-height:26px;color:#2A8EFD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media (max-width:600px){.mui-7bmlev{font-size:10px;line-height:12px;}}.mui-1e2dcm1{z-index:1500;pointer-events:none;}.mui-okvapm{z-index:1500;pointer-events:none;}.mui-pxadv6{overflow:hidden;padding:8px;padding-right:0px;}.mui-1jcswl9{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;padding-right:0px;overflow:hidden;padding:8px;padding-right:0px;}@media (min-width:600px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}@media (min-width:900px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}@media (min-width:1200px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}@media (min-width:1536px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}.mui-1xmwsk2{margin:0;color:#000000;font-size:12px;font-weight:400;line-height:15px;font-family:Spezia,sans-serif;letter-spacing:0.25px;color:#2A8EFD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media (max-width:600px){.mui-1xmwsk2{font-size:10px;line-height:12px;}}.mui-1a9nspn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:24px;margin-bottom:24px;}.mui-1amffs8{margin:0;color:#000000;font-size:24px;font-weight:400;font-family:Spezia,sans-serif;line-height:30px;color:#E1E2E9;}@media (max-width:600px){.mui-1amffs8{font-size:20px;line-height:25px;}}.mui-d0uhtl{margin-left:16px;}.mui-11ff4y3 path{fill:#2A8EFD;}.mui-lm0mo7{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;gap:16px;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;margin-left:0px;-webkit-box-flex-wrap:nowrap;-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;}.mui-q9hp3s{border-width:1px;border-style:solid;border-color:#42464E;border-radius:8px;overflow:hidden;background-color:#191C20;}.mui-hdzoli{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;border-width:1px;border-style:solid;border-color:#42464E;border-radius:8px;overflow:hidden;background-color:#191C20;}@media (min-width:600px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}@media (min-width:900px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}@media (min-width:1200px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}@media (min-width:1536px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}.mui-1aine2r{background-color:#1D2024;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#42464E;padding:18px 24px;margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;}.mui-2wz1hu{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;background-color:#1D2024;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#42464E;padding:18px 24px;margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;}@media (min-width:600px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-1ka6afz{margin:0;color:#000000;font-size:14px;font-weight:500;font-family:Spezia Mono,sans-serif;line-height:20px;text-transform:uppercase;color:#E1E2E9;}@media (max-width:600px){.mui-1ka6afz{font-size:10px;line-height:12px;}}.mui-1a6ealx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;height:180px;padding:24px!important;}.mui-1vamkkl{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;height:180px;padding:24px!important;}@media (min-width:600px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-8atqhb{width:100%;}.mui-j77svj{margin:0;color:#000000;font-size:12px;font-weight:500;font-family:Spezia Mono,sans-serif;line-height:20px;text-transform:uppercase;color:#E1E2E9;text-transform:uppercase;}@media (max-width:600px){.mui-j77svj{font-size:10px;line-height:12px;}}.mui-rbyfcn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;min-height:220px;height:180px;border-top-width:1px;border-top-style:solid;border-top-color:#42464E;padding:24px!important;}.mui-1drpjxy{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;min-height:220px;height:180px;border-top-width:1px;border-top-style:solid;border-top-color:#42464E;padding:24px!important;}@media (min-width:600px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-6408au{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;justify-items:center;-webkit-align-items:space-between;-webkit-box-align:space-between;-ms-flex-align:space-between;align-items:space-between;width:100%;}.mui-j7qwjs{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}.mui-19ldw5v{margin-top:8px;margin-bottom:16px;}.mui-1lz028s{margin:0;color:#000000;font-size:32px;font-weight:400;font-family:Spezia,sans-serif;line-height:26px;color:#2A8EFD;}@media (max-width:600px){.mui-1lz028s{font-size:10px;line-height:12px;}}.mui-1ofqig9{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;}.mui-1q9b97s{margin:0;color:#000000;font-size:16px;font-weight:400;font-family:Spezia,sans-serif;letter-spacing:0.25px;line-height:20px;color:#2A8EFD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media (max-width:600px){.mui-1q9b97s{font-size:14px;line-height:17px;}}.mui-isbt42{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:-16px;width:calc(100% + 16px);margin-left:-16px;}.mui-isbt42>.MuiGrid-item{padding-top:16px;}.mui-isbt42>.MuiGrid-item{padding-left:16px;}.mui-1s50f5r{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}@media (min-width:600px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}@media (min-width:900px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}@media (min-width:1200px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}@media (min-width:1536px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}.mui-fkg9yc{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;justify-items:center;width:100%;}.mui-15j76c0{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}@media (min-width:600px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-1wxaqej{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}.mui-pgugi9{background-color:#282A2F;border-radius:6px;padding:6px;margin-right:6px;display:inline-block;padding-top:8px;color:#2A8EFD;}.mui-mfjk8s{margin:0;color:#000000;font-size:16px;font-weight:400;font-family:Spezia,sans-serif;letter-spacing:0.25px;line-height:20px;background-color:#282A2F;border-radius:6px;padding:6px;margin-right:6px;display:inline-block;padding-top:8px;color:#2A8EFD;}@media (max-width:600px){.mui-mfjk8s{font-size:14px;line-height:17px;}}.mui-zhbgj8{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:16px;}.mui-xck77d{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}.mui-1xr92y4{margin:0;color:#000000;font-size:16px;font-weight:500;font-family:Spezia,sans-serif;line-height:20px;color:#B5B7BE;}@media (max-width:600px){.mui-1xr92y4{font-size:14px;line-height:17px;}}.mui-mr86mw{-webkit-text-decoration:none;text-decoration:none;}.mui-8w58ru{margin:0;font:inherit;color:#2A8EFD;margin-left:8px;-webkit-text-decoration:none;text-decoration:none;}</style><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js" noModule=""></script></head><body><div><div><div class="MuiBox-root mui-okvjfn"><div style="margin:0 auto;padding:0 16px;max-width:1440px;box-sizing:border-box;height:100%;width:100%"><div class="MuiBox-root mui-1sf3xto"><h6 class="MuiTypography-root MuiTypography-subtitle2 mui-1miunce">GuideLLM</h6><h4 class="MuiTypography-root MuiTypography-h4 mui-liujld">Workload Report</h4><div class="MuiGrid-root MuiGrid-container mui-1d1z477"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-5 mui-1d9l5zu"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Model</span><div class="MuiBox-root mui-1jz7ivr"><span class="MuiTypography-root MuiTypography-metric2 mui-7bmlev" aria-label="N/A">N/A</span></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2 mui-1jcswl9"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Time Stamp</span><div class="MuiBox-root mui-1jz7ivr"><span class="MuiTypography-root MuiTypography-caption mui-1xmwsk2">n/a</span></div></div></div></div></div></div><div style="margin:0 auto;padding:0 16px;max-width:1440px;box-sizing:border-box;height:100%;width:100%"><div class="MuiBox-root mui-1a9nspn"><h5 class="MuiTypography-root MuiTypography-h5 mui-1amffs8">Workload Details</h5><div class="MuiBox-root mui-d0uhtl"><span color="#2A8EFD" class="mui-11ff4y3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="none"><path fill="#2A8EFD" d="M11 17.4h2v-6h-2zm1-8q.424 0 .713-.287A.97.97 0 0 0 13 8.4a.97.97 0 0 0-.287-.712A.97.97 0 0 0 12 7.4a.97.97 0 0 0-.713.288A.97.97 0 0 0 11 8.4q0 .424.287.713.288.287.713.287m0 13a9.7 9.7 0 0 1-3.9-.787 10.1 10.1 0 0 1-3.175-2.138q-1.35-1.35-2.137-3.175A9.7 9.7 0 0 1 2 12.4q0-2.074.788-3.9a10.1 10.1 0 0 1 2.137-3.175q1.35-1.35 3.175-2.137A9.7 9.7 0 0 1 12 2.4q2.075 0 3.9.788a10.1 10.1 0 0 1 3.175 2.137q1.35 1.35 2.137 3.175A9.7 9.7 0 0 1 22 12.4a9.7 9.7 0 0 1-.788 3.9 10.1 10.1 0 0 1-2.137 3.175q-1.35 1.35-3.175 2.137a9.7 9.7 0 0 1-3.9.788m0-2q3.35 0 5.675-2.325T20 12.4t-2.325-5.675T12 4.4 6.325 6.725 4 12.4t2.325 5.675T12 20.4"></path></svg></span></div></div><div class="MuiGrid-root MuiGrid-container mui-lm0mo7" data-id="workload-details"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 mui-hdzoli"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-2wz1hu"><span class="MuiTypography-root MuiTypography-overline1 mui-1ka6afz">Prompt</span></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1vamkkl" data-id="top-cell"><div class="MuiBox-root mui-8atqhb"><span class="MuiTypography-root MuiTypography-overline2 mui-j77svj">Sample Prompt</span><!--$!--><template data-dgst="DYNAMIC_SERVER_USAGE"></template><!--/$--></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1drpjxy" data-id="bottom-cell"><div class="MuiBox-root mui-6408au"><div class="MuiBox-root mui-j7qwjs"><div class="MuiBox-root mui-0"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Mean Prompt Length</span></div><div class="MuiBox-root mui-19ldw5v"><span class="MuiTypography-root MuiTypography-metric1 mui-1lz028s">0 tokens</span></div></div><div style="width:100%;height:85px"><div style="width:100%;height:100%"><div style="width:0px;height:0px;position:relative"><div style="width:100%;height:100%"></div></div></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 mui-hdzoli"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-2wz1hu"><span class="MuiTypography-root MuiTypography-overline1 mui-1ka6afz">Server</span></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1vamkkl" data-id="top-cell"><div class="MuiBox-root mui-1ofqig9"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Target</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s"></p></div></div><div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 mui-isbt42"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 mui-1s50f5r"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Type</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s"></p></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 mui-1s50f5r"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Port</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s"></p></div></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1drpjxy" data-id="bottom-cell"><div class="MuiBox-root mui-fkg9yc"><div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 mui-isbt42"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-15j76c0"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Number of Benchmarks</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s">0</p></div></div></div><div class="MuiGrid-root MuiGrid-item mui-1wxaqej"><span class="MuiTypography-root MuiTypography-overline2 mui-j77svj">Rate Type</span></div><div class="MuiGrid-root MuiGrid-item mui-1wxaqej"><p class="MuiTypography-root MuiTypography-body2 mui-mfjk8s"></p></div></div><div style="width:100%;height:85px"><div style="width:100%;height:100%"><div style="width:0px;height:0px;position:relative"><div style="width:100%;height:100%"></div></div></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 mui-hdzoli"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-2wz1hu"><span class="MuiTypography-root MuiTypography-overline1 mui-1ka6afz">Generated</span></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1vamkkl" data-id="top-cell"><div class="MuiBox-root mui-8atqhb"><span class="MuiTypography-root MuiTypography-overline2 mui-j77svj">Sample Generated</span><!--$!--><template data-dgst="DYNAMIC_SERVER_USAGE"></template><!--/$--></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1drpjxy" data-id="bottom-cell"><div class="MuiBox-root mui-6408au"><div class="MuiBox-root mui-j7qwjs"><div class="MuiBox-root mui-0"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Mean Generated Length</span></div><div class="MuiBox-root mui-19ldw5v"><span class="MuiTypography-root MuiTypography-metric1 mui-1lz028s">0 tokens</span></div></div><div style="width:100%;height:85px"><div style="width:100%;height:100%"><div style="width:0px;height:0px;position:relative"><div style="width:100%;height:100%"></div></div></div></div></div></div></div></div></div><div style="margin:0 auto;padding:0 16px;max-width:1440px;box-sizing:border-box;height:100%;width:100%"><footer class="MuiBox-root mui-zhbgj8"><div class="MuiBox-root mui-xck77d"><h6 class="MuiTypography-root MuiTypography-subtitle2 mui-1xr92y4">Got questions?</h6><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone mui-8w58ru"><h6 class="MuiTypography-root MuiTypography-subtitle2 mui-1miunce">Send us a message on Slack</h6></a></div><div class="MuiBox-root mui-0"><img width="150" alt="guidellm logo" src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/media/guidellm-logo-light.5a79cb09.png"/></div></footer></div></div></div></div><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/webpack-e54cd4b97f33f8d0.js" async=""></script><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/7fd0f9f1-e15a5055d2e17cc5.js" async=""></script><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/9-ed9d05a85825ae4a.js" async=""></script><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/main-app-7a0e04eef30508ed.js" async=""></script></body></html><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"0:\"$L1\"\n"])</script><script>self.__next_f.push([1,"2:I{\"id\":\"8555\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n4:I{\"id\":\"20413\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n5:I{\"id\":\"4672\",\"chunks\":[\"160:static/chunks/app/not-found-f986739a233da77f.js\"],\"name\":\"\",\"async\":false}\n6:I{\"id\":\"97092\",\"chunks\":["])</script><script>self.__next_f.push([1,"\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n7:I{\"id\":\"56434\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n8:I{\"id\":\"93107\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a"])</script><script>self.__next_f.push([1,".js\"],\"name\":\"\",\"async\":false}\n9:I{\"id\":\"96513\",\"chunks\":[\"774:static/chunks/framework-ab6df94180385e21.js\",\"326:static/chunks/326-209f780eaf297232.js\",\"931:static/chunks/app/page-e27e0c51a2411424.js\"],\"name\":\"default\",\"async\":true}\n"])</script><script>self.__next_f.push([1,"1:[[],[\"$\",\"$L2\",null,{\"assetPrefix\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0\",\"initialCanonicalUrl\":\"/\",\"initialTree\":[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",true],\"initialHead\":[\"$L3\",null],\"globalErrorComponent\":\"$4\",\"notFound\":[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"window.runInfo = {}; window.workloadDetails = {}; window.benchmarks = {};\"}}]}],[\"$\",\"body\",null,{\"children\":[[],[\"$\",\"$L5\",null,{}]]}]]}],\"asNotFound\":false,\"children\":[[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"window.runInfo = {}; window.workloadDetails = {}; window.benchmarks = {};\"}}]}],[\"$\",\"body\",null,{\"children\":[\"$\",\"$L6\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"loading\":\"$undefined\",\"loadingStyles\":\"$undefined\",\"hasLoading\":false,\"template\":[\"$\",\"$L7\",null,{}],\"templateStyles\":\"$undefined\",\"notFound\":[\"$\",\"$L5\",null,{}],\"notFoundStyles\":[],\"asNotFound\":false,\"childProp\":{\"current\":[[\"$\",\"$L8\",null,{\"propsForComponent\":{\"params\":{}},\"Component\":\"$9\"}],null],\"segment\":\"__PAGE__\"},\"styles\":[]}]}]]}],null]}]]\n"])</script><script>self.__next_f.push([1,"3:[[[\"$\",\"meta\",null,{\"charSet\":\"utf-8\"}],[\"$\",\"title\",null,{\"children\":\"GuideLLM\"}],[\"$\",\"meta\",null,{\"name\":\"description\",\"content\":\"LLM Benchmarking Tool\"}],null,null,[\"$\",\"link\",null,{\"rel\":\"manifest\",\"href\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0/manifest.json\"}],null,null,null,null,null,[\"$\",\"meta\",null,{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],null,null,null,null,null,null,null,null,null,null,[]],[null,null,null,null],null,null,[null,null,null,null,null],null,null,null,null,[null,[[\"$\",\"link\",null,{\"rel\":\"icon\",\"href\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon.png\"}]],[[\"$\",\"link\",null,{\"rel\":\"apple-touch-icon\",\"href\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon-192x192.png\"}]],null]]\n"])</script>
