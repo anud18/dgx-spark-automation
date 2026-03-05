@@ -210,4 +210,4 @@ jobs:
           git commit -m "benchmark: add results for ${TIMESTAMP} on ${{ inputs.runner }}" || echo "Nothing to commit"
           git push origin benchmark-results
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
