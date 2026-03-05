@@ -1,0 +1,82 @@
+name: Benchmark Golden Dataset
+
+on:
+  workflow_dispatch:
+    inputs:
+      runner:
+        description: 'Runner to execute the workflow (e.g., ubuntu-latest, self-hosted, gpu-runner)'
+        required: true
+        type: string
+        default: 'spark-1697'
+      target_url:
+        description: 'Target URL for the API endpoint (e.g., http://localhost:8000)'
+        required: true
+        type: string
+        default: 'http://localhost:8000'
+      dataset:
+        description: 'Dataset name (e.g., vdaita/edit_5k_char)'
+        required: true
+        type: choice
+        options:
+          - vdaita/edit_5k_char
+          - abisee/cnn_dailymail
+          - AI-MO/NuminaMath-1.5
+          - likaixin/InstructCoder
+          - dataset/ShareGPT.json
+        default: 'vdaita/edit_5k_char'
+      rate_type:
+        description: 'Rate type (e.g., concurrent, constant)'
+        required: true
+        type: string
+        default: 'concurrent'
+      rate:
+        description: 'Request rate'
+        required: true
+        type: string
+        default: '10'
+      max_seconds:
+        description: 'Maximum duration of the benchmark in seconds'
+        required: true
+        type: string
+        default: '60'
+      data_column:
+        description: 'Data column name in the dataset'
+        required: false
+        type: string
+        default: 'code'
+      output_path:
+        description: 'Output directory path'
+        required: false
+        type: string
+        default: 'output'
+
+jobs:
+  benchmark:
+    runs-on: ${{ inputs.runner }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Benchmark
+        run: |
+          ~/.local/bin/uv venv
+          source .venv/bin/activate
+          ~/.local/bin/uv pip install guidellm
+          mkdir -p ${{ inputs.output_path }}
+          guidellm benchmark \
+            --target "${{ inputs.target_url }}" \
+            --data ${{ inputs.dataset }} \
+            --rate-type ${{ inputs.rate_type }} \
+            --rate ${{ inputs.rate }} \
+            --max-seconds ${{ inputs.max_seconds }} \
+            --data-column-mapper '{"text_column": "${{ inputs.data_column }}"}' \
+            --output-dir ${{ inputs.output_path }}
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: benchmark-results
+          path: ${{ inputs.output_path }}
+          retention-days: 30
