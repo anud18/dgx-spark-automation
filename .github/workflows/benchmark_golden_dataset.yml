@@ -48,6 +48,8 @@ on:
 jobs:
   benchmark:
     runs-on: ${{ inputs.runner }}
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
@@ -212,4 +214,4 @@ jobs:
           git commit -m "benchmark: add results for ${TIMESTAMP} on ${{ inputs.runner }}" || echo "Nothing to commit"
           git push origin benchmark-results
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
