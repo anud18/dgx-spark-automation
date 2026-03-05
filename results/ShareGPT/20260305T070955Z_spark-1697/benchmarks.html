@@ -1,0 +1,488 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><title>GuideLLM</title><meta name="description" content="LLM Benchmarking Tool"/><link rel="manifest" href="https://blog.vllm.ai/guidellm/ui/v0.5.0/manifest.json"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="icon" href="https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon.png"/><link rel="apple-touch-icon" href="https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon-192x192.png"/><script>window.runInfo = {
+  "model": {
+    "name": "N/A",
+    "size": 0
+  },
+  "task": "N/A",
+  "timestamp": 1772694528.8535595,
+  "dataset": {
+    "name": "N/A"
+  }
+};
+ window.workloadDetails = {
+  "prompts": {
+    "samples": [
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'Summarize the 6 human needs as Tony Robbins explains...'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'How to tell if a customer segment is well segmented? In 3 bullet points.'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'can you show me the m code?'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'Write a summary of why scarcity and urgency are the strongest mental triggers and have been the driving force behind many of our best performing campaigns over the last 8 years.'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'continue explain it'}]}]}, 'files': None}"
+    ],
+    "tokenDistributions": {
+      "statistics": {
+        "mean": 19.666666666666668,
+        "median": 18.0,
+        "mode": 11.0,
+        "variance": 72.04040404040404,
+        "min": 11.0,
+        "max": 44.0,
+        "count": 33,
+        "percentiles": {
+          "p001": 11.0,
+          "p01": 11.0,
+          "p05": 11.0,
+          "p10": 11.0,
+          "p25": 14.0,
+          "p50": 18.0,
+          "p75": 23.0,
+          "p90": 26.0,
+          "p95": 42.0,
+          "p99": 44.0,
+          "p999": 44.0
+        },
+        "pdf": null,
+        "stdDev": 8.487661871234272,
+        "totalSum": 649.0
+      },
+      "buckets": [
+        {
+          "value": 11.0,
+          "count": 4
+        },
+        {
+          "value": 12.0,
+          "count": 1
+        },
+        {
+          "value": 13.0,
+          "count": 3
+        },
+        {
+          "value": 14.0,
+          "count": 2
+        },
+        {
+          "value": 15.0,
+          "count": 4
+        },
+        {
+          "value": 16.0,
+          "count": 1
+        },
+        {
+          "value": 17.0,
+          "count": 1
+        },
+        {
+          "value": 18.0,
+          "count": 1
+        },
+        {
+          "value": 19.0,
+          "count": 3
+        },
+        {
+          "value": 20.0,
+          "count": 2
+        },
+        {
+          "value": 21.0,
+          "count": 1
+        },
+        {
+          "value": 22.0,
+          "count": 1
+        },
+        {
+          "value": 23.0,
+          "count": 1
+        },
+        {
+          "value": 24.0,
+          "count": 1
+        },
+        {
+          "value": 25.0,
+          "count": 3
+        },
+        {
+          "value": 26.0,
+          "count": 1
+        },
+        {
+          "value": 41.0,
+          "count": 1
+        },
+        {
+          "value": 42.0,
+          "count": 1
+        },
+        {
+          "value": 44.0,
+          "count": 1
+        }
+      ],
+      "bucketWidth": 1
+    }
+  },
+  "generations": {
+    "samples": [
+      "Tony Robbins, a renowned motivational speaker and life coach, does not formally list or define 'the 6 human needs' in a universally accepted or officially published framework like some psychological models (e.g., Maslow\u2019s hierarchy). However, in his teachings and speeches, Robbins often emphasizes core human motivations and desires that drive people to live fulfilling, purposeful lives.  While not exactly 'the 6 human needs' in a rigid, academic sense, Tony Robbins frequently highlights **six fundamental human needs or desires** that are essential for personal growth, happiness, and success. These are not strictly scientific but are based on psychological insight and real-life experiences. Here's a commonly recognized summary of the six human needs as Tony Robbins discusses them:  1. **Belonging**      Humans naturally desire to be loved, accepted, and connected to others. This need for meaningful relationships, community, and emotional security is foundational. Robbins emphasizes that people thrive when they feel seen, valued, and part of a group.  2. **Purpose**      A deep sense of meaning and direction in life is essential. Robbins teaches that without a clear purpose, people feel aimless and unfulfilled. He encourages individuals to discover their 'why' \u2014 their unique mission or contribution to the world.  3. **Freedom**      The desire for autonomy, choice, and control over one\u2019s life. Robbins highlights that freedom isn\u2019t just physical\u2014it\u2019s emotional, mental, and financial. True freedom comes from making choices aligned with one\u2019s values and goals.  4. **Power**      This isn\u2019t about dominance, but about self-confidence, influence, and the ability to take action. Robbins believes that people need to feel empowered to make decisions, take risks, and shape their lives.  5. **Success**      A strong desire to achieve goals, grow, and experience accomplishment. Robbins sees success not just as wealth or status, but as progress, mastery, and living up to one\u2019s potential.  6. **Health**      Robbins stresses that physical, mental, and emotional well-being are essential. He often speaks about the importance of taking care of one\u2019s body, mind, and energy to support all other areas of life.  \ud83d\udca1 **Important Note**: These six needs are not a formal theory like Maslow\u2019s hierarchy but are synthesized from Robbins\u2019 teachings on human motivation, personal development, and transformation. He uses them to help people identify what drives them and to align their actions with their deepest desires.  In essence, Tony Robbins teaches that when people fulfill these core human needs\u2014belonging, purpose, freedom, power, success, and health\u2014they live more authentically, joyfully, and successfully.",
+      "- **Homogeneity within segments**: Customers in each segment should share similar characteristics, needs, behaviors, or preferences, making them more likely to respond similarly to marketing efforts.   - **Heterogeneity between segments**: Different segments should be distinct from one another, meaning they have meaningful differences that justify separate targeting strategies.   - **Actionability**: Each segment should be large enough and accessible enough to allow for effective, targeted marketing and product development efforts.",
+      "Of course! Could you please clarify what kind of M code you're looking for? M language is used in **Power Query** (in Microsoft Excel, Power BI, or Power Apps) for transforming and manipulating data.  Here are a few common types of M code that I can show you:  ### 1. **Basic M Code to Load a Table from a CSV** ```m let     Source = Csv.Document(Binary.Content(Web.Contents('https://example.com/data.csv')), [Delimiter=',', Columns=3, Encoding=1252]),     #'Changed Type' = Table.TransformColumnTypes(Source, {{'Column1', type text}, {'Column2', type number}}) in     #'Changed Type' ```  > Replace the URL and column names with your actual data source.  ---  ### 2. **M Code to Remove Duplicates** ```m let     Source = Table.FromList({{'A', 1}, {'B', 2}, {'A', 1}}, Splitter.SplitTextByDelimiter(',', QuoteStyle.None), null, null, ExtraValues.Error),     #'Removed Duplicates' = Table.Distinct(Source) in     #'Removed Duplicates' ```  ---  ### 3. **M Code to Add a Column with a Formula** ```m let     Source = Table.FromRecords({[Name='Alice', Age=25], [Name='Bob', Age=30]}),     #'Added Calculated Column' = Table.AddColumn(Source, 'Age Group', each if [Age] < 30 then 'Young' else 'Adult') in     #'Added Calculated Column' ```  ---  ### 4. **M Code to Filter Rows** ```m let     Source = Table.FromRecords({[Name='Alice', Age=25], [Name='Bob', Age=35], [Name='Charlie', Age=20]}),     #'Filtered Rows' = Table.SelectRows(Source, each [Age] >= 25) in     #'Filtered Rows' ```  ---  If you have a specific task in mind \u2014 like: - Cleaning a dataset - Merging tables - Converting data types - Working with dates - Connecting to a database  \ud83d\udc49 Just let me know what you're trying to do, and I\u2019ll give you the exact M code tailored to your needs!  Just say:   > 'I need M code to...'   and I\u2019ll help you right away. \ud83d\ude0a",
+      "Over the past eight years, scarcity and urgency have consistently emerged as the most powerful mental triggers in high-performing marketing campaigns. Rooted in fundamental psychological principles\u2014such as the *scarcity effect* (the idea that people value things more when they perceive them as limited) and the *urgency effect* (the human instinct to act quickly to avoid loss or missed opportunity)\u2014these triggers tap directly into our innate desire to secure value before it vanishes.  Scarcity creates a sense of exclusivity and exclusivity drives perceived value. When consumers believe a product, offer, or experience is limited in supply or time-bound, they experience heightened motivation to act. This is especially effective in high-competition markets where customers are constantly comparing options and seeking differentiation.  Urgency, paired with scarcity, amplifies this effect by instilling a fear of missing out (FOMO). Campaigns that clearly communicate a deadline\u2014such as \u201cOnly 3 spots left\u201d or \u201cSale ends in 24 hours\u201d\u2014activate the brain\u2019s reward and fear systems, prompting faster decision-making and increased conversion rates.  Empirical data from performance analytics and A/B testing consistently shows that campaigns incorporating scarcity and urgency outperform those relying on traditional messaging. For example, e-commerce platforms, travel booking sites, and subscription services have seen significant uplifts in click-through rates, conversion rates, and revenue when using time-limited offers or limited-quantity promotions.  Moreover, these triggers work best when they are perceived as authentic\u2014not manipulative. When consumers believe the scarcity or urgency is genuine, trust is maintained, and the emotional response is stronger. Over the last eight years, brands that have mastered this balance\u2014using clear, transparent, and timely messaging\u2014have achieved sustainable growth and superior customer engagement.  In summary, scarcity and urgency are not just tactics\u2014they are deeply rooted psychological drivers that align with human behavior. Their consistent success across diverse industries and campaigns over the past eight years confirms their status as the strongest mental triggers in performance marketing.",
+      "Of course! Please let me know what specific topic or concept you'd like me to continue explaining. For example:  - Are you referring to a scientific idea, a mathematical concept, a historical event, a language rule, or something else? - Did you have a previous message or explanation that you'd like me to build upon?  Just provide more context, and I\u2019ll be happy to continue in a clear, detailed, and easy-to-understand way! \ud83d\ude0a"
+    ],
+    "tokenDistributions": {
+      "statistics": {
+        "mean": 535.1818181818182,
+        "median": 513.0,
+        "mode": 87.0,
+        "variance": 154767.3002754821,
+        "min": 87.0,
+        "max": 1389.0,
+        "count": 33,
+        "percentiles": {
+          "p001": 87.0,
+          "p01": 87.0,
+          "p05": 91.0,
+          "p10": 94.0,
+          "p25": 135.0,
+          "p50": 513.0,
+          "p75": 718.0,
+          "p90": 1206.0,
+          "p95": 1250.0,
+          "p99": 1389.0,
+          "p999": 1389.0
+        },
+        "pdf": null,
+        "stdDev": 393.4047537530299,
+        "totalSum": 17661.000000000004
+      },
+      "buckets": [
+        {
+          "value": 87.0,
+          "count": 1
+        },
+        {
+          "value": 91.0,
+          "count": 1
+        },
+        {
+          "value": 92.0,
+          "count": 1
+        },
+        {
+          "value": 94.0,
+          "count": 1
+        },
+        {
+          "value": 96.0,
+          "count": 1
+        },
+        {
+          "value": 118.0,
+          "count": 1
+        },
+        {
+          "value": 119.0,
+          "count": 1
+        },
+        {
+          "value": 124.0,
+          "count": 1
+        },
+        {
+          "value": 135.0,
+          "count": 1
+        },
+        {
+          "value": 170.0,
+          "count": 1
+        },
+        {
+          "value": 208.0,
+          "count": 1
+        },
+        {
+          "value": 264.0,
+          "count": 1
+        },
+        {
+          "value": 277.0,
+          "count": 1
+        },
+        {
+          "value": 406.0,
+          "count": 1
+        },
+        {
+          "value": 451.0,
+          "count": 1
+        },
+        {
+          "value": 464.0,
+          "count": 1
+        },
+        {
+          "value": 513.0,
+          "count": 1
+        },
+        {
+          "value": 544.0,
+          "count": 1
+        },
+        {
+          "value": 557.0,
+          "count": 1
+        },
+        {
+          "value": 623.0,
+          "count": 1
+        },
+        {
+          "value": 643.0,
+          "count": 1
+        },
+        {
+          "value": 668.0,
+          "count": 1
+        },
+        {
+          "value": 701.0,
+          "count": 1
+        },
+        {
+          "value": 705.0,
+          "count": 1
+        },
+        {
+          "value": 718.0,
+          "count": 1
+        },
+        {
+          "value": 751.0,
+          "count": 1
+        },
+        {
+          "value": 760.0,
+          "count": 1
+        },
+        {
+          "value": 1098.0,
+          "count": 1
+        },
+        {
+          "value": 1131.0,
+          "count": 1
+        },
+        {
+          "value": 1206.0,
+          "count": 1
+        },
+        {
+          "value": 1208.0,
+          "count": 1
+        },
+        {
+          "value": 1250.0,
+          "count": 1
+        },
+        {
+          "value": 1389.0,
+          "count": 1
+        }
+      ],
+      "bucketWidth": 1
+    }
+  },
+  "server": {
+    "target": "http://localhost:8000"
+  },
+  "requestsOverTime": {
+    "requestsOverTime": {
+      "buckets": [
+        {
+          "value": 0.0,
+          "count": 33
+        }
+      ],
+      "bucketWidth": 59.075783252716064
+    },
+    "numBenchmarks": 1
+  },
+  "rateType": "concurrent"
+};
+ window.benchmarks = [
+  {
+    "itl": {
+      "mean": 27.03170146643507,
+      "median": 27.508403651447217,
+      "mode": 27.77016025455266,
+      "variance": 1.061377541915103,
+      "min": 24.22585043796273,
+      "max": 28.37739749388261,
+      "count": 17628,
+      "percentiles": {
+        "p001": 24.22585043796273,
+        "p01": 24.26316148491316,
+        "p05": 25.43718073103163,
+        "p10": 25.6531550300275,
+        "p25": 26.21898435729315,
+        "p50": 27.508403651447217,
+        "p75": 27.915178914448294,
+        "p90": 28.340706104634275,
+        "p95": 28.345696264397315,
+        "p999": 28.37739749388261
+      },
+      "pdf": null,
+      "stdDev": 1.0302317903826803,
+      "totalSum": 476514.83345031744,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 27.508403651447217
+        },
+        {
+          "percentile": "p90",
+          "value": 28.340706104634275
+        },
+        {
+          "percentile": "p95",
+          "value": 28.345696264397315
+        },
+        {
+          "percentile": "p99",
+          "value": 28.37739749388261
+        }
+      ]
+    },
+    "ttft": {
+      "mean": 73.25850833546032,
+      "median": 77.94809341430664,
+      "mode": 34.71064567565918,
+      "variance": 127.75673488652983,
+      "min": 34.71064567565918,
+      "max": 85.88552474975586,
+      "count": 33,
+      "percentiles": {
+        "p01": 34.71064567565918,
+        "p05": 60.099124908447266,
+        "p10": 60.53566932678223,
+        "p25": 60.85681915283203,
+        "p50": 77.94809341430664,
+        "p75": 80.45601844787598,
+        "p90": 84.85913276672363,
+        "p95": 85.70694923400879,
+        "p999": 85.88552474975586
+      },
+      "pdf": null,
+      "stdDev": 11.30295248536991,
+      "totalSum": 2417.5307750701904,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 77.94809341430664
+        },
+        {
+          "percentile": "p90",
+          "value": 84.85913276672363
+        },
+        {
+          "percentile": "p95",
+          "value": 85.70694923400879
+        },
+        {
+          "percentile": "p99",
+          "value": 85.88552474975586
+        }
+      ]
+    },
+    "throughput": {
+      "mean": 280.8215530355218,
+      "median": 220.3845655753043,
+      "mode": 35.47155139420667,
+      "variance": 74985.67751565049,
+      "min": 13.909887442212154,
+      "max": 16693.88110203664,
+      "count": 17661,
+      "percentiles": {
+        "p001": 13.909887442212154,
+        "p01": 35.2787618335962,
+        "p05": 35.47095498308613,
+        "p10": 35.47155139420667,
+        "p25": 143.50642710634304,
+        "p50": 220.3845655753043,
+        "p75": 339.2225172932893,
+        "p90": 530.9593958648899,
+        "p95": 709.0858198220863,
+        "p99": 1274.1833151853807,
+        "p999": 2814.3814863414054
+      },
+      "pdf": null,
+      "stdDev": 273.8351283448683,
+      "totalSum": 4959589.44816035,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 220.3845655753043
+        },
+        {
+          "percentile": "p90",
+          "value": 530.9593958648899
+        },
+        {
+          "percentile": "p95",
+          "value": 709.0858198220863
+        },
+        {
+          "percentile": "p99",
+          "value": 1274.1833151853807
+        }
+      ]
+    },
+    "requestsPerSecond": 0.5333333333333333,
+    "timePerRequest": {
+      "mean": 14.54145427906152,
+      "median": 13.164257526397705,
+      "mode": 2.1693546772003174,
+      "variance": 118.78288771883122,
+      "min": 2.1693546772003174,
+      "max": 38.65285658836365,
+      "count": 33,
+      "percentiles": {
+        "p01": 2.1693546772003174,
+        "p05": 2.34230899810791,
+        "p10": 2.494128465652466,
+        "p25": 3.697523593902588,
+        "p50": 13.164257526397705,
+        "p75": 20.092280864715576,
+        "p90": 33.17514967918396,
+        "p95": 33.87969636917114,
+        "p999": 38.65285658836365
+      },
+      "pdf": null,
+      "stdDev": 10.89875624641781,
+      "totalSum": 479.86799120903015,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 13.164257526397705
+        },
+        {
+          "percentile": "p90",
+          "value": 33.17514967918396
+        },
+        {
+          "percentile": "p95",
+          "value": 33.87969636917114
+        },
+        {
+          "percentile": "p99",
+          "value": 38.65285658836365
+        }
+      ]
+    }
+  }
+];
+</script><style data-emotion="mui okvjfn 1sf3xto 1miunce liujld 1ytgrgl 1d1z477 1fa3xlr 1d9l5zu 1v9qozf krfyoj hw9iw8 1ha086w 1jz7ivr 1h2ruwl 7bmlev 1e2dcm1 okvapm pxadv6 1jcswl9 1xmwsk2 1a9nspn 1amffs8 d0uhtl 11ff4y3 lm0mo7 q9hp3s hdzoli 1aine2r 2wz1hu 1ka6afz 1a6ealx 1vamkkl 8atqhb j77svj rbyfcn 1drpjxy 6408au j7qwjs 0 19ldw5v 1lz028s 1ofqig9 1q9b97s isbt42 1s50f5r fkg9yc 15j76c0 1wxaqej pgugi9 mfjk8s zhbgj8 xck77d 1xr92y4 mr86mw 8w58ru">.mui-okvjfn{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto;background:linear-gradient(105deg, black, #0C0E13);padding:32px;}.mui-1sf3xto{padding-top:16px;padding-bottom:16px;}.mui-1miunce{margin:0;color:#000000;font-size:16px;font-weight:500;font-family:Spezia,sans-serif;line-height:20px;color:#2A8EFD;}@media (max-width:600px){.mui-1miunce{font-size:14px;line-height:17px;}}.mui-liujld{margin:0;color:#000000;font-size:32px;font-weight:400;font-family:Spezia,sans-serif;line-height:40px;color:#E1E2E9;margin-top:12px;margin-bottom:12px;}@media (max-width:600px){.mui-liujld{font-size:24px;line-height:30px;}}.mui-1ytgrgl{background-color:#191C20;padding:0 16px;border-radius:8px;}.mui-1d1z477{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;background-color:#191C20;padding:0 16px;border-radius:8px;}.mui-1fa3xlr{overflow:hidden;padding:8px;border-right:1px solid #42464E;padding-left:0px;}.mui-1d9l5zu{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;padding-left:0px;overflow:hidden;padding:8px;border-right:1px solid #42464E;padding-left:0px;}@media (min-width:600px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}@media (min-width:900px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}@media (min-width:1200px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}@media (min-width:1536px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}.mui-1v9qozf{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;margin-bottom:8px;}.mui-krfyoj{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;margin-bottom:8px;}.mui-hw9iw8{margin:0;color:#000000;font-size:12px;font-weight:500;font-family:Spezia Mono,sans-serif;line-height:20px;text-transform:uppercase;color:#E1E2E9;}@media (max-width:600px){.mui-hw9iw8{font-size:10px;line-height:12px;}}.mui-1ha086w{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:100%;width:auto;}.mui-1jz7ivr{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:100%;width:auto;}.mui-1h2ruwl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.mui-7bmlev{margin:0;color:#000000;font-size:22px;font-weight:400;font-family:Spezia,sans-serif;line-height:26px;color:#2A8EFD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media (max-width:600px){.mui-7bmlev{font-size:10px;line-height:12px;}}.mui-1e2dcm1{z-index:1500;pointer-events:none;}.mui-okvapm{z-index:1500;pointer-events:none;}.mui-pxadv6{overflow:hidden;padding:8px;padding-right:0px;}.mui-1jcswl9{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;padding-right:0px;overflow:hidden;padding:8px;padding-right:0px;}@media (min-width:600px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}@media (min-width:900px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}@media (min-width:1200px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}@media (min-width:1536px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}.mui-1xmwsk2{margin:0;color:#000000;font-size:12px;font-weight:400;line-height:15px;font-family:Spezia,sans-serif;letter-spacing:0.25px;color:#2A8EFD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media (max-width:600px){.mui-1xmwsk2{font-size:10px;line-height:12px;}}.mui-1a9nspn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:24px;margin-bottom:24px;}.mui-1amffs8{margin:0;color:#000000;font-size:24px;font-weight:400;font-family:Spezia,sans-serif;line-height:30px;color:#E1E2E9;}@media (max-width:600px){.mui-1amffs8{font-size:20px;line-height:25px;}}.mui-d0uhtl{margin-left:16px;}.mui-11ff4y3 path{fill:#2A8EFD;}.mui-lm0mo7{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;gap:16px;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;margin-left:0px;-webkit-box-flex-wrap:nowrap;-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;}.mui-q9hp3s{border-width:1px;border-style:solid;border-color:#42464E;border-radius:8px;overflow:hidden;background-color:#191C20;}.mui-hdzoli{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;border-width:1px;border-style:solid;border-color:#42464E;border-radius:8px;overflow:hidden;background-color:#191C20;}@media (min-width:600px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}@media (min-width:900px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}@media (min-width:1200px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}@media (min-width:1536px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}.mui-1aine2r{background-color:#1D2024;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#42464E;padding:18px 24px;margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;}.mui-2wz1hu{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;background-color:#1D2024;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#42464E;padding:18px 24px;margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;}@media (min-width:600px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-1ka6afz{margin:0;color:#000000;font-size:14px;font-weight:500;font-family:Spezia Mono,sans-serif;line-height:20px;text-transform:uppercase;color:#E1E2E9;}@media (max-width:600px){.mui-1ka6afz{font-size:10px;line-height:12px;}}.mui-1a6ealx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;height:180px;padding:24px!important;}.mui-1vamkkl{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;height:180px;padding:24px!important;}@media (min-width:600px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-8atqhb{width:100%;}.mui-j77svj{margin:0;color:#000000;font-size:12px;font-weight:500;font-family:Spezia Mono,sans-serif;line-height:20px;text-transform:uppercase;color:#E1E2E9;text-transform:uppercase;}@media (max-width:600px){.mui-j77svj{font-size:10px;line-height:12px;}}.mui-rbyfcn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;min-height:220px;height:180px;border-top-width:1px;border-top-style:solid;border-top-color:#42464E;padding:24px!important;}.mui-1drpjxy{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;min-height:220px;height:180px;border-top-width:1px;border-top-style:solid;border-top-color:#42464E;padding:24px!important;}@media (min-width:600px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-6408au{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;justify-items:center;-webkit-align-items:space-between;-webkit-box-align:space-between;-ms-flex-align:space-between;align-items:space-between;width:100%;}.mui-j7qwjs{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}.mui-19ldw5v{margin-top:8px;margin-bottom:16px;}.mui-1lz028s{margin:0;color:#000000;font-size:32px;font-weight:400;font-family:Spezia,sans-serif;line-height:26px;color:#2A8EFD;}@media (max-width:600px){.mui-1lz028s{font-size:10px;line-height:12px;}}.mui-1ofqig9{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;}.mui-1q9b97s{margin:0;color:#000000;font-size:16px;font-weight:400;font-family:Spezia,sans-serif;letter-spacing:0.25px;line-height:20px;color:#2A8EFD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media (max-width:600px){.mui-1q9b97s{font-size:14px;line-height:17px;}}.mui-isbt42{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:-16px;width:calc(100% + 16px);margin-left:-16px;}.mui-isbt42>.MuiGrid-item{padding-top:16px;}.mui-isbt42>.MuiGrid-item{padding-left:16px;}.mui-1s50f5r{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}@media (min-width:600px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}@media (min-width:900px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}@media (min-width:1200px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}@media (min-width:1536px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}.mui-fkg9yc{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;justify-items:center;width:100%;}.mui-15j76c0{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}@media (min-width:600px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-1wxaqej{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}.mui-pgugi9{background-color:#282A2F;border-radius:6px;padding:6px;margin-right:6px;display:inline-block;padding-top:8px;color:#2A8EFD;}.mui-mfjk8s{margin:0;color:#000000;font-size:16px;font-weight:400;font-family:Spezia,sans-serif;letter-spacing:0.25px;line-height:20px;background-color:#282A2F;border-radius:6px;padding:6px;margin-right:6px;display:inline-block;padding-top:8px;color:#2A8EFD;}@media (max-width:600px){.mui-mfjk8s{font-size:14px;line-height:17px;}}.mui-zhbgj8{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:16px;}.mui-xck77d{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}.mui-1xr92y4{margin:0;color:#000000;font-size:16px;font-weight:500;font-family:Spezia,sans-serif;line-height:20px;color:#B5B7BE;}@media (max-width:600px){.mui-1xr92y4{font-size:14px;line-height:17px;}}.mui-mr86mw{-webkit-text-decoration:none;text-decoration:none;}.mui-8w58ru{margin:0;font:inherit;color:#2A8EFD;margin-left:8px;-webkit-text-decoration:none;text-decoration:none;}</style><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js" noModule=""></script></head><body><div><div><div class="MuiBox-root mui-okvjfn"><div style="margin:0 auto;padding:0 16px;max-width:1440px;box-sizing:border-box;height:100%;width:100%"><div class="MuiBox-root mui-1sf3xto"><h6 class="MuiTypography-root MuiTypography-subtitle2 mui-1miunce">GuideLLM</h6><h4 class="MuiTypography-root MuiTypography-h4 mui-liujld">Workload Report</h4><div class="MuiGrid-root MuiGrid-container mui-1d1z477"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-5 mui-1d9l5zu"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Model</span><div class="MuiBox-root mui-1jz7ivr"><span class="MuiTypography-root MuiTypography-metric2 mui-7bmlev" aria-label="N/A">N/A</span></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2 mui-1jcswl9"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Time Stamp</span><div class="MuiBox-root mui-1jz7ivr"><span class="MuiTypography-root MuiTypography-caption mui-1xmwsk2">n/a</span></div></div></div></div></div></div><div style="margin:0 auto;padding:0 16px;max-width:1440px;box-sizing:border-box;height:100%;width:100%"><div class="MuiBox-root mui-1a9nspn"><h5 class="MuiTypography-root MuiTypography-h5 mui-1amffs8">Workload Details</h5><div class="MuiBox-root mui-d0uhtl"><span color="#2A8EFD" class="mui-11ff4y3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="none"><path fill="#2A8EFD" d="M11 17.4h2v-6h-2zm1-8q.424 0 .713-.287A.97.97 0 0 0 13 8.4a.97.97 0 0 0-.287-.712A.97.97 0 0 0 12 7.4a.97.97 0 0 0-.713.288A.97.97 0 0 0 11 8.4q0 .424.287.713.288.287.713.287m0 13a9.7 9.7 0 0 1-3.9-.787 10.1 10.1 0 0 1-3.175-2.138q-1.35-1.35-2.137-3.175A9.7 9.7 0 0 1 2 12.4q0-2.074.788-3.9a10.1 10.1 0 0 1 2.137-3.175q1.35-1.35 3.175-2.137A9.7 9.7 0 0 1 12 2.4q2.075 0 3.9.788a10.1 10.1 0 0 1 3.175 2.137q1.35 1.35 2.137 3.175A9.7 9.7 0 0 1 22 12.4a9.7 9.7 0 0 1-.788 3.9 10.1 10.1 0 0 1-2.137 3.175q-1.35 1.35-3.175 2.137a9.7 9.7 0 0 1-3.9.788m0-2q3.35 0 5.675-2.325T20 12.4t-2.325-5.675T12 4.4 6.325 6.725 4 12.4t2.325 5.675T12 20.4"></path></svg></span></div></div><div class="MuiGrid-root MuiGrid-container mui-lm0mo7" data-id="workload-details"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 mui-hdzoli"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-2wz1hu"><span class="MuiTypography-root MuiTypography-overline1 mui-1ka6afz">Prompt</span></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1vamkkl" data-id="top-cell"><div class="MuiBox-root mui-8atqhb"><span class="MuiTypography-root MuiTypography-overline2 mui-j77svj">Sample Prompt</span><!--$!--><template data-dgst="DYNAMIC_SERVER_USAGE"></template><!--/$--></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1drpjxy" data-id="bottom-cell"><div class="MuiBox-root mui-6408au"><div class="MuiBox-root mui-j7qwjs"><div class="MuiBox-root mui-0"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Mean Prompt Length</span></div><div class="MuiBox-root mui-19ldw5v"><span class="MuiTypography-root MuiTypography-metric1 mui-1lz028s">0 tokens</span></div></div><div style="width:100%;height:85px"><div style="width:100%;height:100%"><div style="width:0px;height:0px;position:relative"><div style="width:100%;height:100%"></div></div></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 mui-hdzoli"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-2wz1hu"><span class="MuiTypography-root MuiTypography-overline1 mui-1ka6afz">Server</span></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1vamkkl" data-id="top-cell"><div class="MuiBox-root mui-1ofqig9"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Target</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s"></p></div></div><div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 mui-isbt42"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 mui-1s50f5r"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Type</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s"></p></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 mui-1s50f5r"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Port</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s"></p></div></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1drpjxy" data-id="bottom-cell"><div class="MuiBox-root mui-fkg9yc"><div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 mui-isbt42"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-15j76c0"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Number of Benchmarks</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s">0</p></div></div></div><div class="MuiGrid-root MuiGrid-item mui-1wxaqej"><span class="MuiTypography-root MuiTypography-overline2 mui-j77svj">Rate Type</span></div><div class="MuiGrid-root MuiGrid-item mui-1wxaqej"><p class="MuiTypography-root MuiTypography-body2 mui-mfjk8s"></p></div></div><div style="width:100%;height:85px"><div style="width:100%;height:100%"><div style="width:0px;height:0px;position:relative"><div style="width:100%;height:100%"></div></div></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 mui-hdzoli"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-2wz1hu"><span class="MuiTypography-root MuiTypography-overline1 mui-1ka6afz">Generated</span></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1vamkkl" data-id="top-cell"><div class="MuiBox-root mui-8atqhb"><span class="MuiTypography-root MuiTypography-overline2 mui-j77svj">Sample Generated</span><!--$!--><template data-dgst="DYNAMIC_SERVER_USAGE"></template><!--/$--></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1drpjxy" data-id="bottom-cell"><div class="MuiBox-root mui-6408au"><div class="MuiBox-root mui-j7qwjs"><div class="MuiBox-root mui-0"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Mean Generated Length</span></div><div class="MuiBox-root mui-19ldw5v"><span class="MuiTypography-root MuiTypography-metric1 mui-1lz028s">0 tokens</span></div></div><div style="width:100%;height:85px"><div style="width:100%;height:100%"><div style="width:0px;height:0px;position:relative"><div style="width:100%;height:100%"></div></div></div></div></div></div></div></div></div><div style="margin:0 auto;padding:0 16px;max-width:1440px;box-sizing:border-box;height:100%;width:100%"><footer class="MuiBox-root mui-zhbgj8"><div class="MuiBox-root mui-xck77d"><h6 class="MuiTypography-root MuiTypography-subtitle2 mui-1xr92y4">Got questions?</h6><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone mui-8w58ru"><h6 class="MuiTypography-root MuiTypography-subtitle2 mui-1miunce">Send us a message on Slack</h6></a></div><div class="MuiBox-root mui-0"><img width="150" alt="guidellm logo" src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/media/guidellm-logo-light.5a79cb09.png"/></div></footer></div></div></div></div><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/webpack-e54cd4b97f33f8d0.js" async=""></script><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/7fd0f9f1-e15a5055d2e17cc5.js" async=""></script><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/9-ed9d05a85825ae4a.js" async=""></script><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/main-app-7a0e04eef30508ed.js" async=""></script></body></html><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"0:\"$L1\"\n"])</script><script>self.__next_f.push([1,"2:I{\"id\":\"8555\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n4:I{\"id\":\"20413\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n5:I{\"id\":\"4672\",\"chunks\":[\"160:static/chunks/app/not-found-f986739a233da77f.js\"],\"name\":\"\",\"async\":false}\n6:I{\"id\":\"97092\",\"chunks\":["])</script><script>self.__next_f.push([1,"\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n7:I{\"id\":\"56434\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n8:I{\"id\":\"93107\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a"])</script><script>self.__next_f.push([1,".js\"],\"name\":\"\",\"async\":false}\n9:I{\"id\":\"96513\",\"chunks\":[\"774:static/chunks/framework-ab6df94180385e21.js\",\"326:static/chunks/326-209f780eaf297232.js\",\"931:static/chunks/app/page-e27e0c51a2411424.js\"],\"name\":\"default\",\"async\":true}\n"])</script><script>self.__next_f.push([1,"1:[[],[\"$\",\"$L2\",null,{\"assetPrefix\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0\",\"initialCanonicalUrl\":\"/\",\"initialTree\":[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",true],\"initialHead\":[\"$L3\",null],\"globalErrorComponent\":\"$4\",\"notFound\":[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"window.runInfo = {}; window.workloadDetails = {}; window.benchmarks = {};\"}}]}],[\"$\",\"body\",null,{\"children\":[[],[\"$\",\"$L5\",null,{}]]}]]}],\"asNotFound\":false,\"children\":[[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"window.runInfo = {}; window.workloadDetails = {}; window.benchmarks = {};\"}}]}],[\"$\",\"body\",null,{\"children\":[\"$\",\"$L6\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"loading\":\"$undefined\",\"loadingStyles\":\"$undefined\",\"hasLoading\":false,\"template\":[\"$\",\"$L7\",null,{}],\"templateStyles\":\"$undefined\",\"notFound\":[\"$\",\"$L5\",null,{}],\"notFoundStyles\":[],\"asNotFound\":false,\"childProp\":{\"current\":[[\"$\",\"$L8\",null,{\"propsForComponent\":{\"params\":{}},\"Component\":\"$9\"}],null],\"segment\":\"__PAGE__\"},\"styles\":[]}]}]]}],null]}]]\n"])</script><script>self.__next_f.push([1,"3:[[[\"$\",\"meta\",null,{\"charSet\":\"utf-8\"}],[\"$\",\"title\",null,{\"children\":\"GuideLLM\"}],[\"$\",\"meta\",null,{\"name\":\"description\",\"content\":\"LLM Benchmarking Tool\"}],null,null,[\"$\",\"link\",null,{\"rel\":\"manifest\",\"href\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0/manifest.json\"}],null,null,null,null,null,[\"$\",\"meta\",null,{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],null,null,null,null,null,null,null,null,null,null,[]],[null,null,null,null],null,null,[null,null,null,null,null],null,null,null,null,[null,[[\"$\",\"link\",null,{\"rel\":\"icon\",\"href\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon.png\"}]],[[\"$\",\"link\",null,{\"rel\":\"apple-touch-icon\",\"href\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon-192x192.png\"}]],null]]\n"])</script>
