@@ -151,7 +151,7 @@ jobs:
             --rate-type "${{ inputs.rate_type }}"
             --rate "${{ inputs.rate }}"
             --max-seconds "${{ inputs.max_seconds }}"
-            --data-column-mapper "{\"text_column\": \"${DATA_COLUMN}\"}"
+            --data-column-mapper '{"text_column": "'"${DATA_COLUMN}"'"}'
             --output-dir "${{ inputs.output_path }}"
           )
           if [ -n "${DATA_ARGS:-}" ]; then
