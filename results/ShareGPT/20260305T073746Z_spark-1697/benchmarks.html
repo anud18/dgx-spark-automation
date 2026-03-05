@@ -1,0 +1,1605 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><title>GuideLLM</title><meta name="description" content="LLM Benchmarking Tool"/><link rel="manifest" href="https://blog.vllm.ai/guidellm/ui/v0.5.0/manifest.json"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="icon" href="https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon.png"/><link rel="apple-touch-icon" href="https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon-192x192.png"/><script>window.runInfo = {
+  "model": {
+    "name": "N/A",
+    "size": 0
+  },
+  "task": "N/A",
+  "timestamp": 1772695961.592466,
+  "dataset": {
+    "name": "N/A"
+  }
+};
+ window.workloadDetails = {
+  "prompts": {
+    "samples": [
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'I immagine a system where you are given a utterance as and queried multiple aspects on the utterance. Like for example you are given the previous utterance and a software stack then queries information like: 1. Is the user request valid according to the business process? API should output: true. 2. Is the user already a client? API should output: true. 3. Does the user want a tariff upgrade? API should output: true. 4. does the user specify how many sim cards he wants? output: no.'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'More verbose and details'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'Provide more detail on the STS-93 RCS Failure'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'Can you give give the answer to each question'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': 'what about the code with no regard for conciseness?'}]}]}, 'files': None}"
+    ],
+    "tokenDistributions": {
+      "statistics": {
+        "mean": 28.390163934426234,
+        "median": 21.0,
+        "mode": 15.0,
+        "variance": 587.0576081698468,
+        "min": 10.0,
+        "max": 199.0,
+        "count": 305,
+        "percentiles": {
+          "p001": 10.0,
+          "p01": 11.0,
+          "p05": 11.0,
+          "p10": 13.0,
+          "p25": 16.0,
+          "p50": 21.0,
+          "p75": 31.0,
+          "p90": 49.0,
+          "p95": 75.0,
+          "p99": 141.0,
+          "p999": 199.0
+        },
+        "pdf": null,
+        "stdDev": 24.22927172182125,
+        "totalSum": 8659.000000000002
+      },
+      "buckets": [
+        {
+          "value": 10.0,
+          "count": 3
+        },
+        {
+          "value": 11.0,
+          "count": 17
+        },
+        {
+          "value": 12.0,
+          "count": 9
+        },
+        {
+          "value": 13.0,
+          "count": 15
+        },
+        {
+          "value": 14.0,
+          "count": 11
+        },
+        {
+          "value": 15.0,
+          "count": 19
+        },
+        {
+          "value": 16.0,
+          "count": 17
+        },
+        {
+          "value": 17.0,
+          "count": 17
+        },
+        {
+          "value": 18.0,
+          "count": 13
+        },
+        {
+          "value": 19.0,
+          "count": 19
+        },
+        {
+          "value": 20.0,
+          "count": 12
+        },
+        {
+          "value": 21.0,
+          "count": 5
+        },
+        {
+          "value": 22.0,
+          "count": 10
+        },
+        {
+          "value": 23.0,
+          "count": 12
+        },
+        {
+          "value": 24.0,
+          "count": 7
+        },
+        {
+          "value": 25.0,
+          "count": 9
+        },
+        {
+          "value": 26.0,
+          "count": 9
+        },
+        {
+          "value": 27.0,
+          "count": 10
+        },
+        {
+          "value": 28.0,
+          "count": 7
+        },
+        {
+          "value": 29.0,
+          "count": 6
+        },
+        {
+          "value": 30.0,
+          "count": 1
+        },
+        {
+          "value": 31.0,
+          "count": 4
+        },
+        {
+          "value": 32.0,
+          "count": 6
+        },
+        {
+          "value": 33.0,
+          "count": 2
+        },
+        {
+          "value": 34.0,
+          "count": 2
+        },
+        {
+          "value": 35.0,
+          "count": 5
+        },
+        {
+          "value": 37.0,
+          "count": 5
+        },
+        {
+          "value": 39.0,
+          "count": 3
+        },
+        {
+          "value": 40.0,
+          "count": 1
+        },
+        {
+          "value": 41.0,
+          "count": 6
+        },
+        {
+          "value": 42.0,
+          "count": 2
+        },
+        {
+          "value": 44.0,
+          "count": 1
+        },
+        {
+          "value": 45.0,
+          "count": 3
+        },
+        {
+          "value": 46.0,
+          "count": 2
+        },
+        {
+          "value": 47.0,
+          "count": 1
+        },
+        {
+          "value": 48.0,
+          "count": 2
+        },
+        {
+          "value": 49.0,
+          "count": 2
+        },
+        {
+          "value": 50.0,
+          "count": 1
+        },
+        {
+          "value": 51.0,
+          "count": 2
+        },
+        {
+          "value": 55.0,
+          "count": 6
+        },
+        {
+          "value": 56.0,
+          "count": 1
+        },
+        {
+          "value": 57.0,
+          "count": 1
+        },
+        {
+          "value": 58.0,
+          "count": 1
+        },
+        {
+          "value": 61.0,
+          "count": 2
+        },
+        {
+          "value": 75.0,
+          "count": 1
+        },
+        {
+          "value": 76.0,
+          "count": 1
+        },
+        {
+          "value": 78.0,
+          "count": 1
+        },
+        {
+          "value": 82.0,
+          "count": 1
+        },
+        {
+          "value": 88.0,
+          "count": 1
+        },
+        {
+          "value": 98.0,
+          "count": 2
+        },
+        {
+          "value": 106.0,
+          "count": 1
+        },
+        {
+          "value": 111.0,
+          "count": 1
+        },
+        {
+          "value": 116.0,
+          "count": 1
+        },
+        {
+          "value": 120.0,
+          "count": 1
+        },
+        {
+          "value": 134.0,
+          "count": 1
+        },
+        {
+          "value": 141.0,
+          "count": 1
+        },
+        {
+          "value": 142.0,
+          "count": 1
+        },
+        {
+          "value": 158.0,
+          "count": 1
+        },
+        {
+          "value": 199.0,
+          "count": 1
+        }
+      ],
+      "bucketWidth": 1
+    }
+  },
+  "generations": {
+    "samples": [
+      "Absolutely! You're describing a **structured, multi-aspect query system** over a user utterance \u2014 a common pattern in **customer service automation**, **intent recognition**, and **business rule enforcement** in conversational AI.  Let\u2019s formalize and refine your idea into a clear, actionable system design with a well-defined API interface and logic flow. This can be used in a chatbot, CRM integration, or digital assistant to validate and extract business-relevant information from user inputs.  ---  ### \ud83d\ude80 System Name: **Utterance Analysis Engine (UAE)**  #### \ud83d\udd27 Input: - A **natural language utterance** (e.g., 'I want to upgrade my plan and add two SIM cards.') - A **software stack or business context** (e.g., a telecom service with known rules, pricing tiers, client onboarding process)  #### \ud83d\udccc Output: A structured JSON response with boolean flags and free-text responses for each query aspect.  ---  ### \u2705 Query Aspects (with API Output Rules)  | Query | Description | Expected API Output | Notes | |------|-------------|----------------------|-------| | 1. Is the user request valid according to the business process? | Does the utterance align with allowed actions, rules, or workflows? | `true` / `false` | Must validate against known business logic (e.g., no 'free SIMs' for non-clients) | | 2. Is the user already a client? | Does the user reference existing account, subscription, or prior service? | `true` / `false` | Based on keywords like 'my account', 'I've had this service', 'I'm a subscriber' | | 3. Does the user want a tariff upgrade? | Is there a request to increase plan, data, speed, or cost? | `true` / `false` | Phrases like 'upgrade', 'better plan', 'increase data', 'move to premium' | | 4. Does the user specify how many SIM cards he wants? | Is there a number mentioned for SIM cards? | `yes` / `no` / `unknown` | E.g., 'two SIMs', 'one more', 'add a SIM' \u2192 `yes`; 'I need more' \u2192 `unknown` |  ---  ### \ud83d\udce6 Example Input  **Utterance**:   > 'I want to upgrade my plan and add two SIM cards.'  **Software Stack Context**:   Telecom service with tiered plans, requires client status, supports SIM card additions (up to 5), upgrades allowed only for active clients.  ---  ### \ud83d\udce4 Output (API Response)  ```json {   'valid_request': true,   'is_existing_client': true,   'wants_tariff_upgrade': true,   'specifies_sim_count': 'yes',   'sim_count_value': 2,   'confidence': 0.95,   'reasons': {     'valid_request': 'Upgrades and SIM additions are allowed under current policy.',     'is_existing_client': 'Refers to 'my plan' indicating prior service.',     'wants_tariff_upgrade': 'Explicitly mentions 'upgrade my plan'.',     'specifies_sim_count': 'Mentions 'two SIM cards'.'   } } ```  ---  ### \ud83d\udd0d How It Works (Logic Flow)  1. **Preprocessing**      - Normalize utterance (lowercase, remove punctuation, expand contractions)    - Extract key phrases using NLP (e.g., NER, keyword spotting)  2. **Rule-Based Matching**      - Use business rules (e.g., in a rule engine or decision table) to evaluate each query    - Example: If utterance contains 'upgrade' \u2192 `wants_tariff_upgrade = true`  3. **Context Awareness**      - Cross-check with stored client data (e.g., from CRM) to validate client status    - Use pattern matching for SIM counts: 'two', '2', 'a pair', etc.  4. **Confidence Scoring**      - Assign a score (0\u20131) based on how clearly the user expresses each intent    - Helps in ambiguous cases (e.g., 'I want more' \u2192 low confidence)  5. **Output Structuring**      - Return a clean, standardized JSON with boolean flags, strings, and optional metadata  ---  ### \ud83d\udea9 Edge Cases & Handling  | Case | Handling | |------|---------| | 'I want a better plan' | \u2192 `wants_tariff_upgrade = true` (assume upgrade) | | 'I want to add a SIM' | \u2192 `specifies_sim_count = no` (no number) | | 'I'm not a client' | \u2192 `is_existing_client = false` | | 'I don\u2019t know' | \u2192 `specifies_sim_count = unknown` | | Invalid request (e.g., 'I want to buy a car') | \u2192 `valid_request = false` |  ---  ### \ud83d\udcda Use Cases  - **Automated call routing** in telecom or banking - **Intent classification** for chatbots - **Dynamic form filling** based on user input - **Fraud detection** (e.g., detecting non-clients requesting upgrades) - **Personalization engines** (e.g., recommend plans based on intent)  ---  ### \u2705 Next Steps (Optional Enhancements)  - Add **multi-turn support** (track history of utterances) - Integrate with **LLMs** for semantic understanding (e.g., fine-tuned for business domains) - Add **error logging** and **rejection reasons** - Support **multi-language** and **domain-specific lexicons**  ---  Would you like me to: - Generate a Python script that implements this? - Build a rule-based NLP parser? - Create a mock API endpoint (e.g., Flask)? - Add a domain-specific example (e.g., banking, healthcare, e-commerce)?  Let me know \u2014 happy to expand! \ud83d\ude80",
+      "Certainly! Please provide the specific topic or subject you'd like me to expand upon in a more verbose and detailed manner. For example, are you looking for a detailed explanation of a scientific concept, a historical event, a philosophical idea, a technical process, or something else?  To give you the most relevant and in-depth response, could you clarify:  1. The topic or subject you'd like elaborated on   2. The level of detail (e.g., beginner-friendly, academic, professional)   3. Any specific aspects or angles you're particularly interested in (e.g., causes, effects, applications, examples, implications)  Once I have that information, I\u2019ll provide a richly detailed, well-structured, and comprehensive explanation.",
+      "As of now, there is **no record of an STS-93 RCS (Reaction Control System) failure** in official NASA archives or mission reports.  To clarify:  ### STS-93 Mission Overview - **Mission**: STS-93 was a Space Shuttle mission flown by the Space Shuttle *Endeavour*. - **Launch Date**: October 29, 1999. - **Primary Objective**: To deploy the Chandra X-ray Observatory, a powerful space-based telescope for observing X-ray emissions from celestial objects. - **Duration**: The mission lasted about 15 days.  ### Reaction Control System (RCS) - The RCS is a set of small thrusters used to control the orientation (attitude) and position of the Space Shuttle during orbit, especially during maneuvers like docking, re-entry, and orbital adjustments. - The RCS is a standard and reliable system on the Space Shuttle, with redundancy built in\u2014multiple thrusters in each of the four quadrants (forward, aft, left, right).  ### Did STS-93 Experience an RCS Failure? - **No**, STS-93 did **not** experience a failure of its Reaction Control System. - During the mission, all systems\u2014including RCS\u2014performed as expected. The shuttle completed its orbital operations, including the successful deployment of the Chandra X-ray Observatory, and returned safely to Earth. - Post-mission reviews and technical reports confirm that the RCS functioned normally throughout the mission.  ### Possible Confusion The confusion might stem from: - Misremembering or mixing up STS-93 with another mission, such as **STS-107** (which tragically ended in disaster due to a fire in the external fuel tank, not an RCS failure). - Confusing the RCS with other systems (e.g., main engines, thermal protection, or the O-ring issue from STS-51-F or STS-107). - Misinterpreting minor anomalies or thruster checks during a maneuver as a 'failure.'  ### Conclusion There was **no RCS failure during STS-93**. The mission was a success, and the Reaction Control System operated flawlessly. Any claims of an RCS failure on this mission are not supported by NASA documentation or public mission reports.  If you're referring to a different mission or a hypothetical scenario, feel free to clarify!",
+      "Of course! Please provide the questions you'd like me to answer, and I'll be happy to help with each one. \ud83d\ude0a",
+      "That's a great question \u2014 and a fun one!  If we're talking about **code with no regard for conciseness**, we're essentially exploring a style that prioritizes *readability, clarity, safety, or step-by-step logic* over brevity. This isn't about making things long or messy \u2014 it's about making them *easy to understand, debug, and maintain*, even if they're not the shortest possible version.  Here\u2019s what that might look like in practice \u2014 with examples across different languages (Python, JavaScript, Java) \u2014 showing **'no regard for conciseness'** in favor of **clarity, safety, and explicitness**.  ---  ### \ud83d\udc0d Python Example: No Conciseness, Maximum Clarity  ```python def calculate_discounted_price(original_price, discount_percent, tax_rate):     # Step 1: Validate inputs     if original_price < 0:         raise ValueError('Original price cannot be negative.')     if discount_percent < 0 or discount_percent > 100:         raise ValueError('Discount percent must be between 0 and 100.')     if tax_rate < 0 or tax_rate > 100:         raise ValueError('Tax rate must be between 0 and 100.')      # Step 2: Apply discount     discounted_price = original_price * (1 - discount_percent / 100)      # Step 3: Apply tax     final_price = discounted_price * (1 + tax_rate / 100)      # Step 4: Return result     return final_price ```  \u2705 Why this is 'no regard for conciseness': - No one-liners or hidden logic. - Every step is named and commented. - Error handling is explicit. - No assumptions about input validity.  ---  ### \ud83d\ude80 JavaScript Example: No Conciseness  ```javascript function calculateFinalPrice(originalPrice, discountPercent, taxRate) {     // Validate that the original price is not negative     if (originalPrice < 0) {         console.error('Error: Original price cannot be negative.');         return null;     }      // Ensure discount percent is between 0 and 100     if (discountPercent < 0 || discountPercent > 100) {         console.error('Error: Discount percent must be between 0 and 100.');         return null;     }      // Ensure tax rate is between 0 and 100     if (taxRate < 0 || taxRate > 100) {         console.error('Error: Tax rate must be between 0 and 100.');         return null;     }      // Apply the discount     const discountedPrice = originalPrice * (1 - discountPercent / 100);      // Apply tax     const finalPrice = discountedPrice * (1 + taxRate / 100);      return finalPrice; } ```  \u2705 Still readable, safe, and easy to follow \u2014 even if it's longer than a one-liner.  ---  ### \ud83c\udfd7\ufe0f Java Example: Over-Explained, No Conciseness  ```java public static double calculateFinalPrice(double originalPrice, double discountPercent, double taxRate) {     // Validate original price     if (originalPrice < 0) {         throw new IllegalArgumentException('Original price cannot be negative.');     }      // Validate discount percent (must be between 0 and 100)     if (discountPercent < 0 || discountPercent > 100) {         throw new IllegalArgumentException('Discount percent must be between 0 and 100.');     }      // Validate tax rate (must be between 0 and 100)     if (taxRate < 0 || taxRate > 100) {         throw new IllegalArgumentException('Tax rate must be between 0 and 100.');     }      // Apply discount     double discountedPrice = originalPrice * (1 - discountPercent / 100);      // Apply tax     double finalPrice = discountedPrice * (1 + taxRate / 100);      return finalPrice; } ```  \u2705 This version is verbose but safe and clear. It's not concise \u2014 but it's *maintainable*.  ---  ### When Is This Useful?  - **Team collaboration**: Everyone on the team can understand the code. - **Onboarding new developers**: No 'magic' or hidden logic. - **Debugging**: You can step through each line and see what's happening. - **Long-term maintenance**: Future changes are easier to make.  ---  ### When to Avoid This?  - In **performance-critical code** (e.g., game loops, real-time systems), verbosity can hurt performance. - In **small scripts or prototypes**, where brevity helps rapid iteration. - When **conciseness improves readability** (e.g., Python's `map`, `filter`, comprehensions).  ---  ### Final Thought  > **'No regard for conciseness' doesn't mean 'bad code' \u2014 it means 'good code with a clear intent.'**  It\u2019s not about being long \u2014 it\u2019s about being **transparent, safe, and understandable**.  So yes \u2014 there is a place for code that *doesn\u2019t care about being short*. In fact, in many real-world software projects, **clarity and safety outweigh brevity**.  ---  Would you like a version of this same function written *extremely* concisely (for comparison), or perhaps in a domain like web development, data processing, or security? I\u2019d be happy to show the contrast! \ud83d\ude0a"
+    ],
+    "tokenDistributions": {
+      "statistics": {
+        "mean": 634.9409836065573,
+        "median": 500.0,
+        "mode": 78.0,
+        "variance": 278831.288320344,
+        "min": 2.0,
+        "max": 2389.0,
+        "count": 305,
+        "percentiles": {
+          "p001": 2.0,
+          "p01": 13.0,
+          "p05": 55.0,
+          "p10": 78.0,
+          "p25": 148.0,
+          "p50": 500.0,
+          "p75": 1064.0,
+          "p90": 1376.0,
+          "p95": 1563.0,
+          "p99": 2098.0,
+          "p999": 2389.0
+        },
+        "pdf": null,
+        "stdDev": 528.0447787075865,
+        "totalSum": 193656.99999999997
+      },
+      "buckets": [
+        {
+          "value": 2.0,
+          "count": 1
+        },
+        {
+          "value": 8.0,
+          "count": 1
+        },
+        {
+          "value": 12.0,
+          "count": 1
+        },
+        {
+          "value": 13.0,
+          "count": 1
+        },
+        {
+          "value": 19.0,
+          "count": 1
+        },
+        {
+          "value": 26.0,
+          "count": 1
+        },
+        {
+          "value": 28.0,
+          "count": 2
+        },
+        {
+          "value": 30.0,
+          "count": 1
+        },
+        {
+          "value": 34.0,
+          "count": 1
+        },
+        {
+          "value": 37.0,
+          "count": 1
+        },
+        {
+          "value": 43.0,
+          "count": 1
+        },
+        {
+          "value": 50.0,
+          "count": 1
+        },
+        {
+          "value": 52.0,
+          "count": 2
+        },
+        {
+          "value": 55.0,
+          "count": 1
+        },
+        {
+          "value": 56.0,
+          "count": 1
+        },
+        {
+          "value": 58.0,
+          "count": 1
+        },
+        {
+          "value": 60.0,
+          "count": 2
+        },
+        {
+          "value": 62.0,
+          "count": 1
+        },
+        {
+          "value": 64.0,
+          "count": 1
+        },
+        {
+          "value": 68.0,
+          "count": 1
+        },
+        {
+          "value": 69.0,
+          "count": 2
+        },
+        {
+          "value": 73.0,
+          "count": 1
+        },
+        {
+          "value": 75.0,
+          "count": 2
+        },
+        {
+          "value": 77.0,
+          "count": 1
+        },
+        {
+          "value": 78.0,
+          "count": 3
+        },
+        {
+          "value": 79.0,
+          "count": 2
+        },
+        {
+          "value": 80.0,
+          "count": 1
+        },
+        {
+          "value": 81.0,
+          "count": 2
+        },
+        {
+          "value": 82.0,
+          "count": 2
+        },
+        {
+          "value": 83.0,
+          "count": 1
+        },
+        {
+          "value": 89.0,
+          "count": 1
+        },
+        {
+          "value": 91.0,
+          "count": 1
+        },
+        {
+          "value": 94.0,
+          "count": 1
+        },
+        {
+          "value": 95.0,
+          "count": 1
+        },
+        {
+          "value": 97.0,
+          "count": 1
+        },
+        {
+          "value": 98.0,
+          "count": 1
+        },
+        {
+          "value": 99.0,
+          "count": 1
+        },
+        {
+          "value": 101.0,
+          "count": 1
+        },
+        {
+          "value": 105.0,
+          "count": 1
+        },
+        {
+          "value": 107.0,
+          "count": 1
+        },
+        {
+          "value": 108.0,
+          "count": 1
+        },
+        {
+          "value": 109.0,
+          "count": 1
+        },
+        {
+          "value": 110.0,
+          "count": 1
+        },
+        {
+          "value": 112.0,
+          "count": 1
+        },
+        {
+          "value": 113.0,
+          "count": 2
+        },
+        {
+          "value": 114.0,
+          "count": 1
+        },
+        {
+          "value": 116.0,
+          "count": 1
+        },
+        {
+          "value": 117.0,
+          "count": 2
+        },
+        {
+          "value": 119.0,
+          "count": 2
+        },
+        {
+          "value": 121.0,
+          "count": 1
+        },
+        {
+          "value": 122.0,
+          "count": 1
+        },
+        {
+          "value": 123.0,
+          "count": 3
+        },
+        {
+          "value": 126.0,
+          "count": 1
+        },
+        {
+          "value": 127.0,
+          "count": 1
+        },
+        {
+          "value": 128.0,
+          "count": 1
+        },
+        {
+          "value": 133.0,
+          "count": 1
+        },
+        {
+          "value": 137.0,
+          "count": 1
+        },
+        {
+          "value": 139.0,
+          "count": 1
+        },
+        {
+          "value": 141.0,
+          "count": 1
+        },
+        {
+          "value": 144.0,
+          "count": 1
+        },
+        {
+          "value": 148.0,
+          "count": 2
+        },
+        {
+          "value": 150.0,
+          "count": 1
+        },
+        {
+          "value": 155.0,
+          "count": 2
+        },
+        {
+          "value": 164.0,
+          "count": 1
+        },
+        {
+          "value": 169.0,
+          "count": 1
+        },
+        {
+          "value": 175.0,
+          "count": 1
+        },
+        {
+          "value": 177.0,
+          "count": 2
+        },
+        {
+          "value": 187.0,
+          "count": 1
+        },
+        {
+          "value": 189.0,
+          "count": 1
+        },
+        {
+          "value": 192.0,
+          "count": 2
+        },
+        {
+          "value": 194.0,
+          "count": 1
+        },
+        {
+          "value": 196.0,
+          "count": 1
+        },
+        {
+          "value": 198.0,
+          "count": 1
+        },
+        {
+          "value": 200.0,
+          "count": 1
+        },
+        {
+          "value": 203.0,
+          "count": 1
+        },
+        {
+          "value": 206.0,
+          "count": 1
+        },
+        {
+          "value": 207.0,
+          "count": 1
+        },
+        {
+          "value": 212.0,
+          "count": 1
+        },
+        {
+          "value": 215.0,
+          "count": 2
+        },
+        {
+          "value": 237.0,
+          "count": 1
+        },
+        {
+          "value": 239.0,
+          "count": 1
+        },
+        {
+          "value": 241.0,
+          "count": 1
+        },
+        {
+          "value": 249.0,
+          "count": 1
+        },
+        {
+          "value": 250.0,
+          "count": 1
+        },
+        {
+          "value": 254.0,
+          "count": 1
+        },
+        {
+          "value": 255.0,
+          "count": 1
+        },
+        {
+          "value": 262.0,
+          "count": 1
+        },
+        {
+          "value": 266.0,
+          "count": 1
+        },
+        {
+          "value": 288.0,
+          "count": 1
+        },
+        {
+          "value": 294.0,
+          "count": 1
+        },
+        {
+          "value": 300.0,
+          "count": 1
+        },
+        {
+          "value": 311.0,
+          "count": 1
+        },
+        {
+          "value": 320.0,
+          "count": 1
+        },
+        {
+          "value": 334.0,
+          "count": 1
+        },
+        {
+          "value": 335.0,
+          "count": 1
+        },
+        {
+          "value": 343.0,
+          "count": 1
+        },
+        {
+          "value": 344.0,
+          "count": 2
+        },
+        {
+          "value": 345.0,
+          "count": 1
+        },
+        {
+          "value": 354.0,
+          "count": 1
+        },
+        {
+          "value": 359.0,
+          "count": 2
+        },
+        {
+          "value": 360.0,
+          "count": 1
+        },
+        {
+          "value": 361.0,
+          "count": 1
+        },
+        {
+          "value": 363.0,
+          "count": 1
+        },
+        {
+          "value": 377.0,
+          "count": 1
+        },
+        {
+          "value": 383.0,
+          "count": 1
+        },
+        {
+          "value": 389.0,
+          "count": 1
+        },
+        {
+          "value": 390.0,
+          "count": 1
+        },
+        {
+          "value": 394.0,
+          "count": 1
+        },
+        {
+          "value": 395.0,
+          "count": 1
+        },
+        {
+          "value": 404.0,
+          "count": 1
+        },
+        {
+          "value": 416.0,
+          "count": 1
+        },
+        {
+          "value": 417.0,
+          "count": 1
+        },
+        {
+          "value": 419.0,
+          "count": 1
+        },
+        {
+          "value": 423.0,
+          "count": 1
+        },
+        {
+          "value": 429.0,
+          "count": 1
+        },
+        {
+          "value": 432.0,
+          "count": 1
+        },
+        {
+          "value": 434.0,
+          "count": 2
+        },
+        {
+          "value": 440.0,
+          "count": 1
+        },
+        {
+          "value": 441.0,
+          "count": 1
+        },
+        {
+          "value": 445.0,
+          "count": 1
+        },
+        {
+          "value": 450.0,
+          "count": 1
+        },
+        {
+          "value": 452.0,
+          "count": 1
+        },
+        {
+          "value": 456.0,
+          "count": 1
+        },
+        {
+          "value": 464.0,
+          "count": 1
+        },
+        {
+          "value": 470.0,
+          "count": 1
+        },
+        {
+          "value": 478.0,
+          "count": 1
+        },
+        {
+          "value": 485.0,
+          "count": 1
+        },
+        {
+          "value": 489.0,
+          "count": 1
+        },
+        {
+          "value": 491.0,
+          "count": 1
+        },
+        {
+          "value": 500.0,
+          "count": 1
+        },
+        {
+          "value": 504.0,
+          "count": 1
+        },
+        {
+          "value": 512.0,
+          "count": 1
+        },
+        {
+          "value": 522.0,
+          "count": 1
+        },
+        {
+          "value": 526.0,
+          "count": 1
+        },
+        {
+          "value": 528.0,
+          "count": 1
+        },
+        {
+          "value": 529.0,
+          "count": 1
+        },
+        {
+          "value": 547.0,
+          "count": 1
+        },
+        {
+          "value": 552.0,
+          "count": 1
+        },
+        {
+          "value": 555.0,
+          "count": 1
+        },
+        {
+          "value": 556.0,
+          "count": 1
+        },
+        {
+          "value": 562.0,
+          "count": 1
+        },
+        {
+          "value": 577.0,
+          "count": 1
+        },
+        {
+          "value": 578.0,
+          "count": 1
+        },
+        {
+          "value": 603.0,
+          "count": 1
+        },
+        {
+          "value": 616.0,
+          "count": 1
+        },
+        {
+          "value": 622.0,
+          "count": 1
+        },
+        {
+          "value": 627.0,
+          "count": 1
+        },
+        {
+          "value": 630.0,
+          "count": 1
+        },
+        {
+          "value": 637.0,
+          "count": 1
+        },
+        {
+          "value": 640.0,
+          "count": 2
+        },
+        {
+          "value": 641.0,
+          "count": 1
+        },
+        {
+          "value": 658.0,
+          "count": 1
+        },
+        {
+          "value": 660.0,
+          "count": 1
+        },
+        {
+          "value": 669.0,
+          "count": 1
+        },
+        {
+          "value": 672.0,
+          "count": 1
+        },
+        {
+          "value": 680.0,
+          "count": 1
+        },
+        {
+          "value": 681.0,
+          "count": 2
+        },
+        {
+          "value": 684.0,
+          "count": 1
+        },
+        {
+          "value": 694.0,
+          "count": 1
+        },
+        {
+          "value": 707.0,
+          "count": 1
+        },
+        {
+          "value": 712.0,
+          "count": 1
+        },
+        {
+          "value": 714.0,
+          "count": 1
+        },
+        {
+          "value": 716.0,
+          "count": 1
+        },
+        {
+          "value": 729.0,
+          "count": 1
+        },
+        {
+          "value": 734.0,
+          "count": 1
+        },
+        {
+          "value": 735.0,
+          "count": 1
+        },
+        {
+          "value": 739.0,
+          "count": 1
+        },
+        {
+          "value": 746.0,
+          "count": 1
+        },
+        {
+          "value": 749.0,
+          "count": 1
+        },
+        {
+          "value": 754.0,
+          "count": 1
+        },
+        {
+          "value": 763.0,
+          "count": 1
+        },
+        {
+          "value": 780.0,
+          "count": 1
+        },
+        {
+          "value": 791.0,
+          "count": 1
+        },
+        {
+          "value": 797.0,
+          "count": 1
+        },
+        {
+          "value": 802.0,
+          "count": 1
+        },
+        {
+          "value": 811.0,
+          "count": 1
+        },
+        {
+          "value": 819.0,
+          "count": 1
+        },
+        {
+          "value": 827.0,
+          "count": 1
+        },
+        {
+          "value": 828.0,
+          "count": 1
+        },
+        {
+          "value": 833.0,
+          "count": 1
+        },
+        {
+          "value": 842.0,
+          "count": 1
+        },
+        {
+          "value": 856.0,
+          "count": 1
+        },
+        {
+          "value": 859.0,
+          "count": 1
+        },
+        {
+          "value": 862.0,
+          "count": 1
+        },
+        {
+          "value": 878.0,
+          "count": 1
+        },
+        {
+          "value": 879.0,
+          "count": 1
+        },
+        {
+          "value": 881.0,
+          "count": 1
+        },
+        {
+          "value": 897.0,
+          "count": 1
+        },
+        {
+          "value": 901.0,
+          "count": 1
+        },
+        {
+          "value": 910.0,
+          "count": 1
+        },
+        {
+          "value": 916.0,
+          "count": 1
+        },
+        {
+          "value": 928.0,
+          "count": 1
+        },
+        {
+          "value": 932.0,
+          "count": 1
+        },
+        {
+          "value": 944.0,
+          "count": 1
+        },
+        {
+          "value": 948.0,
+          "count": 1
+        },
+        {
+          "value": 952.0,
+          "count": 1
+        },
+        {
+          "value": 961.0,
+          "count": 1
+        },
+        {
+          "value": 962.0,
+          "count": 1
+        },
+        {
+          "value": 977.0,
+          "count": 1
+        },
+        {
+          "value": 979.0,
+          "count": 1
+        },
+        {
+          "value": 991.0,
+          "count": 1
+        },
+        {
+          "value": 1016.0,
+          "count": 1
+        },
+        {
+          "value": 1035.0,
+          "count": 1
+        },
+        {
+          "value": 1064.0,
+          "count": 1
+        },
+        {
+          "value": 1067.0,
+          "count": 1
+        },
+        {
+          "value": 1068.0,
+          "count": 1
+        },
+        {
+          "value": 1073.0,
+          "count": 1
+        },
+        {
+          "value": 1078.0,
+          "count": 1
+        },
+        {
+          "value": 1083.0,
+          "count": 2
+        },
+        {
+          "value": 1086.0,
+          "count": 3
+        },
+        {
+          "value": 1087.0,
+          "count": 1
+        },
+        {
+          "value": 1094.0,
+          "count": 1
+        },
+        {
+          "value": 1107.0,
+          "count": 1
+        },
+        {
+          "value": 1120.0,
+          "count": 1
+        },
+        {
+          "value": 1123.0,
+          "count": 3
+        },
+        {
+          "value": 1141.0,
+          "count": 1
+        },
+        {
+          "value": 1146.0,
+          "count": 1
+        },
+        {
+          "value": 1147.0,
+          "count": 2
+        },
+        {
+          "value": 1156.0,
+          "count": 1
+        },
+        {
+          "value": 1169.0,
+          "count": 1
+        },
+        {
+          "value": 1179.0,
+          "count": 2
+        },
+        {
+          "value": 1180.0,
+          "count": 1
+        },
+        {
+          "value": 1185.0,
+          "count": 1
+        },
+        {
+          "value": 1195.0,
+          "count": 1
+        },
+        {
+          "value": 1212.0,
+          "count": 1
+        },
+        {
+          "value": 1218.0,
+          "count": 1
+        },
+        {
+          "value": 1225.0,
+          "count": 1
+        },
+        {
+          "value": 1228.0,
+          "count": 1
+        },
+        {
+          "value": 1238.0,
+          "count": 1
+        },
+        {
+          "value": 1248.0,
+          "count": 1
+        },
+        {
+          "value": 1261.0,
+          "count": 1
+        },
+        {
+          "value": 1282.0,
+          "count": 1
+        },
+        {
+          "value": 1288.0,
+          "count": 1
+        },
+        {
+          "value": 1290.0,
+          "count": 1
+        },
+        {
+          "value": 1291.0,
+          "count": 1
+        },
+        {
+          "value": 1308.0,
+          "count": 1
+        },
+        {
+          "value": 1317.0,
+          "count": 1
+        },
+        {
+          "value": 1328.0,
+          "count": 2
+        },
+        {
+          "value": 1356.0,
+          "count": 1
+        },
+        {
+          "value": 1357.0,
+          "count": 2
+        },
+        {
+          "value": 1376.0,
+          "count": 1
+        },
+        {
+          "value": 1382.0,
+          "count": 1
+        },
+        {
+          "value": 1385.0,
+          "count": 1
+        },
+        {
+          "value": 1393.0,
+          "count": 1
+        },
+        {
+          "value": 1401.0,
+          "count": 1
+        },
+        {
+          "value": 1415.0,
+          "count": 1
+        },
+        {
+          "value": 1428.0,
+          "count": 1
+        },
+        {
+          "value": 1467.0,
+          "count": 1
+        },
+        {
+          "value": 1476.0,
+          "count": 1
+        },
+        {
+          "value": 1496.0,
+          "count": 1
+        },
+        {
+          "value": 1506.0,
+          "count": 1
+        },
+        {
+          "value": 1515.0,
+          "count": 1
+        },
+        {
+          "value": 1525.0,
+          "count": 1
+        },
+        {
+          "value": 1529.0,
+          "count": 1
+        },
+        {
+          "value": 1544.0,
+          "count": 1
+        },
+        {
+          "value": 1563.0,
+          "count": 1
+        },
+        {
+          "value": 1573.0,
+          "count": 1
+        },
+        {
+          "value": 1620.0,
+          "count": 1
+        },
+        {
+          "value": 1667.0,
+          "count": 1
+        },
+        {
+          "value": 1725.0,
+          "count": 1
+        },
+        {
+          "value": 1770.0,
+          "count": 1
+        },
+        {
+          "value": 1795.0,
+          "count": 1
+        },
+        {
+          "value": 1867.0,
+          "count": 1
+        },
+        {
+          "value": 1870.0,
+          "count": 1
+        },
+        {
+          "value": 1903.0,
+          "count": 1
+        },
+        {
+          "value": 1945.0,
+          "count": 1
+        },
+        {
+          "value": 2063.0,
+          "count": 1
+        },
+        {
+          "value": 2098.0,
+          "count": 1
+        },
+        {
+          "value": 2140.0,
+          "count": 1
+        },
+        {
+          "value": 2295.0,
+          "count": 1
+        },
+        {
+          "value": 2389.0,
+          "count": 1
+        }
+      ],
+      "bucketWidth": 1
+    }
+  },
+  "server": {
+    "target": "http://localhost:8000"
+  },
+  "requestsOverTime": {
+    "requestsOverTime": {
+      "buckets": [
+        {
+          "value": 0.0,
+          "count": 305
+        }
+      ],
+      "bucketWidth": 297.58991265296936
+    },
+    "numBenchmarks": 1
+  },
+  "rateType": "concurrent"
+};
+ window.benchmarks = [
+  {
+    "itl": {
+      "mean": 42.92029477161114,
+      "median": 43.585859376406,
+      "mode": 42.366211837659925,
+      "variance": 8.118185846377022,
+      "min": 0.0,
+      "max": 49.89992793480955,
+      "count": 193352,
+      "percentiles": {
+        "p001": 31.178085009257,
+        "p01": 33.522454112075096,
+        "p05": 37.2819175011328,
+        "p10": 38.77428990823251,
+        "p25": 41.915462060940044,
+        "p50": 43.585859376406,
+        "p75": 44.683203725757714,
+        "p90": 45.424531416459516,
+        "p95": 46.54778377560992,
+        "p99": 48.66615174308656,
+        "p999": 49.89992793480955
+      },
+      "pdf": null,
+      "stdDev": 2.849243030416504,
+      "totalSum": 8298724.834680557,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 43.585859376406
+        },
+        {
+          "percentile": "p90",
+          "value": 45.424531416459516
+        },
+        {
+          "percentile": "p95",
+          "value": 46.54778377560992
+        },
+        {
+          "percentile": "p99",
+          "value": 48.66615174308656
+        }
+      ]
+    },
+    "ttft": {
+      "mean": 127.36761296381717,
+      "median": 131.06608390808105,
+      "mode": 36.11445426940918,
+      "variance": 287.6787690836539,
+      "min": 36.11445426940918,
+      "max": 162.68658638000488,
+      "count": 305,
+      "percentiles": {
+        "p001": 36.11445426940918,
+        "p01": 63.422441482543945,
+        "p05": 97.87940979003906,
+        "p10": 101.1199951171875,
+        "p25": 124.56607818603516,
+        "p50": 131.06608390808105,
+        "p75": 137.1011734008789,
+        "p90": 140.19441604614258,
+        "p95": 142.6084041595459,
+        "p99": 153.93662452697754,
+        "p999": 162.68658638000488
+      },
+      "pdf": null,
+      "stdDev": 16.961095751267187,
+      "totalSum": 38847.12195396423,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 131.06608390808105
+        },
+        {
+          "percentile": "p90",
+          "value": 140.19441604614258
+        },
+        {
+          "percentile": "p95",
+          "value": 142.6084041595459
+        },
+        {
+          "percentile": "p99",
+          "value": 153.93662452697754
+        }
+      ]
+    },
+    "throughput": {
+      "mean": 645.0246514096684,
+      "median": 492.28261132818557,
+      "mode": 42.753448583555496,
+      "variance": 331090.70286266104,
+      "min": 20.71396363674705,
+      "max": 62203.661016949154,
+      "count": 193657,
+      "percentiles": {
+        "p001": 20.71416807574426,
+        "p01": 50.34953407258007,
+        "p05": 138.77318521844452,
+        "p10": 206.21296733968873,
+        "p25": 319.7744972859185,
+        "p50": 492.28261132818557,
+        "p75": 777.7498708228231,
+        "p90": 1224.7975059091045,
+        "p95": 1630.6498165176852,
+        "p99": 2906.385024304478,
+        "p999": 5553.356327324539
+      },
+      "pdf": null,
+      "stdDev": 575.4048165097864,
+      "totalSum": 124913538.91804215,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 492.28261132818557
+        },
+        {
+          "percentile": "p90",
+          "value": 1224.7975059091045
+        },
+        {
+          "percentile": "p95",
+          "value": 1630.6498165176852
+        },
+        {
+          "percentile": "p99",
+          "value": 2906.385024304478
+        }
+      ]
+    },
+    "requestsPerSecond": 1.0133333333333334,
+    "timePerRequest": {
+      "mean": 27.380872138601838,
+      "median": 20.357041120529175,
+      "mode": 0.16682767868041992,
+      "variance": 535.9390744506705,
+      "min": 0.16682767868041992,
+      "max": 101.33944702148438,
+      "count": 305,
+      "percentiles": {
+        "p001": 0.16682767868041992,
+        "p01": 0.6422939300537109,
+        "p05": 2.4118661880493164,
+        "p10": 3.358182668685913,
+        "p25": 6.560462236404419,
+        "p50": 20.357041120529175,
+        "p75": 43.67082858085632,
+        "p90": 60.885603189468384,
+        "p95": 68.03434467315674,
+        "p99": 90.15147948265076,
+        "p999": 101.33944702148438
+      },
+      "pdf": null,
+      "stdDev": 23.150357976728362,
+      "totalSum": 8351.166002273561,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 20.357041120529175
+        },
+        {
+          "percentile": "p90",
+          "value": 60.885603189468384
+        },
+        {
+          "percentile": "p95",
+          "value": 68.03434467315674
+        },
+        {
+          "percentile": "p99",
+          "value": 90.15147948265076
+        }
+      ]
+    }
+  }
+];
+</script><style data-emotion="mui okvjfn 1sf3xto 1miunce liujld 1ytgrgl 1d1z477 1fa3xlr 1d9l5zu 1v9qozf krfyoj hw9iw8 1ha086w 1jz7ivr 1h2ruwl 7bmlev 1e2dcm1 okvapm pxadv6 1jcswl9 1xmwsk2 1a9nspn 1amffs8 d0uhtl 11ff4y3 lm0mo7 q9hp3s hdzoli 1aine2r 2wz1hu 1ka6afz 1a6ealx 1vamkkl 8atqhb j77svj rbyfcn 1drpjxy 6408au j7qwjs 0 19ldw5v 1lz028s 1ofqig9 1q9b97s isbt42 1s50f5r fkg9yc 15j76c0 1wxaqej pgugi9 mfjk8s zhbgj8 xck77d 1xr92y4 mr86mw 8w58ru">.mui-okvjfn{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto;background:linear-gradient(105deg, black, #0C0E13);padding:32px;}.mui-1sf3xto{padding-top:16px;padding-bottom:16px;}.mui-1miunce{margin:0;color:#000000;font-size:16px;font-weight:500;font-family:Spezia,sans-serif;line-height:20px;color:#2A8EFD;}@media (max-width:600px){.mui-1miunce{font-size:14px;line-height:17px;}}.mui-liujld{margin:0;color:#000000;font-size:32px;font-weight:400;font-family:Spezia,sans-serif;line-height:40px;color:#E1E2E9;margin-top:12px;margin-bottom:12px;}@media (max-width:600px){.mui-liujld{font-size:24px;line-height:30px;}}.mui-1ytgrgl{background-color:#191C20;padding:0 16px;border-radius:8px;}.mui-1d1z477{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;background-color:#191C20;padding:0 16px;border-radius:8px;}.mui-1fa3xlr{overflow:hidden;padding:8px;border-right:1px solid #42464E;padding-left:0px;}.mui-1d9l5zu{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;padding-left:0px;overflow:hidden;padding:8px;border-right:1px solid #42464E;padding-left:0px;}@media (min-width:600px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}@media (min-width:900px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}@media (min-width:1200px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}@media (min-width:1536px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}.mui-1v9qozf{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;margin-bottom:8px;}.mui-krfyoj{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;margin-bottom:8px;}.mui-hw9iw8{margin:0;color:#000000;font-size:12px;font-weight:500;font-family:Spezia Mono,sans-serif;line-height:20px;text-transform:uppercase;color:#E1E2E9;}@media (max-width:600px){.mui-hw9iw8{font-size:10px;line-height:12px;}}.mui-1ha086w{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:100%;width:auto;}.mui-1jz7ivr{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:100%;width:auto;}.mui-1h2ruwl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.mui-7bmlev{margin:0;color:#000000;font-size:22px;font-weight:400;font-family:Spezia,sans-serif;line-height:26px;color:#2A8EFD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media (max-width:600px){.mui-7bmlev{font-size:10px;line-height:12px;}}.mui-1e2dcm1{z-index:1500;pointer-events:none;}.mui-okvapm{z-index:1500;pointer-events:none;}.mui-pxadv6{overflow:hidden;padding:8px;padding-right:0px;}.mui-1jcswl9{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;padding-right:0px;overflow:hidden;padding:8px;padding-right:0px;}@media (min-width:600px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}@media (min-width:900px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}@media (min-width:1200px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}@media (min-width:1536px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}.mui-1xmwsk2{margin:0;color:#000000;font-size:12px;font-weight:400;line-height:15px;font-family:Spezia,sans-serif;letter-spacing:0.25px;color:#2A8EFD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media (max-width:600px){.mui-1xmwsk2{font-size:10px;line-height:12px;}}.mui-1a9nspn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:24px;margin-bottom:24px;}.mui-1amffs8{margin:0;color:#000000;font-size:24px;font-weight:400;font-family:Spezia,sans-serif;line-height:30px;color:#E1E2E9;}@media (max-width:600px){.mui-1amffs8{font-size:20px;line-height:25px;}}.mui-d0uhtl{margin-left:16px;}.mui-11ff4y3 path{fill:#2A8EFD;}.mui-lm0mo7{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;gap:16px;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;margin-left:0px;-webkit-box-flex-wrap:nowrap;-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;}.mui-q9hp3s{border-width:1px;border-style:solid;border-color:#42464E;border-radius:8px;overflow:hidden;background-color:#191C20;}.mui-hdzoli{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;border-width:1px;border-style:solid;border-color:#42464E;border-radius:8px;overflow:hidden;background-color:#191C20;}@media (min-width:600px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}@media (min-width:900px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}@media (min-width:1200px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}@media (min-width:1536px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}.mui-1aine2r{background-color:#1D2024;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#42464E;padding:18px 24px;margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;}.mui-2wz1hu{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;background-color:#1D2024;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#42464E;padding:18px 24px;margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;}@media (min-width:600px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-1ka6afz{margin:0;color:#000000;font-size:14px;font-weight:500;font-family:Spezia Mono,sans-serif;line-height:20px;text-transform:uppercase;color:#E1E2E9;}@media (max-width:600px){.mui-1ka6afz{font-size:10px;line-height:12px;}}.mui-1a6ealx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;height:180px;padding:24px!important;}.mui-1vamkkl{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;height:180px;padding:24px!important;}@media (min-width:600px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-8atqhb{width:100%;}.mui-j77svj{margin:0;color:#000000;font-size:12px;font-weight:500;font-family:Spezia Mono,sans-serif;line-height:20px;text-transform:uppercase;color:#E1E2E9;text-transform:uppercase;}@media (max-width:600px){.mui-j77svj{font-size:10px;line-height:12px;}}.mui-rbyfcn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;min-height:220px;height:180px;border-top-width:1px;border-top-style:solid;border-top-color:#42464E;padding:24px!important;}.mui-1drpjxy{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;min-height:220px;height:180px;border-top-width:1px;border-top-style:solid;border-top-color:#42464E;padding:24px!important;}@media (min-width:600px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-6408au{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;justify-items:center;-webkit-align-items:space-between;-webkit-box-align:space-between;-ms-flex-align:space-between;align-items:space-between;width:100%;}.mui-j7qwjs{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}.mui-19ldw5v{margin-top:8px;margin-bottom:16px;}.mui-1lz028s{margin:0;color:#000000;font-size:32px;font-weight:400;font-family:Spezia,sans-serif;line-height:26px;color:#2A8EFD;}@media (max-width:600px){.mui-1lz028s{font-size:10px;line-height:12px;}}.mui-1ofqig9{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;}.mui-1q9b97s{margin:0;color:#000000;font-size:16px;font-weight:400;font-family:Spezia,sans-serif;letter-spacing:0.25px;line-height:20px;color:#2A8EFD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media (max-width:600px){.mui-1q9b97s{font-size:14px;line-height:17px;}}.mui-isbt42{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:-16px;width:calc(100% + 16px);margin-left:-16px;}.mui-isbt42>.MuiGrid-item{padding-top:16px;}.mui-isbt42>.MuiGrid-item{padding-left:16px;}.mui-1s50f5r{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}@media (min-width:600px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}@media (min-width:900px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}@media (min-width:1200px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}@media (min-width:1536px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}.mui-fkg9yc{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;justify-items:center;width:100%;}.mui-15j76c0{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}@media (min-width:600px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-1wxaqej{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}.mui-pgugi9{background-color:#282A2F;border-radius:6px;padding:6px;margin-right:6px;display:inline-block;padding-top:8px;color:#2A8EFD;}.mui-mfjk8s{margin:0;color:#000000;font-size:16px;font-weight:400;font-family:Spezia,sans-serif;letter-spacing:0.25px;line-height:20px;background-color:#282A2F;border-radius:6px;padding:6px;margin-right:6px;display:inline-block;padding-top:8px;color:#2A8EFD;}@media (max-width:600px){.mui-mfjk8s{font-size:14px;line-height:17px;}}.mui-zhbgj8{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:16px;}.mui-xck77d{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}.mui-1xr92y4{margin:0;color:#000000;font-size:16px;font-weight:500;font-family:Spezia,sans-serif;line-height:20px;color:#B5B7BE;}@media (max-width:600px){.mui-1xr92y4{font-size:14px;line-height:17px;}}.mui-mr86mw{-webkit-text-decoration:none;text-decoration:none;}.mui-8w58ru{margin:0;font:inherit;color:#2A8EFD;margin-left:8px;-webkit-text-decoration:none;text-decoration:none;}</style><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js" noModule=""></script></head><body><div><div><div class="MuiBox-root mui-okvjfn"><div style="margin:0 auto;padding:0 16px;max-width:1440px;box-sizing:border-box;height:100%;width:100%"><div class="MuiBox-root mui-1sf3xto"><h6 class="MuiTypography-root MuiTypography-subtitle2 mui-1miunce">GuideLLM</h6><h4 class="MuiTypography-root MuiTypography-h4 mui-liujld">Workload Report</h4><div class="MuiGrid-root MuiGrid-container mui-1d1z477"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-5 mui-1d9l5zu"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Model</span><div class="MuiBox-root mui-1jz7ivr"><span class="MuiTypography-root MuiTypography-metric2 mui-7bmlev" aria-label="N/A">N/A</span></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2 mui-1jcswl9"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Time Stamp</span><div class="MuiBox-root mui-1jz7ivr"><span class="MuiTypography-root MuiTypography-caption mui-1xmwsk2">n/a</span></div></div></div></div></div></div><div style="margin:0 auto;padding:0 16px;max-width:1440px;box-sizing:border-box;height:100%;width:100%"><div class="MuiBox-root mui-1a9nspn"><h5 class="MuiTypography-root MuiTypography-h5 mui-1amffs8">Workload Details</h5><div class="MuiBox-root mui-d0uhtl"><span color="#2A8EFD" class="mui-11ff4y3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="none"><path fill="#2A8EFD" d="M11 17.4h2v-6h-2zm1-8q.424 0 .713-.287A.97.97 0 0 0 13 8.4a.97.97 0 0 0-.287-.712A.97.97 0 0 0 12 7.4a.97.97 0 0 0-.713.288A.97.97 0 0 0 11 8.4q0 .424.287.713.288.287.713.287m0 13a9.7 9.7 0 0 1-3.9-.787 10.1 10.1 0 0 1-3.175-2.138q-1.35-1.35-2.137-3.175A9.7 9.7 0 0 1 2 12.4q0-2.074.788-3.9a10.1 10.1 0 0 1 2.137-3.175q1.35-1.35 3.175-2.137A9.7 9.7 0 0 1 12 2.4q2.075 0 3.9.788a10.1 10.1 0 0 1 3.175 2.137q1.35 1.35 2.137 3.175A9.7 9.7 0 0 1 22 12.4a9.7 9.7 0 0 1-.788 3.9 10.1 10.1 0 0 1-2.137 3.175q-1.35 1.35-3.175 2.137a9.7 9.7 0 0 1-3.9.788m0-2q3.35 0 5.675-2.325T20 12.4t-2.325-5.675T12 4.4 6.325 6.725 4 12.4t2.325 5.675T12 20.4"></path></svg></span></div></div><div class="MuiGrid-root MuiGrid-container mui-lm0mo7" data-id="workload-details"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 mui-hdzoli"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-2wz1hu"><span class="MuiTypography-root MuiTypography-overline1 mui-1ka6afz">Prompt</span></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1vamkkl" data-id="top-cell"><div class="MuiBox-root mui-8atqhb"><span class="MuiTypography-root MuiTypography-overline2 mui-j77svj">Sample Prompt</span><!--$!--><template data-dgst="DYNAMIC_SERVER_USAGE"></template><!--/$--></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1drpjxy" data-id="bottom-cell"><div class="MuiBox-root mui-6408au"><div class="MuiBox-root mui-j7qwjs"><div class="MuiBox-root mui-0"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Mean Prompt Length</span></div><div class="MuiBox-root mui-19ldw5v"><span class="MuiTypography-root MuiTypography-metric1 mui-1lz028s">0 tokens</span></div></div><div style="width:100%;height:85px"><div style="width:100%;height:100%"><div style="width:0px;height:0px;position:relative"><div style="width:100%;height:100%"></div></div></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 mui-hdzoli"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-2wz1hu"><span class="MuiTypography-root MuiTypography-overline1 mui-1ka6afz">Server</span></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1vamkkl" data-id="top-cell"><div class="MuiBox-root mui-1ofqig9"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Target</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s"></p></div></div><div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 mui-isbt42"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 mui-1s50f5r"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Type</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s"></p></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 mui-1s50f5r"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Port</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s"></p></div></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1drpjxy" data-id="bottom-cell"><div class="MuiBox-root mui-fkg9yc"><div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 mui-isbt42"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-15j76c0"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Number of Benchmarks</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s">0</p></div></div></div><div class="MuiGrid-root MuiGrid-item mui-1wxaqej"><span class="MuiTypography-root MuiTypography-overline2 mui-j77svj">Rate Type</span></div><div class="MuiGrid-root MuiGrid-item mui-1wxaqej"><p class="MuiTypography-root MuiTypography-body2 mui-mfjk8s"></p></div></div><div style="width:100%;height:85px"><div style="width:100%;height:100%"><div style="width:0px;height:0px;position:relative"><div style="width:100%;height:100%"></div></div></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 mui-hdzoli"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-2wz1hu"><span class="MuiTypography-root MuiTypography-overline1 mui-1ka6afz">Generated</span></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1vamkkl" data-id="top-cell"><div class="MuiBox-root mui-8atqhb"><span class="MuiTypography-root MuiTypography-overline2 mui-j77svj">Sample Generated</span><!--$!--><template data-dgst="DYNAMIC_SERVER_USAGE"></template><!--/$--></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1drpjxy" data-id="bottom-cell"><div class="MuiBox-root mui-6408au"><div class="MuiBox-root mui-j7qwjs"><div class="MuiBox-root mui-0"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Mean Generated Length</span></div><div class="MuiBox-root mui-19ldw5v"><span class="MuiTypography-root MuiTypography-metric1 mui-1lz028s">0 tokens</span></div></div><div style="width:100%;height:85px"><div style="width:100%;height:100%"><div style="width:0px;height:0px;position:relative"><div style="width:100%;height:100%"></div></div></div></div></div></div></div></div></div><div style="margin:0 auto;padding:0 16px;max-width:1440px;box-sizing:border-box;height:100%;width:100%"><footer class="MuiBox-root mui-zhbgj8"><div class="MuiBox-root mui-xck77d"><h6 class="MuiTypography-root MuiTypography-subtitle2 mui-1xr92y4">Got questions?</h6><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone mui-8w58ru"><h6 class="MuiTypography-root MuiTypography-subtitle2 mui-1miunce">Send us a message on Slack</h6></a></div><div class="MuiBox-root mui-0"><img width="150" alt="guidellm logo" src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/media/guidellm-logo-light.5a79cb09.png"/></div></footer></div></div></div></div><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/webpack-e54cd4b97f33f8d0.js" async=""></script><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/7fd0f9f1-e15a5055d2e17cc5.js" async=""></script><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/9-ed9d05a85825ae4a.js" async=""></script><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/main-app-7a0e04eef30508ed.js" async=""></script></body></html><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"0:\"$L1\"\n"])</script><script>self.__next_f.push([1,"2:I{\"id\":\"8555\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n4:I{\"id\":\"20413\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n5:I{\"id\":\"4672\",\"chunks\":[\"160:static/chunks/app/not-found-f986739a233da77f.js\"],\"name\":\"\",\"async\":false}\n6:I{\"id\":\"97092\",\"chunks\":["])</script><script>self.__next_f.push([1,"\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n7:I{\"id\":\"56434\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n8:I{\"id\":\"93107\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a"])</script><script>self.__next_f.push([1,".js\"],\"name\":\"\",\"async\":false}\n9:I{\"id\":\"96513\",\"chunks\":[\"774:static/chunks/framework-ab6df94180385e21.js\",\"326:static/chunks/326-209f780eaf297232.js\",\"931:static/chunks/app/page-e27e0c51a2411424.js\"],\"name\":\"default\",\"async\":true}\n"])</script><script>self.__next_f.push([1,"1:[[],[\"$\",\"$L2\",null,{\"assetPrefix\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0\",\"initialCanonicalUrl\":\"/\",\"initialTree\":[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",true],\"initialHead\":[\"$L3\",null],\"globalErrorComponent\":\"$4\",\"notFound\":[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"window.runInfo = {}; window.workloadDetails = {}; window.benchmarks = {};\"}}]}],[\"$\",\"body\",null,{\"children\":[[],[\"$\",\"$L5\",null,{}]]}]]}],\"asNotFound\":false,\"children\":[[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"window.runInfo = {}; window.workloadDetails = {}; window.benchmarks = {};\"}}]}],[\"$\",\"body\",null,{\"children\":[\"$\",\"$L6\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"loading\":\"$undefined\",\"loadingStyles\":\"$undefined\",\"hasLoading\":false,\"template\":[\"$\",\"$L7\",null,{}],\"templateStyles\":\"$undefined\",\"notFound\":[\"$\",\"$L5\",null,{}],\"notFoundStyles\":[],\"asNotFound\":false,\"childProp\":{\"current\":[[\"$\",\"$L8\",null,{\"propsForComponent\":{\"params\":{}},\"Component\":\"$9\"}],null],\"segment\":\"__PAGE__\"},\"styles\":[]}]}]]}],null]}]]\n"])</script><script>self.__next_f.push([1,"3:[[[\"$\",\"meta\",null,{\"charSet\":\"utf-8\"}],[\"$\",\"title\",null,{\"children\":\"GuideLLM\"}],[\"$\",\"meta\",null,{\"name\":\"description\",\"content\":\"LLM Benchmarking Tool\"}],null,null,[\"$\",\"link\",null,{\"rel\":\"manifest\",\"href\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0/manifest.json\"}],null,null,null,null,null,[\"$\",\"meta\",null,{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],null,null,null,null,null,null,null,null,null,null,[]],[null,null,null,null],null,null,[null,null,null,null,null],null,null,null,null,[null,[[\"$\",\"link\",null,{\"rel\":\"icon\",\"href\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon.png\"}]],[[\"$\",\"link\",null,{\"rel\":\"apple-touch-icon\",\"href\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon-192x192.png\"}]],null]]\n"])</script>
