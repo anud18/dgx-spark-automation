@@ -1,0 +1,12 @@
+{
+  "runner": "spark-1697",
+  "target_url": "http://localhost:8000",
+  "dataset": "likaixin/InstructCoder",
+  "rate_type": "concurrent",
+  "rate": "10",
+  "max_seconds": "60",
+  "data_column": "code",
+  "timestamp": "20260305T065726Z",
+  "workflow_run_id": "22706185895",
+  "workflow_run_url": "https://github.com/anud18/dgx-spark-automation/actions/runs/22706185895"
+}
