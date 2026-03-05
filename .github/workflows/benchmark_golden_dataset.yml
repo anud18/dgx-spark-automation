@@ -176,7 +176,8 @@ jobs:
         if: always()
         run: |
           TIMESTAMP=$(date -u '+%Y%m%dT%H%M%SZ')
-          RESULT_DIR="results/${TIMESTAMP}_${{ inputs.runner }}"
+          DATASET_NAME=$(echo "${{ inputs.dataset }}" | sed 's|.*/||; s|\.json$||')
+          RESULT_DIR="results/${DATASET_NAME}/${TIMESTAMP}_${{ inputs.runner }}"
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
