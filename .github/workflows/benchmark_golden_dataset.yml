@@ -132,7 +132,7 @@ jobs:
               DATA_COLUMN="problem"
               ;;
             "dataset/ShareGPT.json")
-              DATA_COLUMN="value"
+              DATA_COLUMN="text"
               ;;
             "abisee/cnn_dailymail")
               DATA_COLUMN="article"
