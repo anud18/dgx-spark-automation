@@ -59,10 +59,10 @@ jobs:
           TIMESTAMP=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
 
           # CPU info
-          CPU_MODEL=$(lscpu | grep 'Model name' | sed 's/Model name:\s*//')
-          CPU_SOCKETS=$(lscpu | grep '^Socket(s):' | awk '{print $2}')
-          CPU_CORES_PER_SOCKET=$(lscpu | grep '^Core(s) per socket:' | awk '{print $4}')
-          CPU_THREADS_PER_CORE=$(lscpu | grep '^Thread(s) per core:' | awk '{print $4}')
+          CPU_MODEL=$(lscpu | grep 'Model name' | head -1 | sed 's/Model name:\s*//')
+          CPU_SOCKETS=$(lscpu | grep '^Socket(s):' | head -1 | awk '{print $2}')
+          CPU_CORES_PER_SOCKET=$(lscpu | grep '^Core(s) per socket:' | head -1 | awk '{print $4}')
+          CPU_THREADS_PER_CORE=$(lscpu | grep '^Thread(s) per core:' | head -1 | awk '{print $4}')
           CPU_TOTAL_CORES=$((CPU_SOCKETS * CPU_CORES_PER_SOCKET))
           CPU_TOTAL_THREADS=$((CPU_TOTAL_CORES * CPU_THREADS_PER_CORE))
           CPU_ARCH=$(lscpu | grep '^Architecture:' | awk '{print $2}')
@@ -79,11 +79,14 @@ jobs:
           for line in sys.stdin:
               parts = [p.strip() for p in line.split(',')]
               if len(parts) >= 6:
+                  def safe_int(v):
+                      try: return int(v)
+                      except: return None
                   rows.append({
-                      'index': int(parts[0]),
+                      'index': safe_int(parts[0]),
                       'name': parts[1],
                       'driver_version': parts[2],
-                      'memory_total_mib': int(parts[3]),
+                      'memory_total_mib': safe_int(parts[3]),
                       'compute_capability': parts[4],
                       'uuid': parts[5]
                   })
