@@ -214,87 +214,51 @@ jobs:
               json.dump(metadata, f, indent=2)
           PYEOF
 
+          # Generate per-run report.md
+          export RESULT_DIR DATASET_NAME
+          export DATASET_FULL="${{ inputs.dataset }}"
+          python3 - <<PYEOF
+          import json, os
+          from pathlib import Path
+          DATASET_INFO = {
+              "InstructCoder":  ("InstructCoder - Coding Tasks",     "InstructCoder is the first dataset designed to adapt LLMs for general code editing."),
+              "NuminaMath-1.5": ("NuminaMath-1.5 - Math (Short input, Long output)", "Internal validation set for the AIMO progress prize competition. Short input, long output."),
+              "ShareGPT":       ("ShareGPT_Vicuna_unfiltered - General Chat", "Real user conversations from ShareGPT_Vicuna_unfiltered."),
+              "cnn_dailymail":  ("CNN / DailyMail - Summarization (Long input, Short output)", "300k+ English news articles from CNN and Daily Mail. Long input, short output."),
+          }
+          def get_mean(m):
+              if not m: return None
+              return m.get("successful", m).get("mean")
+          result_dir  = os.environ["RESULT_DIR"]
+          dataset_name = os.environ["DATASET_NAME"]
+          dataset_full = os.environ["DATASET_FULL"]
+          bench_file  = Path(result_dir) / "benchmarks.json"
+          if not bench_file.exists():
+              print("No benchmarks.json, skipping report"); exit(0)
+          with open(bench_file) as f:
+              data = json.load(f)
+          label, desc = DATASET_INFO.get(dataset_name, (dataset_full, ""))
+          lines = ["# Benchmark Report - " + label + "\n", desc + "\n"]
+          for b in data["benchmarks"]:
+              m = b["metrics"]
+              prompt = get_mean(m.get("prompt_token_count"))
+              output = get_mean(m.get("output_token_count"))
+              ttft   = get_mean(m.get("time_to_first_token_ms"))
+              tps    = get_mean(m.get("output_tokens_per_second"))
+              users  = get_mean(m.get("request_concurrency"))
+              conc   = b["config"]["strategy"].get("worker_count") or b["config"]["strategy"].get("streams")
+              if ttft is None: continue
+              lines.append(
+                  "- Concurrency %s | Avg input %d tokens, output %d tokens"
+                  " | TTFT %.0fms | %.0f tokens/s | %.1f active users" % (conc, prompt, output, ttft, tps, users)
+              )
+          with open(Path(result_dir) / "report.md", "w") as f:
+              f.write("\n".join(lines) + "\n")
+          print("report.md written")
+          PYEOF
+
           git add "${RESULT_DIR}"
           git commit -m "benchmark: add results for ${TIMESTAMP} on ${{ inputs.runner }}" || echo "Nothing to commit"
-
-          # Generate/update REPORT.md from all results on this branch
-          python3 - <<'PYEOF'
-import json
-from pathlib import Path
-from collections import defaultdict
-
-DATASET_INFO = {
-    "InstructCoder": {
-        "label": "InstructCoder — Coding Tasks",
-        "description": "InstructCoder is the first dataset designed to adapt LLMs for general code editing.",
-    },
-    "NuminaMath-1.5": {
-        "label": "NuminaMath-1.5 — 數學問題 (Short input, Long output)",
-        "description": "This dataset serves as an internal validation set during the AIMO progress prize competition. 數學問題的 Dataset，短輸入、長輸出。",
-    },
-    "ShareGPT": {
-        "label": "ShareGPT_Vicuna_unfiltered — 一般對話",
-        "description": "一群 User 實際的對話紀錄 (ShareGPT_Vicuna_unfiltered).",
-    },
-    "cnn_dailymail": {
-        "label": "CNN / DailyMail — Summarization (Long input, Short output)",
-        "description": "The CNN / DailyMail Dataset contains 300k+ English news articles written by journalists at CNN and the Daily Mail. Summary 類型的 Dataset，長輸入、短輸出。",
-    },
-}
-
-def get_mean(metric):
-    if not metric:
-        return None
-    return metric.get("successful", metric).get("mean")
-
-by_dataset = defaultdict(list)
-for bench_file in sorted(Path("results").glob("*/*/benchmarks.json")):
-    dataset = bench_file.parts[1]
-    with open(bench_file) as f:
-        data = json.load(f)
-    for b in data["benchmarks"]:
-        m = b["metrics"]
-        entry = {
-            "prompt_tokens": get_mean(m.get("prompt_token_count")),
-            "output_tokens": get_mean(m.get("output_token_count")),
-            "ttft_ms": get_mean(m.get("time_to_first_token_ms")),
-            "output_tps": get_mean(m.get("output_tokens_per_second")),
-            "active_users": get_mean(m.get("request_concurrency")),
-        }
-        if entry["ttft_ms"] is not None:
-            by_dataset[dataset].append(entry)
-
-lines = ["# Benchmark Report\n"]
-for dataset in sorted(by_dataset):
-    info = DATASET_INFO.get(dataset, {"label": dataset, "description": ""})
-    runs = by_dataset[dataset]
-
-    def avg(key):
-        vals = [r[key] for r in runs if r.get(key) is not None]
-        return sum(vals) / len(vals) if vals else None
-
-    prompt  = avg("prompt_tokens")
-    output  = avg("output_tokens")
-    ttft    = avg("ttft_ms")
-    tps     = avg("output_tps")
-    users   = avg("active_users")
-
-    lines.append(f"## On {info['label']}")
-    lines.append(f"{info['description']}\n")
-    lines.append(
-        f"平均輸入 {prompt:.0f} tokens，輸出 {output:.0f} tokens｜"
-        f"到第一個字花了 {ttft:.0f}ms｜"
-        f"每秒 {tps:.0f} tokens｜"
-        f"服務 {users:.1f} 個活躍用戶\n"
-    )
-
-with open("REPORT.md", "w") as f:
-    f.write("\n".join(lines) + "\n")
-print("REPORT.md updated")
-PYEOF
-
-          git add REPORT.md
-          git commit -m "docs: update REPORT.md" || echo "Nothing to commit"
           git push origin benchmark-results
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
