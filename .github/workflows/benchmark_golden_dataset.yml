@@ -130,33 +130,34 @@ jobs:
           case "${{ inputs.dataset }}" in
             "AI-MO/NuminaMath-1.5")
               DATA_COLUMN="problem"
-              DATA_EXTRA_ARGS=""
               ;;
             "dataset/ShareGPT.json")
               DATA_COLUMN="value"
-              DATA_EXTRA_ARGS=""
               ;;
             "abisee/cnn_dailymail")
               DATA_COLUMN="article"
-              DATA_EXTRA_ARGS="--data-args '{\"name\": \"3.0.0\"}'"
+              DATA_ARGS='{"name": "3.0.0"}'
               ;;
             *)
               DATA_COLUMN="code"
-              DATA_EXTRA_ARGS=""
               ;;
           esac
 
           echo "DATA_COLUMN=${DATA_COLUMN}" >> $GITHUB_ENV
 
-          eval guidellm benchmark \
-            --target "${{ inputs.target_url }}" \
-            --data "${{ inputs.dataset }}" \
-            --rate-type ${{ inputs.rate_type }} \
-            --rate ${{ inputs.rate }} \
-            --max-seconds ${{ inputs.max_seconds }} \
-            --data-column-mapper "{\"text_column\": \"${DATA_COLUMN}\"}" \
-            ${DATA_EXTRA_ARGS} \
-            --output-dir ${{ inputs.output_path }}
+          CMD=(guidellm benchmark
+            --target "${{ inputs.target_url }}"
+            --data "${{ inputs.dataset }}"
+            --rate-type "${{ inputs.rate_type }}"
+            --rate "${{ inputs.rate }}"
+            --max-seconds "${{ inputs.max_seconds }}"
+            --data-column-mapper "{\"text_column\": \"${DATA_COLUMN}\"}"
+            --output-dir "${{ inputs.output_path }}"
+          )
+          if [ -n "${DATA_ARGS:-}" ]; then
+            CMD+=(--data-args "${DATA_ARGS}")
+          fi
+          "${CMD[@]}"
 
       - name: Upload results as artifact
         uses: actions/upload-artifact@v4
