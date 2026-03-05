@@ -217,41 +217,183 @@ jobs:
           # Generate per-run report.md
           export RESULT_DIR DATASET_NAME
           export DATASET_FULL="${{ inputs.dataset }}"
+          export MAX_SECONDS="${{ inputs.max_seconds }}"
           python3 - <<PYEOF
           import json, os
           from pathlib import Path
           DATASET_INFO = {
-              "InstructCoder":  ("InstructCoder - Coding Tasks",     "InstructCoder is the first dataset designed to adapt LLMs for general code editing."),
-              "NuminaMath-1.5": ("NuminaMath-1.5 - Math (Short input, Long output)", "Internal validation set for the AIMO progress prize competition. Short input, long output."),
-              "ShareGPT":       ("ShareGPT_Vicuna_unfiltered - General Chat", "Real user conversations from ShareGPT_Vicuna_unfiltered."),
-              "cnn_dailymail":  ("CNN / DailyMail - Summarization (Long input, Short output)", "300k+ English news articles from CNN and Daily Mail. Long input, short output."),
+              "InstructCoder":  (
+                  "InstructCoder — Coding 任務",
+                  "InstructCoder 是第一個專為 LLM 設計的程式碼編輯 dataset，涵蓋各種程式修改與生成任務。"
+              ),
+              "NuminaMath-1.5": (
+                  "NuminaMath-1.5 — 數學推理任務",
+                  "AIMO 競賽的內部驗證集，包含高難度數學題。特性：短輸入、長輸出（模型需進行多步推導）。"
+              ),
+              "ShareGPT": (
+                  "ShareGPT — 一般對話",
+                  "真實使用者與 AI 的對話紀錄（ShareGPT_Vicuna_unfiltered），涵蓋各種日常問答與指令場景。"
+              ),
+              "cnn_dailymail": (
+                  "CNN / DailyMail — 新聞摘要",
+                  "CNN 與 Daily Mail 共 30 萬篇新聞文章的摘要任務。特性：長輸入、短輸出（Summarization）。"
+              ),
           }
-          def get_mean(m):
-              if not m: return None
-              return m.get("successful", m).get("mean")
-          result_dir  = os.environ["RESULT_DIR"]
+          def sv(metric, field="mean"):
+              if not metric: return None
+              r = metric.get("successful", metric)
+              if field == "pct":
+                  return r.get("percentiles", {})
+              return r.get(field)
+          def fmt(v, decimals=1, fallback="N/A"):
+              return ("%.{}f".format(decimals) % v) if v is not None else fallback
+          def delta_row(name, cur, prv, unit="", lower_better=True):
+              if cur is None or prv is None: return None
+              d = cur - prv
+              pct = d / prv * 100 if prv else 0
+              icon = ("v" if (d < 0) == lower_better else "^") if abs(pct) > 0.5 else "-"
+              return "| %s | %s%s | %s%s | %s %+.1f%% |" % (name, fmt(cur,2), unit, fmt(prv,2), unit, icon, pct)
+
+          result_dir   = os.environ["RESULT_DIR"]
           dataset_name = os.environ["DATASET_NAME"]
           dataset_full = os.environ["DATASET_FULL"]
-          bench_file  = Path(result_dir) / "benchmarks.json"
+          max_sec      = os.environ.get("MAX_SECONDS", "?")
+          bench_file   = Path(result_dir) / "benchmarks.json"
           if not bench_file.exists():
               print("No benchmarks.json, skipping report"); exit(0)
           with open(bench_file) as f:
               data = json.load(f)
           label, desc = DATASET_INFO.get(dataset_name, (dataset_full, ""))
-          lines = ["# Benchmark Report - " + label + "\n", desc + "\n"]
+
+          # Find previous run for comparison
+          prev_m = None
+          prev_name = None
+          dataset_dir = Path("results") / dataset_name
+          runs = sorted(dataset_dir.iterdir()) if dataset_dir.exists() else []
+          if len(runs) >= 2:
+              prev_file = runs[-2] / "benchmarks.json"
+              if prev_file.exists():
+                  with open(prev_file) as f2:
+                      pd = json.load(f2)
+                  if pd.get("benchmarks"):
+                      prev_m = pd["benchmarks"][0]["metrics"]
+                      prev_name = runs[-2].name
+
+          lines = []
+          lines.append("# Benchmark 報告 — " + label + "\n")
+          lines.append("> " + desc + "\n")
+
           for b in data["benchmarks"]:
-              m = b["metrics"]
-              prompt = get_mean(m.get("prompt_token_count"))
-              output = get_mean(m.get("output_token_count"))
-              ttft   = get_mean(m.get("time_to_first_token_ms"))
-              tps    = get_mean(m.get("output_tokens_per_second"))
-              users  = get_mean(m.get("request_concurrency"))
-              conc   = b["config"]["strategy"].get("worker_count") or b["config"]["strategy"].get("streams")
+              m    = b["metrics"]
+              conc = b["config"]["strategy"].get("worker_count") or b["config"]["strategy"].get("streams")
+              dur  = b.get("duration", max_sec)
+
+              prompt = sv(m.get("prompt_token_count"))
+              output = sv(m.get("output_token_count"))
+              ttft   = sv(m.get("time_to_first_token_ms"))
+              tpot   = sv(m.get("time_per_output_token_ms"))
+              itl    = sv(m.get("inter_token_latency_ms"))
+              e2e    = sv(m.get("request_latency"))
+              otps   = sv(m.get("output_tokens_per_second"))
+              ttps   = sv(m.get("tokens_per_second"))
+              rps    = sv(m.get("requests_per_second"))
+              users  = sv(m.get("request_concurrency"))
               if ttft is None: continue
+
+              ttft_p = sv(m.get("time_to_first_token_ms"), "pct")
+              tpot_p = sv(m.get("time_per_output_token_ms"), "pct")
+              itl_p  = sv(m.get("inter_token_latency_ms"), "pct")
+              e2e_p  = sv(m.get("request_latency"), "pct")
+
+              lines.append("## 執行配置：%d 個並發用戶，共執行 %s 秒\n" % (conc, fmt(dur, 0)))
+              lines.append("### 摘要\n")
               lines.append(
-                  "- Concurrency %s | Avg input %d tokens, output %d tokens"
-                  " | TTFT %.0fms | %.0f tokens/s | %.1f active users" % (conc, prompt, output, ttft, tps, users)
+                  "本次 benchmark 以 **%d 個並發用戶**持續執行 **%s 秒**。" % (conc, fmt(dur, 0))
               )
+              lines.append(
+                  "Dataset 中平均每個 prompt 含 **%s 個 input token**，模型回覆平均 **%s 個 output token**。\n"
+                  % (fmt(prompt, 0), fmt(output, 0))
+              )
+              lines.append(
+                  "- **TTFT（到第一個字的等待時間）**：平均 **%sms**（P95: %sms）"
+                  " — 用戶送出 prompt 後等多久才開始看到回覆"
+                  % (fmt(ttft, 1), fmt(ttft_p.get("p95") if ttft_p else None, 1))
+              )
+              tpot_hz = (1000 / tpot) if tpot else None
+              lines.append(
+                  "- **TPOT（每個 output token 的生成時間）**：平均 **%sms**（P95: %sms）"
+                  " — 體感約 %s tok/s 的生成速度"
+                  % (fmt(tpot, 1), fmt(tpot_p.get("p95") if tpot_p else None, 1), fmt(tpot_hz, 0))
+              )
+              lines.append(
+                  "- **ITL（Token 間延遲）**：平均 **%sms**（P95: %sms）"
+                  % (fmt(itl, 1), fmt(itl_p.get("p95") if itl_p else None, 1))
+              )
+              lines.append(
+                  "- **E2E 延遲**：平均 **%ss**（P95: %ss）"
+                  " — 從送出 prompt 到收到完整回覆的總時間"
+                  % (fmt(e2e, 2), fmt(e2e_p.get("p95") if e2e_p else None, 2))
+              )
+              lines.append(
+                  "- **Token Throughput**：output **%s tok/s**，total **%s tok/s**"
+                  % (fmt(otps, 1), fmt(ttps, 1))
+              )
+              lines.append(
+                  "- **Request Throughput**：**%s req/s**" % fmt(rps, 3)
+              )
+              lines.append(
+                  "- **平均活躍用戶數**：**%s** / %d\n" % (fmt(users, 1), conc)
+              )
+
+              lines.append("### 詳細指標\n")
+              lines.append("| 指標 | 平均 | P50 | P95 | P99 |")
+              lines.append("|:-----|-----:|----:|----:|----:|")
+
+              def trow(name, key, decimals=1):
+                  raw = m.get(key)
+                  if not raw: return None
+                  r = raw.get("successful", raw)
+                  pct = r.get("percentiles", {})
+                  return "| %s | %s | %s | %s | %s |" % (
+                      name,
+                      fmt(r.get("mean"),       decimals),
+                      fmt(pct.get("p50"),      decimals),
+                      fmt(pct.get("p95"),      decimals),
+                      fmt(pct.get("p99"),      decimals),
+                  )
+
+              for r in filter(None, [
+                  trow("TTFT (ms)",               "time_to_first_token_ms"),
+                  trow("TPOT (ms)",               "time_per_output_token_ms"),
+                  trow("ITL (ms)",                "inter_token_latency_ms"),
+                  trow("E2E Latency (s)",          "request_latency", 3),
+                  trow("Output Throughput (tok/s)","output_tokens_per_second"),
+                  trow("Total Throughput (tok/s)", "tokens_per_second"),
+                  trow("RPS (req/s)",              "requests_per_second", 3),
+                  trow("Active Users",             "request_concurrency"),
+                  trow("Avg Input Tokens",         "prompt_token_count"),
+                  trow("Avg Output Tokens",        "output_token_count"),
+              ]):
+                  lines.append(r)
+              lines.append("")
+
+              if prev_m:
+                  lines.append("### 與前次執行比較（%s）\n" % prev_name)
+                  lines.append("> v = 改善（數值下降），^ = 退步（數值上升），- = 持平")
+                  lines.append("")
+                  lines.append("| 指標 | 本次 | 前次 | 變化 |")
+                  lines.append("|:-----|-----:|-----:|:-----|")
+                  for r in filter(None, [
+                      delta_row("TTFT (ms)",               sv(m.get("time_to_first_token_ms")),    sv(prev_m.get("time_to_first_token_ms")),    "ms", True),
+                      delta_row("TPOT (ms)",               sv(m.get("time_per_output_token_ms")),  sv(prev_m.get("time_per_output_token_ms")),  "ms", True),
+                      delta_row("ITL (ms)",                sv(m.get("inter_token_latency_ms")),    sv(prev_m.get("inter_token_latency_ms")),    "ms", True),
+                      delta_row("E2E Latency (s)",         sv(m.get("request_latency")),           sv(prev_m.get("request_latency")),            "s",  True),
+                      delta_row("Output Throughput (t/s)", sv(m.get("output_tokens_per_second")),  sv(prev_m.get("output_tokens_per_second")),  "",   False),
+                      delta_row("RPS (req/s)",             sv(m.get("requests_per_second")),       sv(prev_m.get("requests_per_second")),       "",   False),
+                  ]):
+                      lines.append(r)
+                  lines.append("")
+
           with open(Path(result_dir) / "report.md", "w") as f:
               f.write("\n".join(lines) + "\n")
           print("report.md written")
