@@ -175,6 +175,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}"
 
           # Fetch and switch to benchmark-results branch (create orphan if not exists)
           if git fetch origin benchmark-results:benchmark-results 2>/dev/null; then
