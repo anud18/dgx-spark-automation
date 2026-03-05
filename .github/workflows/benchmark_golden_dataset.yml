@@ -131,21 +131,24 @@ jobs:
           # Determine data column and extra args based on dataset
           case "${{ inputs.dataset }}" in
             "AI-MO/NuminaMath-1.5")
-              DATA_COLUMN="problem"
+              DATA_COLUMN_MAPPER='{"text_column":"problem"}'
               ;;
             "dataset/ShareGPT.json")
-              DATA_COLUMN="text"
+              DATA_COLUMN_MAPPER='{"text_column":"text"}'
               ;;
             "abisee/cnn_dailymail")
-              DATA_COLUMN="article"
+              DATA_COLUMN_MAPPER='{"text_column":"article"}'
               DATA_ARGS='{"name": "3.0.0"}'
               ;;
+            "likaixin/InstructCoder")
+              DATA_COLUMN_MAPPER='{"text_column":"input","prefix_column":"instruction"}'
+              ;;
             *)
-              DATA_COLUMN="code"
+              DATA_COLUMN_MAPPER='{"text_column":"code"}'
               ;;
           esac
 
-          echo "DATA_COLUMN=${DATA_COLUMN}" >> $GITHUB_ENV
+          echo "DATA_COLUMN_MAPPER=${DATA_COLUMN_MAPPER}" >> $GITHUB_ENV
 
           CMD=(guidellm benchmark
             --target "${{ inputs.target_url }}"
@@ -153,7 +156,7 @@ jobs:
             --rate-type "${{ inputs.rate_type }}"
             --rate "${{ inputs.rate }}"
             --max-seconds "${{ inputs.max_seconds }}"
-            --data-column-mapper '{"text_column": "'"${DATA_COLUMN}"'"}'
+            --data-column-mapper "${DATA_COLUMN_MAPPER}"
             --output-dir "${{ inputs.output_path }}"
           )
           if [ -n "${DATA_ARGS:-}" ]; then
@@ -201,7 +204,7 @@ jobs:
               'rate_type': '${{ inputs.rate_type }}',
               'rate': '${{ inputs.rate }}',
               'max_seconds': '${{ inputs.max_seconds }}',
-              'data_column': '${{ env.DATA_COLUMN }}',
+              'data_column_mapper': '${{ env.DATA_COLUMN_MAPPER }}',
               'timestamp': '${TIMESTAMP}',
               'workflow_run_id': '${{ github.run_id }}',
               'workflow_run_url': 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}',
