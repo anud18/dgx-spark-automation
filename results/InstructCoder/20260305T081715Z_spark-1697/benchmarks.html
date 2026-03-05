@@ -1,0 +1,3029 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><title>GuideLLM</title><meta name="description" content="LLM Benchmarking Tool"/><link rel="manifest" href="https://blog.vllm.ai/guidellm/ui/v0.5.0/manifest.json"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="icon" href="https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon.png"/><link rel="apple-touch-icon" href="https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon-192x192.png"/><script>window.runInfo = {
+  "model": {
+    "name": "N/A",
+    "size": 0
+  },
+  "task": "N/A",
+  "timestamp": 1772698027.0233054,
+  "dataset": {
+    "name": "N/A"
+  }
+};
+ window.workloadDetails = {
+  "prompts": {
+    "samples": [
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'system', 'content': 'Implement a function that generates a random password and add comments to explain each step of the process.'}, {'role': 'user', 'content': [{'type': 'text', 'text': 'import random\\nimport string\\n\\ndef generate_password(length):\\n    '''\\n    Generates a random password of the specified length.\\n\\n    Args:\\n        length (int): The desired length of the password.\\n\\n    Returns:\\n        str: A randomly generated password.\\n    '''\\n    # Define the character sets to be used in the password\\n    lowercase_letters = string.ascii_lowercase\\n    uppercase_letters = string.ascii_uppercase\\n    digits = string.digits\\n    special_characters = string.punctuation\\n\\n    # Combine the character sets into a single set\\n    all_characters = lowercase_letters + uppercase_letters + digits + special_characters\\n\\n    # Generate a password by selecting characters at random from the combined set\\n    password = \\'\\'.join(random.choice(all_characters) for i in range(length))\\n\\n    return password\\n\\n# Example usage\\npassword = generate_password(12)\\nprint(password)'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'system', 'content': 'Add a feature to the 'BankAccount' class that allows users to withdraw funds from their account.'}, {'role': 'user', 'content': [{'type': 'text', 'text': 'class BankAccount:\\n    def __init__(self, account_number, balance):\\n        self.account_number = account_number\\n        self.balance = balance\\n\\n    def deposit(self, amount):\\n        self.balance += amount\\n        print(f'Deposited {amount}. New balance is {self.balance}.')\\n\\naccount = BankAccount('123456789', 1000)\\naccount.deposit(500)'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'system', 'content': 'Develop a method 'add_subtitles' that adds subtitles to videos for hearing-impaired users.'}, {'role': 'user', 'content': [{'type': 'text', 'text': 'import cv2\\n\\ndef add_subtitles(video_file, subtitle_file):\\n    pass\\n\\nvideo_file = 'example.mp4'\\nsubtitle_file = 'example.srt'\\nadd_subtitles(video_file, subtitle_file)'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'system', 'content': 'Implement a strategy for logging and reporting errors to stakeholders, such as sending email notifications or creating tickets in a bug tracking system.'}, {'role': 'user', 'content': [{'type': 'text', 'text': 'import logging\\n\\ndef process_order(order):\\n    # Process the order\\n    pass\\n\\norder = {'id': 123, 'items': ['item1', 'item2'], 'total': 50.0}\\n\\ntry:\\n    process_order(order)\\nexcept Exception as e:\\n    logging.error(str(e))'}]}]}, 'files': None}",
+      "{'method': None, 'stream': True, 'headers': None, 'params': None, 'body': {'model': 'Qwen/Qwen3-4B-Instruct-2507-FP8', 'stream': True, 'stream_options': {'include_usage': True, 'continuous_usage_stats': True}, 'messages': [{'role': 'system', 'content': 'Add check for has_more_pages() to check if there are more pages.'}, {'role': 'user', 'content': [{'type': 'text', 'text': 'from typing import List\\n\\nclass Paginator:\\n    def __init__(self, text: str, page_length: int):\\n        self.text = text\\n        self.page_length = page_length\\n        self.pages = self.paginate()\\n\\n    def paginate(self) -> List[str]:\\n        pages = []\\n        words = self.text.split()\\n        current_page = ''\\n        for word in words:\\n            if len(current_page + ' ' + word) > self.page_length:\\n                pages.append(current_page.strip())\\n                current_page = ''\\n            current_page += f'{word} '\\n        if current_page:\\n            pages.append(current_page.strip())\\n        return pages\\n\\n    def has_more_pages(self) -> bool:\\n        return len(self.pages) > 1\\n\\ntext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna vel bibendum lacinia, velit sapien ultrices nunc, nec malesuada augue ex auctor nibh. Donec eget enim ut mauris tincidunt aliquet. Nullam quis risus ac quam vestibulum dignissim. Fusce id felis non magna dictum efficitur. Praesent vitae tellus at odio blandit commodo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam erat volutpat. Vivamus sed justo vel nulla lobortis facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel semper nisi.'\\n\\npaginator = Paginator(text, 50)\\nprint(paginator.has_more_pages())'}]}]}, 'files': None}"
+    ],
+    "tokenDistributions": {
+      "statistics": {
+        "mean": 139.95238095238096,
+        "median": 127.0,
+        "mode": 89.0,
+        "variance": 3614.902494331066,
+        "min": 39.0,
+        "max": 454.0,
+        "count": 609,
+        "percentiles": {
+          "p001": 39.0,
+          "p01": 51.0,
+          "p05": 67.0,
+          "p10": 79.0,
+          "p25": 98.0,
+          "p50": 127.0,
+          "p75": 168.0,
+          "p90": 218.0,
+          "p95": 258.0,
+          "p99": 350.0,
+          "p999": 454.0
+        },
+        "pdf": null,
+        "stdDev": 60.124059197055765,
+        "totalSum": 85231.0
+      },
+      "buckets": [
+        {
+          "value": 39.0,
+          "count": 1
+        },
+        {
+          "value": 40.0,
+          "count": 1
+        },
+        {
+          "value": 42.0,
+          "count": 1
+        },
+        {
+          "value": 46.0,
+          "count": 1
+        },
+        {
+          "value": 47.0,
+          "count": 1
+        },
+        {
+          "value": 50.0,
+          "count": 1
+        },
+        {
+          "value": 51.0,
+          "count": 2
+        },
+        {
+          "value": 52.0,
+          "count": 2
+        },
+        {
+          "value": 53.0,
+          "count": 2
+        },
+        {
+          "value": 55.0,
+          "count": 1
+        },
+        {
+          "value": 56.0,
+          "count": 5
+        },
+        {
+          "value": 58.0,
+          "count": 1
+        },
+        {
+          "value": 59.0,
+          "count": 1
+        },
+        {
+          "value": 60.0,
+          "count": 1
+        },
+        {
+          "value": 62.0,
+          "count": 1
+        },
+        {
+          "value": 63.0,
+          "count": 3
+        },
+        {
+          "value": 65.0,
+          "count": 1
+        },
+        {
+          "value": 66.0,
+          "count": 4
+        },
+        {
+          "value": 67.0,
+          "count": 1
+        },
+        {
+          "value": 68.0,
+          "count": 1
+        },
+        {
+          "value": 69.0,
+          "count": 1
+        },
+        {
+          "value": 70.0,
+          "count": 2
+        },
+        {
+          "value": 71.0,
+          "count": 1
+        },
+        {
+          "value": 72.0,
+          "count": 5
+        },
+        {
+          "value": 73.0,
+          "count": 4
+        },
+        {
+          "value": 74.0,
+          "count": 2
+        },
+        {
+          "value": 75.0,
+          "count": 1
+        },
+        {
+          "value": 76.0,
+          "count": 2
+        },
+        {
+          "value": 77.0,
+          "count": 5
+        },
+        {
+          "value": 78.0,
+          "count": 5
+        },
+        {
+          "value": 79.0,
+          "count": 3
+        },
+        {
+          "value": 80.0,
+          "count": 2
+        },
+        {
+          "value": 81.0,
+          "count": 4
+        },
+        {
+          "value": 82.0,
+          "count": 2
+        },
+        {
+          "value": 83.0,
+          "count": 5
+        },
+        {
+          "value": 84.0,
+          "count": 7
+        },
+        {
+          "value": 85.0,
+          "count": 3
+        },
+        {
+          "value": 86.0,
+          "count": 5
+        },
+        {
+          "value": 87.0,
+          "count": 5
+        },
+        {
+          "value": 88.0,
+          "count": 4
+        },
+        {
+          "value": 89.0,
+          "count": 10
+        },
+        {
+          "value": 90.0,
+          "count": 6
+        },
+        {
+          "value": 91.0,
+          "count": 6
+        },
+        {
+          "value": 92.0,
+          "count": 3
+        },
+        {
+          "value": 93.0,
+          "count": 7
+        },
+        {
+          "value": 94.0,
+          "count": 4
+        },
+        {
+          "value": 95.0,
+          "count": 4
+        },
+        {
+          "value": 96.0,
+          "count": 6
+        },
+        {
+          "value": 97.0,
+          "count": 6
+        },
+        {
+          "value": 98.0,
+          "count": 5
+        },
+        {
+          "value": 99.0,
+          "count": 5
+        },
+        {
+          "value": 100.0,
+          "count": 8
+        },
+        {
+          "value": 101.0,
+          "count": 5
+        },
+        {
+          "value": 102.0,
+          "count": 5
+        },
+        {
+          "value": 103.0,
+          "count": 10
+        },
+        {
+          "value": 104.0,
+          "count": 4
+        },
+        {
+          "value": 105.0,
+          "count": 1
+        },
+        {
+          "value": 106.0,
+          "count": 2
+        },
+        {
+          "value": 107.0,
+          "count": 3
+        },
+        {
+          "value": 108.0,
+          "count": 2
+        },
+        {
+          "value": 109.0,
+          "count": 3
+        },
+        {
+          "value": 110.0,
+          "count": 5
+        },
+        {
+          "value": 111.0,
+          "count": 4
+        },
+        {
+          "value": 112.0,
+          "count": 5
+        },
+        {
+          "value": 113.0,
+          "count": 6
+        },
+        {
+          "value": 114.0,
+          "count": 5
+        },
+        {
+          "value": 115.0,
+          "count": 4
+        },
+        {
+          "value": 116.0,
+          "count": 7
+        },
+        {
+          "value": 117.0,
+          "count": 5
+        },
+        {
+          "value": 118.0,
+          "count": 6
+        },
+        {
+          "value": 119.0,
+          "count": 10
+        },
+        {
+          "value": 120.0,
+          "count": 9
+        },
+        {
+          "value": 121.0,
+          "count": 8
+        },
+        {
+          "value": 122.0,
+          "count": 5
+        },
+        {
+          "value": 123.0,
+          "count": 5
+        },
+        {
+          "value": 124.0,
+          "count": 4
+        },
+        {
+          "value": 125.0,
+          "count": 8
+        },
+        {
+          "value": 126.0,
+          "count": 2
+        },
+        {
+          "value": 127.0,
+          "count": 6
+        },
+        {
+          "value": 128.0,
+          "count": 4
+        },
+        {
+          "value": 129.0,
+          "count": 7
+        },
+        {
+          "value": 130.0,
+          "count": 3
+        },
+        {
+          "value": 131.0,
+          "count": 1
+        },
+        {
+          "value": 132.0,
+          "count": 5
+        },
+        {
+          "value": 133.0,
+          "count": 6
+        },
+        {
+          "value": 134.0,
+          "count": 4
+        },
+        {
+          "value": 135.0,
+          "count": 5
+        },
+        {
+          "value": 136.0,
+          "count": 5
+        },
+        {
+          "value": 137.0,
+          "count": 3
+        },
+        {
+          "value": 138.0,
+          "count": 6
+        },
+        {
+          "value": 139.0,
+          "count": 4
+        },
+        {
+          "value": 140.0,
+          "count": 3
+        },
+        {
+          "value": 141.0,
+          "count": 3
+        },
+        {
+          "value": 142.0,
+          "count": 1
+        },
+        {
+          "value": 143.0,
+          "count": 5
+        },
+        {
+          "value": 144.0,
+          "count": 2
+        },
+        {
+          "value": 145.0,
+          "count": 3
+        },
+        {
+          "value": 146.0,
+          "count": 3
+        },
+        {
+          "value": 147.0,
+          "count": 5
+        },
+        {
+          "value": 148.0,
+          "count": 2
+        },
+        {
+          "value": 149.0,
+          "count": 4
+        },
+        {
+          "value": 150.0,
+          "count": 5
+        },
+        {
+          "value": 151.0,
+          "count": 5
+        },
+        {
+          "value": 152.0,
+          "count": 4
+        },
+        {
+          "value": 153.0,
+          "count": 3
+        },
+        {
+          "value": 154.0,
+          "count": 5
+        },
+        {
+          "value": 155.0,
+          "count": 10
+        },
+        {
+          "value": 156.0,
+          "count": 3
+        },
+        {
+          "value": 157.0,
+          "count": 1
+        },
+        {
+          "value": 159.0,
+          "count": 1
+        },
+        {
+          "value": 160.0,
+          "count": 3
+        },
+        {
+          "value": 161.0,
+          "count": 4
+        },
+        {
+          "value": 162.0,
+          "count": 4
+        },
+        {
+          "value": 163.0,
+          "count": 3
+        },
+        {
+          "value": 164.0,
+          "count": 3
+        },
+        {
+          "value": 166.0,
+          "count": 2
+        },
+        {
+          "value": 167.0,
+          "count": 6
+        },
+        {
+          "value": 168.0,
+          "count": 5
+        },
+        {
+          "value": 169.0,
+          "count": 2
+        },
+        {
+          "value": 170.0,
+          "count": 5
+        },
+        {
+          "value": 171.0,
+          "count": 2
+        },
+        {
+          "value": 173.0,
+          "count": 1
+        },
+        {
+          "value": 174.0,
+          "count": 2
+        },
+        {
+          "value": 176.0,
+          "count": 4
+        },
+        {
+          "value": 177.0,
+          "count": 4
+        },
+        {
+          "value": 178.0,
+          "count": 3
+        },
+        {
+          "value": 181.0,
+          "count": 4
+        },
+        {
+          "value": 182.0,
+          "count": 2
+        },
+        {
+          "value": 183.0,
+          "count": 2
+        },
+        {
+          "value": 184.0,
+          "count": 1
+        },
+        {
+          "value": 185.0,
+          "count": 1
+        },
+        {
+          "value": 186.0,
+          "count": 3
+        },
+        {
+          "value": 187.0,
+          "count": 3
+        },
+        {
+          "value": 188.0,
+          "count": 1
+        },
+        {
+          "value": 189.0,
+          "count": 2
+        },
+        {
+          "value": 190.0,
+          "count": 2
+        },
+        {
+          "value": 191.0,
+          "count": 6
+        },
+        {
+          "value": 193.0,
+          "count": 7
+        },
+        {
+          "value": 194.0,
+          "count": 3
+        },
+        {
+          "value": 195.0,
+          "count": 2
+        },
+        {
+          "value": 196.0,
+          "count": 2
+        },
+        {
+          "value": 197.0,
+          "count": 5
+        },
+        {
+          "value": 198.0,
+          "count": 1
+        },
+        {
+          "value": 200.0,
+          "count": 3
+        },
+        {
+          "value": 201.0,
+          "count": 1
+        },
+        {
+          "value": 202.0,
+          "count": 2
+        },
+        {
+          "value": 204.0,
+          "count": 2
+        },
+        {
+          "value": 207.0,
+          "count": 1
+        },
+        {
+          "value": 208.0,
+          "count": 1
+        },
+        {
+          "value": 210.0,
+          "count": 1
+        },
+        {
+          "value": 211.0,
+          "count": 3
+        },
+        {
+          "value": 212.0,
+          "count": 1
+        },
+        {
+          "value": 217.0,
+          "count": 3
+        },
+        {
+          "value": 218.0,
+          "count": 1
+        },
+        {
+          "value": 219.0,
+          "count": 2
+        },
+        {
+          "value": 222.0,
+          "count": 1
+        },
+        {
+          "value": 223.0,
+          "count": 3
+        },
+        {
+          "value": 225.0,
+          "count": 2
+        },
+        {
+          "value": 227.0,
+          "count": 2
+        },
+        {
+          "value": 229.0,
+          "count": 1
+        },
+        {
+          "value": 231.0,
+          "count": 1
+        },
+        {
+          "value": 232.0,
+          "count": 1
+        },
+        {
+          "value": 233.0,
+          "count": 1
+        },
+        {
+          "value": 234.0,
+          "count": 1
+        },
+        {
+          "value": 235.0,
+          "count": 1
+        },
+        {
+          "value": 236.0,
+          "count": 3
+        },
+        {
+          "value": 238.0,
+          "count": 2
+        },
+        {
+          "value": 240.0,
+          "count": 1
+        },
+        {
+          "value": 241.0,
+          "count": 1
+        },
+        {
+          "value": 242.0,
+          "count": 1
+        },
+        {
+          "value": 244.0,
+          "count": 1
+        },
+        {
+          "value": 246.0,
+          "count": 2
+        },
+        {
+          "value": 248.0,
+          "count": 1
+        },
+        {
+          "value": 252.0,
+          "count": 1
+        },
+        {
+          "value": 258.0,
+          "count": 2
+        },
+        {
+          "value": 260.0,
+          "count": 1
+        },
+        {
+          "value": 261.0,
+          "count": 1
+        },
+        {
+          "value": 266.0,
+          "count": 1
+        },
+        {
+          "value": 270.0,
+          "count": 1
+        },
+        {
+          "value": 273.0,
+          "count": 1
+        },
+        {
+          "value": 274.0,
+          "count": 3
+        },
+        {
+          "value": 276.0,
+          "count": 1
+        },
+        {
+          "value": 277.0,
+          "count": 2
+        },
+        {
+          "value": 278.0,
+          "count": 1
+        },
+        {
+          "value": 279.0,
+          "count": 1
+        },
+        {
+          "value": 289.0,
+          "count": 1
+        },
+        {
+          "value": 296.0,
+          "count": 1
+        },
+        {
+          "value": 302.0,
+          "count": 1
+        },
+        {
+          "value": 305.0,
+          "count": 1
+        },
+        {
+          "value": 306.0,
+          "count": 1
+        },
+        {
+          "value": 307.0,
+          "count": 1
+        },
+        {
+          "value": 326.0,
+          "count": 1
+        },
+        {
+          "value": 328.0,
+          "count": 1
+        },
+        {
+          "value": 350.0,
+          "count": 3
+        },
+        {
+          "value": 352.0,
+          "count": 1
+        },
+        {
+          "value": 370.0,
+          "count": 1
+        },
+        {
+          "value": 389.0,
+          "count": 1
+        },
+        {
+          "value": 451.0,
+          "count": 1
+        },
+        {
+          "value": 454.0,
+          "count": 1
+        }
+      ],
+      "bucketWidth": 1
+    }
+  },
+  "generations": {
+    "samples": [
+      "```python import random import string  def generate_password(length):     '''     Generates a random password of the specified length.      Args:         length (int): The desired length of the password.      Returns:         str: A randomly generated password.     '''     # Define the character sets to be used in the password     lowercase_letters = string.ascii_lowercase  # 'a' to 'z'     uppercase_letters = string.ascii_uppercase  # 'A' to 'Z'     digits = string.digits                     # '0' to '9'     special_characters = string.punctuation   # e.g., !@#$%^&*()      # Combine the character sets into a single set     # This creates a pool of all possible characters that can be used in the password     all_characters = lowercase_letters + uppercase_letters + digits + special_characters      # Generate a password by selecting characters at random from the combined set     # 'random.choice(all_characters)' picks one character at a time     # The generator expression runs 'length' times, creating a string of random characters     password = ''.join(random.choice(all_characters) for i in range(length))      return password  # Example usage password = generate_password(12) print(password) ```  \u2705 **Explanation of Key Steps:**  1. **Importing Modules**:    - `random`: Used to select random characters.    - `string`: Provides predefined strings of characters like lowercase letters, uppercase letters, digits, and punctuation.  2. **Defining Character Sets**:    - `string.ascii_lowercase`: Letters a\u2013z.    - `string.ascii_uppercase`: Letters A\u2013Z.    - `string.digits`: Numbers 0\u20139.    - `string.punctuation`: Special characters like `!@#$%^&*()`.  3. **Combining Character Sets**:    - All possible characters are merged into one string (`all_characters`), so the password generator can pick from a diverse pool.  4. **Generating the Password**:    - A loop (via generator expression) selects `length` random characters from `all_characters`.    - `''.join(...)` combines these selected characters into a single string.  5. **Returning the Password**:    - The generated password is returned as a string.  \ud83d\udca1 **Note**: This version ensures randomness but does **not** guarantee inclusion of at least one character from each category (lowercase, uppercase, digit, special). For stronger password policies, additional logic would be needed to enforce character diversity.",
+      "Here's the updated `BankAccount` class with a `withdraw` method that allows users to withdraw funds from their account:  ```python class BankAccount:     def __init__(self, account_number, balance):         self.account_number = account_number         self.balance = balance      def deposit(self, amount):         self.balance += amount         print(f'Deposited {amount}. New balance is {self.balance}.')      def withdraw(self, amount):         if amount <= 0:             print('Withdrawal amount must be positive.')             return False                  if amount > self.balance:             print('Insufficient funds for this withdrawal.')             return False                  self.balance -= amount         print(f'Withdrew {amount}. New balance is {self.balance}.')         return True  # Example usage account = BankAccount('123456789', 1000) account.deposit(500) account.withdraw(200) account.withdraw(1500)  # This will show insufficient funds ```  **Key features of the `withdraw` method:**  1. **Validation**: Checks if the withdrawal amount is positive 2. **Funds check**: Ensures the amount doesn't exceed the current balance 3. **Error handling**: Provides clear messages for invalid withdrawals 4. **Return value**: Returns `True` on successful withdrawal, `False` otherwise  The method prevents negative balances and invalid transactions, making it a safe and user-friendly addition to the bank account functionality.",
+      "To implement the `add_subtitles` function that adds subtitles to a video for hearing-impaired users, we'll use the `cv2` (OpenCV) library along with `pydub` or `moviepy` for handling audio and subtitle synchronization. However, **OpenCV does not natively support SRT (SubRip Subtitle) files**, so we'll need to:  1. **Parse the SRT file** to extract timecodes and text. 2. **Extract the video frames** using OpenCV. 3. **Overlay subtitles** on each frame at the correct time. 4. **Write the output video** with subtitles.  Since OpenCV does not have built-in support for SRT parsing or subtitle rendering, we'll use **`moviepy`** (which supports SRT) for better subtitle handling and then use OpenCV to render the video frames with subtitles.  > \u26a0\ufe0f **Note**: OpenCV alone cannot parse SRT files or overlay subtitles. We will use `moviepy` for subtitle handling and `cv2` only for video frame processing.  ---  ### \u2705 Full Working Implementation (Using `moviepy`)  ```python import cv2 import numpy as np from moviepy.editor import VideoFileClip, TextClip, CompositeVideoClip from moviepy.video.io.ffmpeg_tools import ffmpeg_write_video import os  def add_subtitles(video_file, subtitle_file, output_file=None):     '''     Adds subtitles to a video using SRT file.          Parameters:         video_file (str): Path to input video file.         subtitle_file (str): Path to SRT subtitle file.         output_file (str, optional): Path to output video with subtitles.                                       If None, uses video_file + '_with_subtitles.mp4'.     '''     # Set output file     if output_file is None:         output_file = video_file.replace('.mp4', '_with_subtitles.mp4')          # Load the video     video_clip = VideoFileClip(video_file)          # Load SRT subtitles     with open(subtitle_file, 'r', encoding='utf-8') as f:         subtitles = f.read().split('\\n\\n')          # Parse subtitles into a list of (start_time, end_time, text)     parsed_subtitles = []     for subtitle in subtitles:         if not subtitle.strip():             continue         lines = subtitle.strip().split('\\n')         if len(lines) < 3:             continue         try:             time_str = lines[0]             text = '\\n'.join(lines[1:])             # Parse time format: '00:00:00,000 --> 00:00:01,000'             start_time, end_time = time_str.split(' --> ')             start_time = start_time.strip()             end_time = end_time.strip()                          # Convert to seconds             def time_to_seconds(t):                 h, m, s = t.split(':')                 s, ms = s.split(',')                 ms = int(ms)                 s = int(s)                 return int(h) * 3600 + int(m) * 60 + s + ms / 1000                          start_sec = time_to_seconds(start_time)             end_sec = time_to_seconds(end_time)                          parsed_subtitles.append((start_sec, end_sec, text))         except Exception as e:             print(f'Error parsing subtitle: {e}')             continue          # Create a list of TextClips for each subtitle     text_clips = []     for start, end, text in parsed_subtitles:         # Create a text clip (white, centered, font size 24)         text_clip_obj = TextClip(             text=text,             font='Arial',             fontsize=24,             color='white',             bg_color='black',             align='center',             method='label'         )         # Set duration of the text clip to match the subtitle duration         text_clip_obj = text_clip_obj.set_duration(end - start)         # Set position to center         text_clip_obj = text_clip_obj.set_position(('center', 'center'))         text_clips.append(text_clip_obj)          # Composite video with subtitles     # We need to ensure subtitles are only shown during their time     # We'll create a composite video where subtitles are overlaid     # This is a simplified approach: we create a new video with subtitles     # and use the original video as base          # Create a composite video with subtitles     # We'll use the original video and overlay subtitles at the right time     final_clip = video_clip          # Overlay each subtitle clip at the correct time     for text_clip_obj in text_clips:         # Set the start time of the text clip         start_time = text_clip_obj.duration         final_clip = final_clip.subclip(0, final_clip.duration)         # Overlay the text clip         final_clip = CompositeVideoClip([final_clip, text_clip_obj.set_start(text_clip_obj.start)])          # Write the output video     final_clip.write_videofile(         output_file,         codec='libx264',         audio_codec='aac',         fps=video_clip.fps,         threads=4     )          print(f'Subtitles added successfully. Output saved to: {output_file}')  # Example usage if __name__ == '__main__':     video_file = 'example.mp4'     subtitle_file = 'example.srt'     add_subtitles(video_file, subtitle_file) ```  ---  ### \ud83d\udcdd Requirements  Install required packages:  ```bash pip install moviepy opencv-python ```  > Note: `moviepy` handles SRT parsing and subtitle overlay. OpenCV is used only for frame processing if needed (but not required in this version).  ---  ### \ud83d\udcc2 SRT File Format Example (`example.srt`)  ``` 1 00:00:01,000 --> 00:00:03,500 Hello, this is the first subtitle.  2 00:00:04,000 --> 00:00:06,000 This is the second subtitle. ```  ---  ### \u2705 Output  - A new video file with subtitles displayed over the original video. - Subtitles appear at the correct time. - Font is white, centered, on a black background (adjustable).  ---  ### \ud83d\udd27 Notes  - This method **does not use OpenCV directly for subtitle rendering** because it's not supported. `moviepy` is better suited for this. - If you **must use only OpenCV**, you'd need to:   - Parse SRT manually.   - Extract frames.   - Render subtitles on each frame.   - Reassemble the video. - That would be **much more complex** and less reliable.  ---  ### Alternative (OpenCV-only) \u2013 Optional (Advanced)  If you **insist on using only OpenCV**, here's a **basic outline**:  ```python import cv2 import numpy as np from datetime import datetime  def add_subtitles(video_file, subtitle_file, output_file=None):     # Parse SRT     with open(subtitle_file, 'r') as f:         lines = f.read().split('\\n\\n')     subtitles = []     for line in lines:         if not line.strip():             continue         parts = line.split('\\n')         if len(parts) < 3:             continue         time_str = parts[0]         text = '\\n'.join(parts[1:])         start, end = time_str.split(' --> ')         start_sec = sum(int(x)*60**i for i, x in enumerate(reversed(start.split(':')))) + int(start.split(':')[-1].split(',')[0]) / 1000         end_sec = sum(int(x)*60**i for i, x in enumerate(reversed(end.split(':')))) + int(end.split(':')[-1].split(',')[0]) / 1000         subtitles.append((start_sec, end_sec, text))          # Read video     cap = cv2.VideoCapture(video_file)     fps = cap.get(cv2.CAP_PROP_FPS)     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))          # Output video     fourcc = cv2.VideoWriter_fourcc(*'mp4v')     out = cv2.VideoWriter(output_file, fourcc, fps, (width, height))          frame_count = 0     while True:         ret, frame = cap.read()         if not ret:             break                  # Check if current frame should show subtitle         current_time = frame_count / fps         show_subtitle = False         for start, end, text in subtitles:             if start <= current_time <= end:                 show_subtitle = True                 break                  if show_subtitle:             # Add subtitle text             h, w = frame.shape[:2]             text_y = int(0.1 * h)             text_x = int(0.5 * w)             cv2.putText(                 frame,                 text,                 (text_x, text_y),                 cv2.FONT_HERSHEY_SIMPLEX,                 1.0,                 (255, 255, 255),                 2,                 cv2.LINE_AA             )                  out.write(frame)         frame_count += 1          cap.release()     out.release()     print(f'Subtitles added to {output_file}') ```  > \u26a0\ufe0f This version is **simpler**, but: > - Subtitles are **not perfectly timed** due to frame sync. > - No background or styling. > - Only one subtitle at a time.  ---  ### \u2705 Recommendation  \u2705 Use the **`moviepy` version** for better subtitle handling, timing, and visual quality.  Let me know if you'd like the **OpenCV-only version** with better timing or styling!",
+      "You're off to a great start by using `logging` to capture errors in your `process_order` function. However, to **effectively notify stakeholders** (like support teams, developers, or operations) when an error occurs, you should go beyond just logging to a file \u2014 you need to **alert them** via email, create tickets in a bug tracking system (like Jira or Bugzilla), or send notifications via Slack, etc.  Below is an **enhanced version** of your code that:  1. Logs the error with detailed context. 2. Sends an email notification to stakeholders. 3. Creates a ticket in a mock bug tracking system (e.g., Jira-style). 4. Uses structured logging for better traceability.  ---  ### \u2705 Enhanced Code with Error Reporting & Stakeholder Notifications  ```python import logging import smtplib from email.mime.text import MIMEText from email.mime.multipart import MIMEMultipart import json import datetime import requests  # Configure logging logging.basicConfig(     level=logging.ERROR,     format='%(asctime)s [%(levelname)s] %(message)s',     handlers=[         logging.FileHandler('app.log', encoding='utf-8'),         logging.StreamHandler()  # Also prints to console     ] )  # Email configuration EMAIL_CONFIG = {     'sender': 'alerts@yourcompany.com',     'password': 'your-app-password',     'recipients': ['dev-team@yourcompany.com', 'support@yourcompany.com'],     'smtp_server': 'smtp.gmail.com',     'smtp_port': 587 }  # Jira API configuration (mock) JIRA_CONFIG = {     'url': 'https://yourcompany.atlassian.net/rest/api/2',     'api_token': 'your-jira-api-token',     'project_key': 'ORD' }  # Mock function to create a Jira ticket def create_jira_ticket(error_message, order_data):     try:         headers = {             'Content-Type': 'application/json',             'Authorization': f'Bearer {JIRA_CONFIG['api_token']}'         }         payload = {             'fields': {                 'project': {'key': JIRA_CONFIG['project_key']},                 'summary': f'Order Processing Error - Order ID: {order_data.get('id')}',                 'description': f'Error: {error_message}\\n\\nOrder Details: {json.dumps(order_data, indent=2)}',                 'issuetype': {'name': 'Bug'}             }         }         response = requests.post(             f'{JIRA_CONFIG['url']}/issue',             headers=headers,             json=payload         )         if response.status_code == 201:             logging.info('Jira ticket created successfully.')             return response.json().get('key')         else:             logging.error(f'Failed to create Jira ticket: {response.status_code} - {response.text}')             return None     except Exception as e:         logging.error(f'Error creating Jira ticket: {str(e)}')         return None  # Function to send email notification def send_email_alert(error_message, order_data):     try:         msg = MIMEMultipart()         msg['From'] = EMAIL_CONFIG['sender']         msg['To'] = ', '.join(EMAIL_CONFIG['recipients'])         msg['Subject'] = f'\ud83d\udea8 Order Processing Error - Order ID: {order_data.get('id')}'          body = f'''         <h2>Order Processing Error</h2>         <p><strong>Order ID:</strong> {order_data.get('id')}</p>         <p><strong>Items:</strong> {', '.join(order_data.get('items', []))}</p>         <p><strong>Total:</strong> ${order_data.get('total')}</p>         <hr>         <h3>Error Details:</h3>         <pre>{error_message}</pre>         <p><em>Timestamp: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</em></p>         '''         msg.attach(MIMEText(body, 'html'))          server = smtplib.SMTP(EMAIL_CONFIG['smtp_server'], EMAIL_CONFIG['smtp_port'])         server.starttls()         server.login(EMAIL_CONFIG['sender'], EMAIL_CONFIG['password'])         text = msg.as_string()         server.sendmail(EMAIL_CONFIG['sender'], EMAIL_CONFIG['recipients'], text)         server.quit()          logging.info('Email alert sent successfully.')     except Exception as e:         logging.error(f'Failed to send email alert: {str(e)}')  # Process order function def process_order(order):     try:         # Simulate some processing         if order.get('total') <= 0:             raise ValueError('Order total must be greater than zero.')                  # Simulate processing logic         print(f'Processing order {order['id']} with total ${order['total']}')         # Simulate a failure         if order['items'][0] == 'item1':             raise Exception('Failed to process item1: inventory unavailable')                  return {'status': 'success', 'order_id': order['id']}          except Exception as e:         # Log the error with context         error_msg = f'Error processing order {order.get('id')}: {str(e)}'         logging.error(error_msg)          # Notify stakeholders         send_email_alert(error_msg, order)         jira_ticket = create_jira_ticket(error_msg, order)         if jira_ticket:             logging.info(f'Jira ticket created: {jira_ticket}')                  # Re-raise or handle as needed         raise  # Let the caller handle it  # Main execution if __name__ == '__main__':     order = {         'id': 123,         'items': ['item1', 'item2'],         'total': 50.0     }      try:         process_order(order)     except Exception as e:         logging.error(f'Unhandled exception in main: {str(e)}') ```  ---  ### \u2705 What This Does  | Feature | Description | |--------|-------------| | **Structured Logging** | Logs include order ID, items, total, and error message. | | **Email Alert** | Sends a formatted HTML email to stakeholders with full context. | | **Jira Ticket Creation** | Automatically creates a bug ticket with summary, description, and order data. | | **Error Context** | Includes full order details and timestamp for debugging. | | **Fallback** | If email or Jira fails, logs the failure without breaking the app. |  ---  ### \ud83d\udd10 Security Notes  - Never hardcode credentials in production. Use environment variables:   ```python   import os   EMAIL_CONFIG['password'] = os.getenv('EMAIL_PASSWORD')   JIRA_CONFIG['api_token'] = os.getenv('JIRA_API_TOKEN')   ```  - Use secure email providers (like Gmail, Outlook, AWS SES) with app passwords or OAuth.  ---  ### \ud83d\ude80 Optional Add-ons  - Integrate with **Slack** via webhooks. - Use **Sentry** or **Datadog** for real-time error monitoring. - Add **retry logic** or **alert thresholds**.  ---  Let me know if you'd like: - A version using **Sentry** instead of email/Jira. - A **Slack notification** version. - Integration with **AWS SNS** or **Azure Logic Apps**.  Happy coding! \ud83d\ude80",
+      "Your code is already correctly implementing the `has_more_pages()` method to check if there is more than one page. Let's verify that it works as expected and then provide a clean, complete version with a brief explanation.  ### \u2705 Your Current Code \u2014 Already Correct!  ```python from typing import List  class Paginator:     def __init__(self, text: str, page_length: int):         self.text = text         self.page_length = page_length         self.pages = self.paginate()      def paginate(self) -> List[str]:         pages = []         words = self.text.split()         current_page = ''         for word in words:             if len(current_page + ' ' + word) > self.page_length:                 pages.append(current_page.strip())                 current_page = ''             current_page += f'{word} '         if current_page:             pages.append(current_page.strip())         return pages      def has_more_pages(self) -> bool:         return len(self.pages) > 1  # Example usage text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna vel bibendum lacinia, velit sapien ultrices nunc, nec malesuada augue ex auctor nibh. Donec eget enim ut mauris tincidunt aliquet. Nullam quis risus ac quam vestibulum dignissim. Fusce id felis non magna dictum efficitur. Praesent vitae tellus at odio blandit commodo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam erat volutpat. Vivamus sed justo vel nulla lobortis facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel semper nisi.'  paginator = Paginator(text, 50) print(paginator.has_more_pages())  # Output: True (since text exceeds 50 chars) ```  ---  ### \u2705 Output: ``` True ```  This is correct because the input text is long enough to span multiple pages when split into chunks of 50 characters.  ---  ### \ud83d\udd0d Why it works: - The `paginate()` method splits the text into pages based on word length and page limit. - `has_more_pages()` returns `True` if there's more than one page (`len(self.pages) > 1`).  ---  ### \u2705 Suggestion (Optional Improvement): You might want to add a docstring for clarity:  ```python def has_more_pages(self) -> bool:     '''     Returns True if there are more than one page of content.     '''     return len(self.pages) > 1 ```  ---  ### \u2705 Final Answer: Yes, your `has_more_pages()` method is correctly implemented and will return `True` when there are multiple pages. The code as written is **correct and functional**.  \u2705 **Answer: Yes, the `has_more_pages()` method is properly implemented and works as intended.**"
+    ],
+    "tokenDistributions": {
+      "statistics": {
+        "mean": 675.5320197044334,
+        "median": 625.0,
+        "mode": 307.0,
+        "variance": 161901.36227523113,
+        "min": 14.0,
+        "max": 2935.0,
+        "count": 609,
+        "percentiles": {
+          "p001": 14.0,
+          "p01": 58.0,
+          "p05": 134.0,
+          "p10": 211.0,
+          "p25": 370.0,
+          "p50": 625.0,
+          "p75": 912.0,
+          "p90": 1195.0,
+          "p95": 1395.0,
+          "p99": 1784.0,
+          "p999": 2935.0
+        },
+        "pdf": null,
+        "stdDev": 402.3696835936216,
+        "totalSum": 411398.99999999994
+      },
+      "buckets": [
+        {
+          "value": 14.0,
+          "count": 1
+        },
+        {
+          "value": 41.0,
+          "count": 1
+        },
+        {
+          "value": 42.0,
+          "count": 1
+        },
+        {
+          "value": 49.0,
+          "count": 1
+        },
+        {
+          "value": 53.0,
+          "count": 1
+        },
+        {
+          "value": 54.0,
+          "count": 1
+        },
+        {
+          "value": 58.0,
+          "count": 2
+        },
+        {
+          "value": 63.0,
+          "count": 1
+        },
+        {
+          "value": 65.0,
+          "count": 1
+        },
+        {
+          "value": 68.0,
+          "count": 1
+        },
+        {
+          "value": 71.0,
+          "count": 1
+        },
+        {
+          "value": 72.0,
+          "count": 1
+        },
+        {
+          "value": 73.0,
+          "count": 1
+        },
+        {
+          "value": 74.0,
+          "count": 2
+        },
+        {
+          "value": 79.0,
+          "count": 1
+        },
+        {
+          "value": 87.0,
+          "count": 1
+        },
+        {
+          "value": 89.0,
+          "count": 1
+        },
+        {
+          "value": 91.0,
+          "count": 1
+        },
+        {
+          "value": 109.0,
+          "count": 1
+        },
+        {
+          "value": 111.0,
+          "count": 1
+        },
+        {
+          "value": 112.0,
+          "count": 1
+        },
+        {
+          "value": 113.0,
+          "count": 2
+        },
+        {
+          "value": 114.0,
+          "count": 1
+        },
+        {
+          "value": 126.0,
+          "count": 1
+        },
+        {
+          "value": 127.0,
+          "count": 2
+        },
+        {
+          "value": 131.0,
+          "count": 1
+        },
+        {
+          "value": 134.0,
+          "count": 1
+        },
+        {
+          "value": 141.0,
+          "count": 1
+        },
+        {
+          "value": 145.0,
+          "count": 1
+        },
+        {
+          "value": 150.0,
+          "count": 1
+        },
+        {
+          "value": 153.0,
+          "count": 2
+        },
+        {
+          "value": 155.0,
+          "count": 1
+        },
+        {
+          "value": 166.0,
+          "count": 1
+        },
+        {
+          "value": 168.0,
+          "count": 1
+        },
+        {
+          "value": 172.0,
+          "count": 1
+        },
+        {
+          "value": 174.0,
+          "count": 2
+        },
+        {
+          "value": 175.0,
+          "count": 1
+        },
+        {
+          "value": 178.0,
+          "count": 3
+        },
+        {
+          "value": 186.0,
+          "count": 1
+        },
+        {
+          "value": 188.0,
+          "count": 1
+        },
+        {
+          "value": 189.0,
+          "count": 1
+        },
+        {
+          "value": 190.0,
+          "count": 1
+        },
+        {
+          "value": 191.0,
+          "count": 2
+        },
+        {
+          "value": 193.0,
+          "count": 1
+        },
+        {
+          "value": 195.0,
+          "count": 2
+        },
+        {
+          "value": 197.0,
+          "count": 1
+        },
+        {
+          "value": 200.0,
+          "count": 1
+        },
+        {
+          "value": 201.0,
+          "count": 1
+        },
+        {
+          "value": 202.0,
+          "count": 1
+        },
+        {
+          "value": 203.0,
+          "count": 1
+        },
+        {
+          "value": 211.0,
+          "count": 1
+        },
+        {
+          "value": 215.0,
+          "count": 1
+        },
+        {
+          "value": 216.0,
+          "count": 3
+        },
+        {
+          "value": 217.0,
+          "count": 2
+        },
+        {
+          "value": 220.0,
+          "count": 1
+        },
+        {
+          "value": 221.0,
+          "count": 1
+        },
+        {
+          "value": 222.0,
+          "count": 3
+        },
+        {
+          "value": 223.0,
+          "count": 1
+        },
+        {
+          "value": 224.0,
+          "count": 1
+        },
+        {
+          "value": 227.0,
+          "count": 1
+        },
+        {
+          "value": 228.0,
+          "count": 1
+        },
+        {
+          "value": 231.0,
+          "count": 1
+        },
+        {
+          "value": 233.0,
+          "count": 1
+        },
+        {
+          "value": 237.0,
+          "count": 1
+        },
+        {
+          "value": 238.0,
+          "count": 1
+        },
+        {
+          "value": 239.0,
+          "count": 1
+        },
+        {
+          "value": 241.0,
+          "count": 1
+        },
+        {
+          "value": 242.0,
+          "count": 1
+        },
+        {
+          "value": 245.0,
+          "count": 1
+        },
+        {
+          "value": 246.0,
+          "count": 1
+        },
+        {
+          "value": 247.0,
+          "count": 1
+        },
+        {
+          "value": 248.0,
+          "count": 1
+        },
+        {
+          "value": 249.0,
+          "count": 1
+        },
+        {
+          "value": 250.0,
+          "count": 1
+        },
+        {
+          "value": 251.0,
+          "count": 1
+        },
+        {
+          "value": 255.0,
+          "count": 1
+        },
+        {
+          "value": 260.0,
+          "count": 1
+        },
+        {
+          "value": 261.0,
+          "count": 1
+        },
+        {
+          "value": 262.0,
+          "count": 2
+        },
+        {
+          "value": 263.0,
+          "count": 1
+        },
+        {
+          "value": 266.0,
+          "count": 1
+        },
+        {
+          "value": 270.0,
+          "count": 1
+        },
+        {
+          "value": 271.0,
+          "count": 1
+        },
+        {
+          "value": 276.0,
+          "count": 1
+        },
+        {
+          "value": 279.0,
+          "count": 1
+        },
+        {
+          "value": 280.0,
+          "count": 1
+        },
+        {
+          "value": 282.0,
+          "count": 2
+        },
+        {
+          "value": 289.0,
+          "count": 1
+        },
+        {
+          "value": 290.0,
+          "count": 1
+        },
+        {
+          "value": 296.0,
+          "count": 2
+        },
+        {
+          "value": 298.0,
+          "count": 1
+        },
+        {
+          "value": 300.0,
+          "count": 1
+        },
+        {
+          "value": 306.0,
+          "count": 1
+        },
+        {
+          "value": 307.0,
+          "count": 4
+        },
+        {
+          "value": 308.0,
+          "count": 1
+        },
+        {
+          "value": 310.0,
+          "count": 1
+        },
+        {
+          "value": 318.0,
+          "count": 1
+        },
+        {
+          "value": 320.0,
+          "count": 2
+        },
+        {
+          "value": 323.0,
+          "count": 1
+        },
+        {
+          "value": 324.0,
+          "count": 2
+        },
+        {
+          "value": 325.0,
+          "count": 1
+        },
+        {
+          "value": 326.0,
+          "count": 1
+        },
+        {
+          "value": 331.0,
+          "count": 1
+        },
+        {
+          "value": 333.0,
+          "count": 1
+        },
+        {
+          "value": 335.0,
+          "count": 2
+        },
+        {
+          "value": 336.0,
+          "count": 1
+        },
+        {
+          "value": 339.0,
+          "count": 2
+        },
+        {
+          "value": 340.0,
+          "count": 2
+        },
+        {
+          "value": 341.0,
+          "count": 1
+        },
+        {
+          "value": 345.0,
+          "count": 1
+        },
+        {
+          "value": 346.0,
+          "count": 1
+        },
+        {
+          "value": 350.0,
+          "count": 1
+        },
+        {
+          "value": 354.0,
+          "count": 1
+        },
+        {
+          "value": 357.0,
+          "count": 1
+        },
+        {
+          "value": 358.0,
+          "count": 2
+        },
+        {
+          "value": 360.0,
+          "count": 1
+        },
+        {
+          "value": 361.0,
+          "count": 1
+        },
+        {
+          "value": 362.0,
+          "count": 1
+        },
+        {
+          "value": 363.0,
+          "count": 2
+        },
+        {
+          "value": 364.0,
+          "count": 2
+        },
+        {
+          "value": 368.0,
+          "count": 2
+        },
+        {
+          "value": 369.0,
+          "count": 1
+        },
+        {
+          "value": 370.0,
+          "count": 1
+        },
+        {
+          "value": 371.0,
+          "count": 2
+        },
+        {
+          "value": 373.0,
+          "count": 1
+        },
+        {
+          "value": 375.0,
+          "count": 1
+        },
+        {
+          "value": 378.0,
+          "count": 1
+        },
+        {
+          "value": 380.0,
+          "count": 1
+        },
+        {
+          "value": 381.0,
+          "count": 1
+        },
+        {
+          "value": 384.0,
+          "count": 1
+        },
+        {
+          "value": 385.0,
+          "count": 2
+        },
+        {
+          "value": 386.0,
+          "count": 1
+        },
+        {
+          "value": 389.0,
+          "count": 1
+        },
+        {
+          "value": 391.0,
+          "count": 1
+        },
+        {
+          "value": 392.0,
+          "count": 1
+        },
+        {
+          "value": 393.0,
+          "count": 3
+        },
+        {
+          "value": 397.0,
+          "count": 1
+        },
+        {
+          "value": 402.0,
+          "count": 1
+        },
+        {
+          "value": 403.0,
+          "count": 1
+        },
+        {
+          "value": 404.0,
+          "count": 2
+        },
+        {
+          "value": 406.0,
+          "count": 1
+        },
+        {
+          "value": 409.0,
+          "count": 1
+        },
+        {
+          "value": 411.0,
+          "count": 1
+        },
+        {
+          "value": 413.0,
+          "count": 3
+        },
+        {
+          "value": 414.0,
+          "count": 1
+        },
+        {
+          "value": 415.0,
+          "count": 1
+        },
+        {
+          "value": 418.0,
+          "count": 1
+        },
+        {
+          "value": 420.0,
+          "count": 1
+        },
+        {
+          "value": 422.0,
+          "count": 2
+        },
+        {
+          "value": 427.0,
+          "count": 1
+        },
+        {
+          "value": 428.0,
+          "count": 1
+        },
+        {
+          "value": 430.0,
+          "count": 1
+        },
+        {
+          "value": 434.0,
+          "count": 1
+        },
+        {
+          "value": 435.0,
+          "count": 2
+        },
+        {
+          "value": 443.0,
+          "count": 1
+        },
+        {
+          "value": 447.0,
+          "count": 2
+        },
+        {
+          "value": 448.0,
+          "count": 1
+        },
+        {
+          "value": 450.0,
+          "count": 2
+        },
+        {
+          "value": 452.0,
+          "count": 2
+        },
+        {
+          "value": 453.0,
+          "count": 1
+        },
+        {
+          "value": 454.0,
+          "count": 2
+        },
+        {
+          "value": 455.0,
+          "count": 1
+        },
+        {
+          "value": 457.0,
+          "count": 1
+        },
+        {
+          "value": 458.0,
+          "count": 1
+        },
+        {
+          "value": 460.0,
+          "count": 1
+        },
+        {
+          "value": 463.0,
+          "count": 2
+        },
+        {
+          "value": 468.0,
+          "count": 1
+        },
+        {
+          "value": 472.0,
+          "count": 3
+        },
+        {
+          "value": 473.0,
+          "count": 3
+        },
+        {
+          "value": 474.0,
+          "count": 1
+        },
+        {
+          "value": 476.0,
+          "count": 2
+        },
+        {
+          "value": 480.0,
+          "count": 1
+        },
+        {
+          "value": 482.0,
+          "count": 1
+        },
+        {
+          "value": 484.0,
+          "count": 1
+        },
+        {
+          "value": 486.0,
+          "count": 3
+        },
+        {
+          "value": 489.0,
+          "count": 2
+        },
+        {
+          "value": 490.0,
+          "count": 1
+        },
+        {
+          "value": 491.0,
+          "count": 2
+        },
+        {
+          "value": 493.0,
+          "count": 1
+        },
+        {
+          "value": 495.0,
+          "count": 2
+        },
+        {
+          "value": 498.0,
+          "count": 1
+        },
+        {
+          "value": 499.0,
+          "count": 1
+        },
+        {
+          "value": 500.0,
+          "count": 1
+        },
+        {
+          "value": 502.0,
+          "count": 1
+        },
+        {
+          "value": 509.0,
+          "count": 1
+        },
+        {
+          "value": 512.0,
+          "count": 1
+        },
+        {
+          "value": 514.0,
+          "count": 2
+        },
+        {
+          "value": 515.0,
+          "count": 1
+        },
+        {
+          "value": 516.0,
+          "count": 4
+        },
+        {
+          "value": 517.0,
+          "count": 1
+        },
+        {
+          "value": 519.0,
+          "count": 1
+        },
+        {
+          "value": 520.0,
+          "count": 1
+        },
+        {
+          "value": 523.0,
+          "count": 1
+        },
+        {
+          "value": 525.0,
+          "count": 1
+        },
+        {
+          "value": 529.0,
+          "count": 1
+        },
+        {
+          "value": 530.0,
+          "count": 3
+        },
+        {
+          "value": 533.0,
+          "count": 1
+        },
+        {
+          "value": 534.0,
+          "count": 1
+        },
+        {
+          "value": 536.0,
+          "count": 2
+        },
+        {
+          "value": 539.0,
+          "count": 3
+        },
+        {
+          "value": 541.0,
+          "count": 2
+        },
+        {
+          "value": 546.0,
+          "count": 1
+        },
+        {
+          "value": 547.0,
+          "count": 1
+        },
+        {
+          "value": 548.0,
+          "count": 1
+        },
+        {
+          "value": 549.0,
+          "count": 2
+        },
+        {
+          "value": 551.0,
+          "count": 1
+        },
+        {
+          "value": 554.0,
+          "count": 1
+        },
+        {
+          "value": 558.0,
+          "count": 2
+        },
+        {
+          "value": 559.0,
+          "count": 1
+        },
+        {
+          "value": 560.0,
+          "count": 1
+        },
+        {
+          "value": 563.0,
+          "count": 1
+        },
+        {
+          "value": 564.0,
+          "count": 1
+        },
+        {
+          "value": 565.0,
+          "count": 3
+        },
+        {
+          "value": 570.0,
+          "count": 1
+        },
+        {
+          "value": 572.0,
+          "count": 1
+        },
+        {
+          "value": 576.0,
+          "count": 1
+        },
+        {
+          "value": 577.0,
+          "count": 1
+        },
+        {
+          "value": 579.0,
+          "count": 1
+        },
+        {
+          "value": 581.0,
+          "count": 2
+        },
+        {
+          "value": 583.0,
+          "count": 1
+        },
+        {
+          "value": 586.0,
+          "count": 1
+        },
+        {
+          "value": 599.0,
+          "count": 1
+        },
+        {
+          "value": 604.0,
+          "count": 1
+        },
+        {
+          "value": 605.0,
+          "count": 2
+        },
+        {
+          "value": 607.0,
+          "count": 1
+        },
+        {
+          "value": 609.0,
+          "count": 1
+        },
+        {
+          "value": 614.0,
+          "count": 1
+        },
+        {
+          "value": 615.0,
+          "count": 1
+        },
+        {
+          "value": 616.0,
+          "count": 1
+        },
+        {
+          "value": 619.0,
+          "count": 1
+        },
+        {
+          "value": 620.0,
+          "count": 1
+        },
+        {
+          "value": 621.0,
+          "count": 1
+        },
+        {
+          "value": 622.0,
+          "count": 2
+        },
+        {
+          "value": 625.0,
+          "count": 1
+        },
+        {
+          "value": 626.0,
+          "count": 1
+        },
+        {
+          "value": 628.0,
+          "count": 1
+        },
+        {
+          "value": 633.0,
+          "count": 1
+        },
+        {
+          "value": 636.0,
+          "count": 2
+        },
+        {
+          "value": 639.0,
+          "count": 2
+        },
+        {
+          "value": 644.0,
+          "count": 3
+        },
+        {
+          "value": 645.0,
+          "count": 1
+        },
+        {
+          "value": 646.0,
+          "count": 1
+        },
+        {
+          "value": 650.0,
+          "count": 1
+        },
+        {
+          "value": 651.0,
+          "count": 1
+        },
+        {
+          "value": 655.0,
+          "count": 2
+        },
+        {
+          "value": 659.0,
+          "count": 1
+        },
+        {
+          "value": 661.0,
+          "count": 1
+        },
+        {
+          "value": 665.0,
+          "count": 1
+        },
+        {
+          "value": 669.0,
+          "count": 1
+        },
+        {
+          "value": 670.0,
+          "count": 2
+        },
+        {
+          "value": 672.0,
+          "count": 1
+        },
+        {
+          "value": 675.0,
+          "count": 2
+        },
+        {
+          "value": 680.0,
+          "count": 2
+        },
+        {
+          "value": 681.0,
+          "count": 1
+        },
+        {
+          "value": 682.0,
+          "count": 1
+        },
+        {
+          "value": 685.0,
+          "count": 1
+        },
+        {
+          "value": 686.0,
+          "count": 1
+        },
+        {
+          "value": 690.0,
+          "count": 2
+        },
+        {
+          "value": 691.0,
+          "count": 1
+        },
+        {
+          "value": 693.0,
+          "count": 1
+        },
+        {
+          "value": 694.0,
+          "count": 1
+        },
+        {
+          "value": 697.0,
+          "count": 1
+        },
+        {
+          "value": 698.0,
+          "count": 2
+        },
+        {
+          "value": 699.0,
+          "count": 1
+        },
+        {
+          "value": 700.0,
+          "count": 1
+        },
+        {
+          "value": 708.0,
+          "count": 1
+        },
+        {
+          "value": 709.0,
+          "count": 1
+        },
+        {
+          "value": 712.0,
+          "count": 1
+        },
+        {
+          "value": 714.0,
+          "count": 1
+        },
+        {
+          "value": 715.0,
+          "count": 1
+        },
+        {
+          "value": 720.0,
+          "count": 1
+        },
+        {
+          "value": 722.0,
+          "count": 1
+        },
+        {
+          "value": 723.0,
+          "count": 2
+        },
+        {
+          "value": 725.0,
+          "count": 1
+        },
+        {
+          "value": 726.0,
+          "count": 1
+        },
+        {
+          "value": 731.0,
+          "count": 1
+        },
+        {
+          "value": 732.0,
+          "count": 1
+        },
+        {
+          "value": 733.0,
+          "count": 1
+        },
+        {
+          "value": 736.0,
+          "count": 1
+        },
+        {
+          "value": 739.0,
+          "count": 3
+        },
+        {
+          "value": 744.0,
+          "count": 1
+        },
+        {
+          "value": 747.0,
+          "count": 1
+        },
+        {
+          "value": 749.0,
+          "count": 1
+        },
+        {
+          "value": 754.0,
+          "count": 1
+        },
+        {
+          "value": 755.0,
+          "count": 1
+        },
+        {
+          "value": 756.0,
+          "count": 2
+        },
+        {
+          "value": 758.0,
+          "count": 2
+        },
+        {
+          "value": 763.0,
+          "count": 2
+        },
+        {
+          "value": 765.0,
+          "count": 1
+        },
+        {
+          "value": 766.0,
+          "count": 1
+        },
+        {
+          "value": 774.0,
+          "count": 1
+        },
+        {
+          "value": 775.0,
+          "count": 2
+        },
+        {
+          "value": 776.0,
+          "count": 1
+        },
+        {
+          "value": 777.0,
+          "count": 1
+        },
+        {
+          "value": 779.0,
+          "count": 1
+        },
+        {
+          "value": 782.0,
+          "count": 2
+        },
+        {
+          "value": 783.0,
+          "count": 1
+        },
+        {
+          "value": 784.0,
+          "count": 2
+        },
+        {
+          "value": 786.0,
+          "count": 1
+        },
+        {
+          "value": 787.0,
+          "count": 1
+        },
+        {
+          "value": 788.0,
+          "count": 1
+        },
+        {
+          "value": 793.0,
+          "count": 1
+        },
+        {
+          "value": 794.0,
+          "count": 1
+        },
+        {
+          "value": 796.0,
+          "count": 1
+        },
+        {
+          "value": 801.0,
+          "count": 1
+        },
+        {
+          "value": 804.0,
+          "count": 1
+        },
+        {
+          "value": 805.0,
+          "count": 1
+        },
+        {
+          "value": 806.0,
+          "count": 1
+        },
+        {
+          "value": 807.0,
+          "count": 1
+        },
+        {
+          "value": 808.0,
+          "count": 2
+        },
+        {
+          "value": 809.0,
+          "count": 1
+        },
+        {
+          "value": 810.0,
+          "count": 3
+        },
+        {
+          "value": 812.0,
+          "count": 1
+        },
+        {
+          "value": 816.0,
+          "count": 1
+        },
+        {
+          "value": 818.0,
+          "count": 1
+        },
+        {
+          "value": 819.0,
+          "count": 1
+        },
+        {
+          "value": 820.0,
+          "count": 1
+        },
+        {
+          "value": 823.0,
+          "count": 2
+        },
+        {
+          "value": 824.0,
+          "count": 1
+        },
+        {
+          "value": 830.0,
+          "count": 1
+        },
+        {
+          "value": 831.0,
+          "count": 2
+        },
+        {
+          "value": 832.0,
+          "count": 1
+        },
+        {
+          "value": 834.0,
+          "count": 1
+        },
+        {
+          "value": 835.0,
+          "count": 2
+        },
+        {
+          "value": 837.0,
+          "count": 2
+        },
+        {
+          "value": 839.0,
+          "count": 1
+        },
+        {
+          "value": 841.0,
+          "count": 1
+        },
+        {
+          "value": 842.0,
+          "count": 1
+        },
+        {
+          "value": 844.0,
+          "count": 1
+        },
+        {
+          "value": 845.0,
+          "count": 1
+        },
+        {
+          "value": 849.0,
+          "count": 1
+        },
+        {
+          "value": 850.0,
+          "count": 2
+        },
+        {
+          "value": 853.0,
+          "count": 2
+        },
+        {
+          "value": 855.0,
+          "count": 3
+        },
+        {
+          "value": 856.0,
+          "count": 1
+        },
+        {
+          "value": 857.0,
+          "count": 1
+        },
+        {
+          "value": 860.0,
+          "count": 1
+        },
+        {
+          "value": 861.0,
+          "count": 1
+        },
+        {
+          "value": 865.0,
+          "count": 2
+        },
+        {
+          "value": 867.0,
+          "count": 1
+        },
+        {
+          "value": 872.0,
+          "count": 1
+        },
+        {
+          "value": 875.0,
+          "count": 1
+        },
+        {
+          "value": 880.0,
+          "count": 1
+        },
+        {
+          "value": 885.0,
+          "count": 1
+        },
+        {
+          "value": 888.0,
+          "count": 1
+        },
+        {
+          "value": 891.0,
+          "count": 3
+        },
+        {
+          "value": 895.0,
+          "count": 1
+        },
+        {
+          "value": 896.0,
+          "count": 1
+        },
+        {
+          "value": 903.0,
+          "count": 1
+        },
+        {
+          "value": 908.0,
+          "count": 1
+        },
+        {
+          "value": 911.0,
+          "count": 1
+        },
+        {
+          "value": 912.0,
+          "count": 2
+        },
+        {
+          "value": 914.0,
+          "count": 1
+        },
+        {
+          "value": 915.0,
+          "count": 1
+        },
+        {
+          "value": 918.0,
+          "count": 1
+        },
+        {
+          "value": 919.0,
+          "count": 2
+        },
+        {
+          "value": 921.0,
+          "count": 2
+        },
+        {
+          "value": 925.0,
+          "count": 1
+        },
+        {
+          "value": 932.0,
+          "count": 3
+        },
+        {
+          "value": 933.0,
+          "count": 1
+        },
+        {
+          "value": 935.0,
+          "count": 1
+        },
+        {
+          "value": 939.0,
+          "count": 2
+        },
+        {
+          "value": 943.0,
+          "count": 1
+        },
+        {
+          "value": 944.0,
+          "count": 1
+        },
+        {
+          "value": 946.0,
+          "count": 1
+        },
+        {
+          "value": 948.0,
+          "count": 1
+        },
+        {
+          "value": 949.0,
+          "count": 2
+        },
+        {
+          "value": 954.0,
+          "count": 2
+        },
+        {
+          "value": 955.0,
+          "count": 1
+        },
+        {
+          "value": 958.0,
+          "count": 1
+        },
+        {
+          "value": 961.0,
+          "count": 1
+        },
+        {
+          "value": 963.0,
+          "count": 1
+        },
+        {
+          "value": 966.0,
+          "count": 1
+        },
+        {
+          "value": 974.0,
+          "count": 2
+        },
+        {
+          "value": 975.0,
+          "count": 1
+        },
+        {
+          "value": 976.0,
+          "count": 1
+        },
+        {
+          "value": 978.0,
+          "count": 1
+        },
+        {
+          "value": 979.0,
+          "count": 1
+        },
+        {
+          "value": 988.0,
+          "count": 1
+        },
+        {
+          "value": 990.0,
+          "count": 1
+        },
+        {
+          "value": 991.0,
+          "count": 1
+        },
+        {
+          "value": 997.0,
+          "count": 1
+        },
+        {
+          "value": 1003.0,
+          "count": 1
+        },
+        {
+          "value": 1006.0,
+          "count": 1
+        },
+        {
+          "value": 1021.0,
+          "count": 1
+        },
+        {
+          "value": 1022.0,
+          "count": 1
+        },
+        {
+          "value": 1025.0,
+          "count": 1
+        },
+        {
+          "value": 1026.0,
+          "count": 3
+        },
+        {
+          "value": 1028.0,
+          "count": 1
+        },
+        {
+          "value": 1034.0,
+          "count": 1
+        },
+        {
+          "value": 1041.0,
+          "count": 1
+        },
+        {
+          "value": 1044.0,
+          "count": 1
+        },
+        {
+          "value": 1045.0,
+          "count": 1
+        },
+        {
+          "value": 1053.0,
+          "count": 1
+        },
+        {
+          "value": 1059.0,
+          "count": 1
+        },
+        {
+          "value": 1061.0,
+          "count": 1
+        },
+        {
+          "value": 1063.0,
+          "count": 1
+        },
+        {
+          "value": 1065.0,
+          "count": 1
+        },
+        {
+          "value": 1076.0,
+          "count": 1
+        },
+        {
+          "value": 1082.0,
+          "count": 1
+        },
+        {
+          "value": 1084.0,
+          "count": 1
+        },
+        {
+          "value": 1085.0,
+          "count": 1
+        },
+        {
+          "value": 1086.0,
+          "count": 1
+        },
+        {
+          "value": 1087.0,
+          "count": 1
+        },
+        {
+          "value": 1088.0,
+          "count": 1
+        },
+        {
+          "value": 1089.0,
+          "count": 1
+        },
+        {
+          "value": 1092.0,
+          "count": 1
+        },
+        {
+          "value": 1098.0,
+          "count": 1
+        },
+        {
+          "value": 1099.0,
+          "count": 1
+        },
+        {
+          "value": 1101.0,
+          "count": 1
+        },
+        {
+          "value": 1103.0,
+          "count": 1
+        },
+        {
+          "value": 1105.0,
+          "count": 1
+        },
+        {
+          "value": 1110.0,
+          "count": 1
+        },
+        {
+          "value": 1112.0,
+          "count": 1
+        },
+        {
+          "value": 1113.0,
+          "count": 2
+        },
+        {
+          "value": 1115.0,
+          "count": 1
+        },
+        {
+          "value": 1118.0,
+          "count": 1
+        },
+        {
+          "value": 1128.0,
+          "count": 1
+        },
+        {
+          "value": 1130.0,
+          "count": 1
+        },
+        {
+          "value": 1131.0,
+          "count": 2
+        },
+        {
+          "value": 1145.0,
+          "count": 1
+        },
+        {
+          "value": 1150.0,
+          "count": 1
+        },
+        {
+          "value": 1155.0,
+          "count": 1
+        },
+        {
+          "value": 1156.0,
+          "count": 1
+        },
+        {
+          "value": 1161.0,
+          "count": 2
+        },
+        {
+          "value": 1174.0,
+          "count": 1
+        },
+        {
+          "value": 1175.0,
+          "count": 1
+        },
+        {
+          "value": 1177.0,
+          "count": 1
+        },
+        {
+          "value": 1187.0,
+          "count": 1
+        },
+        {
+          "value": 1190.0,
+          "count": 1
+        },
+        {
+          "value": 1195.0,
+          "count": 1
+        },
+        {
+          "value": 1202.0,
+          "count": 1
+        },
+        {
+          "value": 1215.0,
+          "count": 1
+        },
+        {
+          "value": 1223.0,
+          "count": 2
+        },
+        {
+          "value": 1225.0,
+          "count": 1
+        },
+        {
+          "value": 1241.0,
+          "count": 1
+        },
+        {
+          "value": 1244.0,
+          "count": 1
+        },
+        {
+          "value": 1246.0,
+          "count": 2
+        },
+        {
+          "value": 1254.0,
+          "count": 1
+        },
+        {
+          "value": 1262.0,
+          "count": 1
+        },
+        {
+          "value": 1267.0,
+          "count": 1
+        },
+        {
+          "value": 1272.0,
+          "count": 1
+        },
+        {
+          "value": 1275.0,
+          "count": 1
+        },
+        {
+          "value": 1285.0,
+          "count": 1
+        },
+        {
+          "value": 1290.0,
+          "count": 1
+        },
+        {
+          "value": 1295.0,
+          "count": 1
+        },
+        {
+          "value": 1312.0,
+          "count": 1
+        },
+        {
+          "value": 1321.0,
+          "count": 1
+        },
+        {
+          "value": 1333.0,
+          "count": 1
+        },
+        {
+          "value": 1356.0,
+          "count": 1
+        },
+        {
+          "value": 1362.0,
+          "count": 2
+        },
+        {
+          "value": 1363.0,
+          "count": 1
+        },
+        {
+          "value": 1371.0,
+          "count": 1
+        },
+        {
+          "value": 1378.0,
+          "count": 1
+        },
+        {
+          "value": 1380.0,
+          "count": 1
+        },
+        {
+          "value": 1389.0,
+          "count": 1
+        },
+        {
+          "value": 1394.0,
+          "count": 1
+        },
+        {
+          "value": 1395.0,
+          "count": 1
+        },
+        {
+          "value": 1403.0,
+          "count": 1
+        },
+        {
+          "value": 1409.0,
+          "count": 1
+        },
+        {
+          "value": 1413.0,
+          "count": 1
+        },
+        {
+          "value": 1432.0,
+          "count": 1
+        },
+        {
+          "value": 1451.0,
+          "count": 1
+        },
+        {
+          "value": 1456.0,
+          "count": 1
+        },
+        {
+          "value": 1462.0,
+          "count": 1
+        },
+        {
+          "value": 1479.0,
+          "count": 1
+        },
+        {
+          "value": 1488.0,
+          "count": 1
+        },
+        {
+          "value": 1497.0,
+          "count": 2
+        },
+        {
+          "value": 1506.0,
+          "count": 1
+        },
+        {
+          "value": 1533.0,
+          "count": 1
+        },
+        {
+          "value": 1546.0,
+          "count": 1
+        },
+        {
+          "value": 1559.0,
+          "count": 1
+        },
+        {
+          "value": 1574.0,
+          "count": 1
+        },
+        {
+          "value": 1602.0,
+          "count": 1
+        },
+        {
+          "value": 1631.0,
+          "count": 1
+        },
+        {
+          "value": 1636.0,
+          "count": 1
+        },
+        {
+          "value": 1644.0,
+          "count": 1
+        },
+        {
+          "value": 1740.0,
+          "count": 1
+        },
+        {
+          "value": 1748.0,
+          "count": 1
+        },
+        {
+          "value": 1750.0,
+          "count": 1
+        },
+        {
+          "value": 1784.0,
+          "count": 1
+        },
+        {
+          "value": 1810.0,
+          "count": 1
+        },
+        {
+          "value": 1864.0,
+          "count": 1
+        },
+        {
+          "value": 1983.0,
+          "count": 1
+        },
+        {
+          "value": 2135.0,
+          "count": 1
+        },
+        {
+          "value": 2592.0,
+          "count": 1
+        },
+        {
+          "value": 2935.0,
+          "count": 1
+        }
+      ],
+      "bucketWidth": 1
+    }
+  },
+  "server": {
+    "target": "http://localhost:8000"
+  },
+  "requestsOverTime": {
+    "requestsOverTime": {
+      "buckets": [
+        {
+          "value": 0.0,
+          "count": 609
+        }
+      ],
+      "bucketWidth": 584.9506025314331
+    },
+    "numBenchmarks": 1
+  },
+  "rateType": "concurrent"
+};
+ window.benchmarks = [
+  {
+    "itl": {
+      "mean": 44.707902820430874,
+      "median": 45.07685254943935,
+      "mode": 45.6718281165385,
+      "variance": 2.2574789251457625,
+      "min": 34.254999848099445,
+      "max": 47.0448436300739,
+      "count": 410790,
+      "percentiles": {
+        "p001": 35.381691290600465,
+        "p01": 38.481335408291834,
+        "p05": 42.16908461579653,
+        "p10": 43.081543255300026,
+        "p25": 44.15255205758313,
+        "p50": 45.07685254943935,
+        "p75": 45.67242768325646,
+        "p90": 46.0564878536858,
+        "p95": 46.215849315997254,
+        "p99": 46.69357140858968,
+        "p999": 46.99965372477492
+      },
+      "pdf": null,
+      "stdDev": 1.5024909068429542,
+      "totalSum": 18365559.399604797,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 45.07685254943935
+        },
+        {
+          "percentile": "p90",
+          "value": 46.0564878536858
+        },
+        {
+          "percentile": "p95",
+          "value": 46.215849315997254
+        },
+        {
+          "percentile": "p99",
+          "value": 46.69357140858968
+        }
+      ]
+    },
+    "ttft": {
+      "mean": 150.4406705865719,
+      "median": 142.69709587097168,
+      "mode": 132.91120529174805,
+      "variance": 1631.5009566523063,
+      "min": 71.04611396789551,
+      "max": 399.2733955383301,
+      "count": 609,
+      "percentiles": {
+        "p001": 71.04611396789551,
+        "p01": 120.3606128692627,
+        "p05": 132.2321891784668,
+        "p10": 134.23967361450195,
+        "p25": 138.3531093597412,
+        "p50": 142.69709587097168,
+        "p75": 147.3104953765869,
+        "p90": 155.60674667358398,
+        "p95": 185.50872802734375,
+        "p99": 367.2647476196289,
+        "p999": 399.2733955383301
+      },
+      "pdf": null,
+      "stdDev": 40.39184269939051,
+      "totalSum": 91618.36838722229,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 142.69709587097168
+        },
+        {
+          "percentile": "p90",
+          "value": 155.60674667358398
+        },
+        {
+          "percentile": "p95",
+          "value": 185.50872802734375
+        },
+        {
+          "percentile": "p99",
+          "value": 367.2647476196289
+        }
+      ]
+    },
+    "throughput": {
+      "mean": 683.30104991495,
+      "median": 527.9728910902492,
+      "mode": 21.698526461231964,
+      "variance": 325726.75970013434,
+      "min": 21.6984159168968,
+      "max": 73713.6028119508,
+      "count": 411399,
+      "percentiles": {
+        "p001": 21.698526461231964,
+        "p01": 51.02903808178085,
+        "p05": 212.33487567815922,
+        "p10": 261.6993244902073,
+        "p25": 360.0840733847984,
+        "p50": 527.9728910902492,
+        "p75": 811.2015793243203,
+        "p90": 1253.4873241992877,
+        "p95": 1667.3288965017152,
+        "p99": 2938.45883364027,
+        "p999": 5587.32921263257
+      },
+      "pdf": null,
+      "stdDev": 570.7247670288493,
+      "totalSum": 281109368.6339605,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 527.9728910902492
+        },
+        {
+          "percentile": "p90",
+          "value": 1253.4873241992877
+        },
+        {
+          "percentile": "p95",
+          "value": 1667.3288965017152
+        },
+        {
+          "percentile": "p99",
+          "value": 2938.45883364027
+        }
+      ]
+    },
+    "requestsPerSecond": 1.0133333333333334,
+    "timePerRequest": {
+      "mean": 30.353017025588965,
+      "median": 27.853241682052612,
+      "mode": 0.6735134124755859,
+      "variance": 331.6907431706202,
+      "min": 0.6735134124755859,
+      "max": 134.19130682945251,
+      "count": 609,
+      "percentiles": {
+        "p001": 0.6735134124755859,
+        "p01": 2.571383476257324,
+        "p05": 6.15313196182251,
+        "p10": 9.245331048965454,
+        "p25": 16.60103178024292,
+        "p50": 27.853241682052612,
+        "p75": 40.983393907547,
+        "p90": 53.93602776527405,
+        "p95": 63.464698791503906,
+        "p99": 80.17010617256165,
+        "p999": 134.19130682945251
+      },
+      "pdf": null,
+      "stdDev": 18.212378844363528,
+      "totalSum": 18484.98736858368,
+      "percentileRows": [
+        {
+          "percentile": "p50",
+          "value": 27.853241682052612
+        },
+        {
+          "percentile": "p90",
+          "value": 53.93602776527405
+        },
+        {
+          "percentile": "p95",
+          "value": 63.464698791503906
+        },
+        {
+          "percentile": "p99",
+          "value": 80.17010617256165
+        }
+      ]
+    }
+  }
+];
+</script><style data-emotion="mui okvjfn 1sf3xto 1miunce liujld 1ytgrgl 1d1z477 1fa3xlr 1d9l5zu 1v9qozf krfyoj hw9iw8 1ha086w 1jz7ivr 1h2ruwl 7bmlev 1e2dcm1 okvapm pxadv6 1jcswl9 1xmwsk2 1a9nspn 1amffs8 d0uhtl 11ff4y3 lm0mo7 q9hp3s hdzoli 1aine2r 2wz1hu 1ka6afz 1a6ealx 1vamkkl 8atqhb j77svj rbyfcn 1drpjxy 6408au j7qwjs 0 19ldw5v 1lz028s 1ofqig9 1q9b97s isbt42 1s50f5r fkg9yc 15j76c0 1wxaqej pgugi9 mfjk8s zhbgj8 xck77d 1xr92y4 mr86mw 8w58ru">.mui-okvjfn{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto;background:linear-gradient(105deg, black, #0C0E13);padding:32px;}.mui-1sf3xto{padding-top:16px;padding-bottom:16px;}.mui-1miunce{margin:0;color:#000000;font-size:16px;font-weight:500;font-family:Spezia,sans-serif;line-height:20px;color:#2A8EFD;}@media (max-width:600px){.mui-1miunce{font-size:14px;line-height:17px;}}.mui-liujld{margin:0;color:#000000;font-size:32px;font-weight:400;font-family:Spezia,sans-serif;line-height:40px;color:#E1E2E9;margin-top:12px;margin-bottom:12px;}@media (max-width:600px){.mui-liujld{font-size:24px;line-height:30px;}}.mui-1ytgrgl{background-color:#191C20;padding:0 16px;border-radius:8px;}.mui-1d1z477{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;background-color:#191C20;padding:0 16px;border-radius:8px;}.mui-1fa3xlr{overflow:hidden;padding:8px;border-right:1px solid #42464E;padding-left:0px;}.mui-1d9l5zu{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;padding-left:0px;overflow:hidden;padding:8px;border-right:1px solid #42464E;padding-left:0px;}@media (min-width:600px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}@media (min-width:900px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}@media (min-width:1200px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}@media (min-width:1536px){.mui-1d9l5zu{-webkit-flex-basis:41.666667%;-ms-flex-preferred-size:41.666667%;flex-basis:41.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:41.666667%;}}.mui-1v9qozf{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;margin-bottom:8px;}.mui-krfyoj{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;margin-bottom:8px;}.mui-hw9iw8{margin:0;color:#000000;font-size:12px;font-weight:500;font-family:Spezia Mono,sans-serif;line-height:20px;text-transform:uppercase;color:#E1E2E9;}@media (max-width:600px){.mui-hw9iw8{font-size:10px;line-height:12px;}}.mui-1ha086w{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:100%;width:auto;}.mui-1jz7ivr{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:100%;width:auto;}.mui-1h2ruwl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.mui-7bmlev{margin:0;color:#000000;font-size:22px;font-weight:400;font-family:Spezia,sans-serif;line-height:26px;color:#2A8EFD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media (max-width:600px){.mui-7bmlev{font-size:10px;line-height:12px;}}.mui-1e2dcm1{z-index:1500;pointer-events:none;}.mui-okvapm{z-index:1500;pointer-events:none;}.mui-pxadv6{overflow:hidden;padding:8px;padding-right:0px;}.mui-1jcswl9{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;padding-right:0px;overflow:hidden;padding:8px;padding-right:0px;}@media (min-width:600px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}@media (min-width:900px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}@media (min-width:1200px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}@media (min-width:1536px){.mui-1jcswl9{-webkit-flex-basis:16.666667%;-ms-flex-preferred-size:16.666667%;flex-basis:16.666667%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:16.666667%;}}.mui-1xmwsk2{margin:0;color:#000000;font-size:12px;font-weight:400;line-height:15px;font-family:Spezia,sans-serif;letter-spacing:0.25px;color:#2A8EFD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media (max-width:600px){.mui-1xmwsk2{font-size:10px;line-height:12px;}}.mui-1a9nspn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:24px;margin-bottom:24px;}.mui-1amffs8{margin:0;color:#000000;font-size:24px;font-weight:400;font-family:Spezia,sans-serif;line-height:30px;color:#E1E2E9;}@media (max-width:600px){.mui-1amffs8{font-size:20px;line-height:25px;}}.mui-d0uhtl{margin-left:16px;}.mui-11ff4y3 path{fill:#2A8EFD;}.mui-lm0mo7{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;gap:16px;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;margin-left:0px;-webkit-box-flex-wrap:nowrap;-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;}.mui-q9hp3s{border-width:1px;border-style:solid;border-color:#42464E;border-radius:8px;overflow:hidden;background-color:#191C20;}.mui-hdzoli{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;border-width:1px;border-style:solid;border-color:#42464E;border-radius:8px;overflow:hidden;background-color:#191C20;}@media (min-width:600px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}@media (min-width:900px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}@media (min-width:1200px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}@media (min-width:1536px){.mui-hdzoli{-webkit-flex-basis:33.333333%;-ms-flex-preferred-size:33.333333%;flex-basis:33.333333%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:33.333333%;}}.mui-1aine2r{background-color:#1D2024;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#42464E;padding:18px 24px;margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;}.mui-2wz1hu{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;background-color:#1D2024;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#42464E;padding:18px 24px;margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;}@media (min-width:600px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-2wz1hu{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-1ka6afz{margin:0;color:#000000;font-size:14px;font-weight:500;font-family:Spezia Mono,sans-serif;line-height:20px;text-transform:uppercase;color:#E1E2E9;}@media (max-width:600px){.mui-1ka6afz{font-size:10px;line-height:12px;}}.mui-1a6ealx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;height:180px;padding:24px!important;}.mui-1vamkkl{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;height:180px;padding:24px!important;}@media (min-width:600px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-1vamkkl{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-8atqhb{width:100%;}.mui-j77svj{margin:0;color:#000000;font-size:12px;font-weight:500;font-family:Spezia Mono,sans-serif;line-height:20px;text-transform:uppercase;color:#E1E2E9;text-transform:uppercase;}@media (max-width:600px){.mui-j77svj{font-size:10px;line-height:12px;}}.mui-rbyfcn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;min-height:220px;height:180px;border-top-width:1px;border-top-style:solid;border-top-color:#42464E;padding:24px!important;}.mui-1drpjxy{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;min-height:220px;height:180px;border-top-width:1px;border-top-style:solid;border-top-color:#42464E;padding:24px!important;}@media (min-width:600px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-1drpjxy{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-6408au{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;justify-items:center;-webkit-align-items:space-between;-webkit-box-align:space-between;-ms-flex-align:space-between;align-items:space-between;width:100%;}.mui-j7qwjs{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}.mui-19ldw5v{margin-top:8px;margin-bottom:16px;}.mui-1lz028s{margin:0;color:#000000;font-size:32px;font-weight:400;font-family:Spezia,sans-serif;line-height:26px;color:#2A8EFD;}@media (max-width:600px){.mui-1lz028s{font-size:10px;line-height:12px;}}.mui-1ofqig9{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;}.mui-1q9b97s{margin:0;color:#000000;font-size:16px;font-weight:400;font-family:Spezia,sans-serif;letter-spacing:0.25px;line-height:20px;color:#2A8EFD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media (max-width:600px){.mui-1q9b97s{font-size:14px;line-height:17px;}}.mui-isbt42{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:-16px;width:calc(100% + 16px);margin-left:-16px;}.mui-isbt42>.MuiGrid-item{padding-top:16px;}.mui-isbt42>.MuiGrid-item{padding-left:16px;}.mui-1s50f5r{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}@media (min-width:600px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}@media (min-width:900px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}@media (min-width:1200px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}@media (min-width:1536px){.mui-1s50f5r{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:50%;}}.mui-fkg9yc{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;justify-items:center;width:100%;}.mui-15j76c0{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}@media (min-width:600px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:900px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1200px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}@media (min-width:1536px){.mui-15j76c0{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;max-width:100%;}}.mui-1wxaqej{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}.mui-pgugi9{background-color:#282A2F;border-radius:6px;padding:6px;margin-right:6px;display:inline-block;padding-top:8px;color:#2A8EFD;}.mui-mfjk8s{margin:0;color:#000000;font-size:16px;font-weight:400;font-family:Spezia,sans-serif;letter-spacing:0.25px;line-height:20px;background-color:#282A2F;border-radius:6px;padding:6px;margin-right:6px;display:inline-block;padding-top:8px;color:#2A8EFD;}@media (max-width:600px){.mui-mfjk8s{font-size:14px;line-height:17px;}}.mui-zhbgj8{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:16px;}.mui-xck77d{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}.mui-1xr92y4{margin:0;color:#000000;font-size:16px;font-weight:500;font-family:Spezia,sans-serif;line-height:20px;color:#B5B7BE;}@media (max-width:600px){.mui-1xr92y4{font-size:14px;line-height:17px;}}.mui-mr86mw{-webkit-text-decoration:none;text-decoration:none;}.mui-8w58ru{margin:0;font:inherit;color:#2A8EFD;margin-left:8px;-webkit-text-decoration:none;text-decoration:none;}</style><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js" noModule=""></script></head><body><div><div><div class="MuiBox-root mui-okvjfn"><div style="margin:0 auto;padding:0 16px;max-width:1440px;box-sizing:border-box;height:100%;width:100%"><div class="MuiBox-root mui-1sf3xto"><h6 class="MuiTypography-root MuiTypography-subtitle2 mui-1miunce">GuideLLM</h6><h4 class="MuiTypography-root MuiTypography-h4 mui-liujld">Workload Report</h4><div class="MuiGrid-root MuiGrid-container mui-1d1z477"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-5 mui-1d9l5zu"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Model</span><div class="MuiBox-root mui-1jz7ivr"><span class="MuiTypography-root MuiTypography-metric2 mui-7bmlev" aria-label="N/A">N/A</span></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2 mui-1jcswl9"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Time Stamp</span><div class="MuiBox-root mui-1jz7ivr"><span class="MuiTypography-root MuiTypography-caption mui-1xmwsk2">n/a</span></div></div></div></div></div></div><div style="margin:0 auto;padding:0 16px;max-width:1440px;box-sizing:border-box;height:100%;width:100%"><div class="MuiBox-root mui-1a9nspn"><h5 class="MuiTypography-root MuiTypography-h5 mui-1amffs8">Workload Details</h5><div class="MuiBox-root mui-d0uhtl"><span color="#2A8EFD" class="mui-11ff4y3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="none"><path fill="#2A8EFD" d="M11 17.4h2v-6h-2zm1-8q.424 0 .713-.287A.97.97 0 0 0 13 8.4a.97.97 0 0 0-.287-.712A.97.97 0 0 0 12 7.4a.97.97 0 0 0-.713.288A.97.97 0 0 0 11 8.4q0 .424.287.713.288.287.713.287m0 13a9.7 9.7 0 0 1-3.9-.787 10.1 10.1 0 0 1-3.175-2.138q-1.35-1.35-2.137-3.175A9.7 9.7 0 0 1 2 12.4q0-2.074.788-3.9a10.1 10.1 0 0 1 2.137-3.175q1.35-1.35 3.175-2.137A9.7 9.7 0 0 1 12 2.4q2.075 0 3.9.788a10.1 10.1 0 0 1 3.175 2.137q1.35 1.35 2.137 3.175A9.7 9.7 0 0 1 22 12.4a9.7 9.7 0 0 1-.788 3.9 10.1 10.1 0 0 1-2.137 3.175q-1.35 1.35-3.175 2.137a9.7 9.7 0 0 1-3.9.788m0-2q3.35 0 5.675-2.325T20 12.4t-2.325-5.675T12 4.4 6.325 6.725 4 12.4t2.325 5.675T12 20.4"></path></svg></span></div></div><div class="MuiGrid-root MuiGrid-container mui-lm0mo7" data-id="workload-details"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 mui-hdzoli"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-2wz1hu"><span class="MuiTypography-root MuiTypography-overline1 mui-1ka6afz">Prompt</span></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1vamkkl" data-id="top-cell"><div class="MuiBox-root mui-8atqhb"><span class="MuiTypography-root MuiTypography-overline2 mui-j77svj">Sample Prompt</span><!--$!--><template data-dgst="DYNAMIC_SERVER_USAGE"></template><!--/$--></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1drpjxy" data-id="bottom-cell"><div class="MuiBox-root mui-6408au"><div class="MuiBox-root mui-j7qwjs"><div class="MuiBox-root mui-0"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Mean Prompt Length</span></div><div class="MuiBox-root mui-19ldw5v"><span class="MuiTypography-root MuiTypography-metric1 mui-1lz028s">0 tokens</span></div></div><div style="width:100%;height:85px"><div style="width:100%;height:100%"><div style="width:0px;height:0px;position:relative"><div style="width:100%;height:100%"></div></div></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 mui-hdzoli"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-2wz1hu"><span class="MuiTypography-root MuiTypography-overline1 mui-1ka6afz">Server</span></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1vamkkl" data-id="top-cell"><div class="MuiBox-root mui-1ofqig9"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Target</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s"></p></div></div><div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 mui-isbt42"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 mui-1s50f5r"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Type</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s"></p></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 mui-1s50f5r"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Port</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s"></p></div></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1drpjxy" data-id="bottom-cell"><div class="MuiBox-root mui-fkg9yc"><div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 mui-isbt42"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-15j76c0"><div class="MuiBox-root mui-krfyoj"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Number of Benchmarks</span><div class="MuiBox-root mui-1jz7ivr"><p class="MuiTypography-root MuiTypography-body2 mui-1q9b97s">0</p></div></div></div><div class="MuiGrid-root MuiGrid-item mui-1wxaqej"><span class="MuiTypography-root MuiTypography-overline2 mui-j77svj">Rate Type</span></div><div class="MuiGrid-root MuiGrid-item mui-1wxaqej"><p class="MuiTypography-root MuiTypography-body2 mui-mfjk8s"></p></div></div><div style="width:100%;height:85px"><div style="width:100%;height:100%"><div style="width:0px;height:0px;position:relative"><div style="width:100%;height:100%"></div></div></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 mui-hdzoli"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-2wz1hu"><span class="MuiTypography-root MuiTypography-overline1 mui-1ka6afz">Generated</span></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1vamkkl" data-id="top-cell"><div class="MuiBox-root mui-8atqhb"><span class="MuiTypography-root MuiTypography-overline2 mui-j77svj">Sample Generated</span><!--$!--><template data-dgst="DYNAMIC_SERVER_USAGE"></template><!--/$--></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 mui-1drpjxy" data-id="bottom-cell"><div class="MuiBox-root mui-6408au"><div class="MuiBox-root mui-j7qwjs"><div class="MuiBox-root mui-0"><span class="MuiTypography-root MuiTypography-overline2 mui-hw9iw8">Mean Generated Length</span></div><div class="MuiBox-root mui-19ldw5v"><span class="MuiTypography-root MuiTypography-metric1 mui-1lz028s">0 tokens</span></div></div><div style="width:100%;height:85px"><div style="width:100%;height:100%"><div style="width:0px;height:0px;position:relative"><div style="width:100%;height:100%"></div></div></div></div></div></div></div></div></div><div style="margin:0 auto;padding:0 16px;max-width:1440px;box-sizing:border-box;height:100%;width:100%"><footer class="MuiBox-root mui-zhbgj8"><div class="MuiBox-root mui-xck77d"><h6 class="MuiTypography-root MuiTypography-subtitle2 mui-1xr92y4">Got questions?</h6><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone mui-8w58ru"><h6 class="MuiTypography-root MuiTypography-subtitle2 mui-1miunce">Send us a message on Slack</h6></a></div><div class="MuiBox-root mui-0"><img width="150" alt="guidellm logo" src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/media/guidellm-logo-light.5a79cb09.png"/></div></footer></div></div></div></div><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/webpack-e54cd4b97f33f8d0.js" async=""></script><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/7fd0f9f1-e15a5055d2e17cc5.js" async=""></script><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/9-ed9d05a85825ae4a.js" async=""></script><script src="https://blog.vllm.ai/guidellm/ui/v0.5.0/_next/static/chunks/main-app-7a0e04eef30508ed.js" async=""></script></body></html><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"0:\"$L1\"\n"])</script><script>self.__next_f.push([1,"2:I{\"id\":\"8555\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n4:I{\"id\":\"20413\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n5:I{\"id\":\"4672\",\"chunks\":[\"160:static/chunks/app/not-found-f986739a233da77f.js\"],\"name\":\"\",\"async\":false}\n6:I{\"id\":\"97092\",\"chunks\":["])</script><script>self.__next_f.push([1,"\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n7:I{\"id\":\"56434\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a.js\"],\"name\":\"\",\"async\":false}\n8:I{\"id\":\"93107\",\"chunks\":[\"272:static/chunks/webpack-e54cd4b97f33f8d0.js\",\"744:static/chunks/7fd0f9f1-e15a5055d2e17cc5.js\",\"9:static/chunks/9-ed9d05a85825ae4a"])</script><script>self.__next_f.push([1,".js\"],\"name\":\"\",\"async\":false}\n9:I{\"id\":\"96513\",\"chunks\":[\"774:static/chunks/framework-ab6df94180385e21.js\",\"326:static/chunks/326-209f780eaf297232.js\",\"931:static/chunks/app/page-e27e0c51a2411424.js\"],\"name\":\"default\",\"async\":true}\n"])</script><script>self.__next_f.push([1,"1:[[],[\"$\",\"$L2\",null,{\"assetPrefix\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0\",\"initialCanonicalUrl\":\"/\",\"initialTree\":[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",true],\"initialHead\":[\"$L3\",null],\"globalErrorComponent\":\"$4\",\"notFound\":[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"window.runInfo = {}; window.workloadDetails = {}; window.benchmarks = {};\"}}]}],[\"$\",\"body\",null,{\"children\":[[],[\"$\",\"$L5\",null,{}]]}]]}],\"asNotFound\":false,\"children\":[[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"window.runInfo = {}; window.workloadDetails = {}; window.benchmarks = {};\"}}]}],[\"$\",\"body\",null,{\"children\":[\"$\",\"$L6\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"loading\":\"$undefined\",\"loadingStyles\":\"$undefined\",\"hasLoading\":false,\"template\":[\"$\",\"$L7\",null,{}],\"templateStyles\":\"$undefined\",\"notFound\":[\"$\",\"$L5\",null,{}],\"notFoundStyles\":[],\"asNotFound\":false,\"childProp\":{\"current\":[[\"$\",\"$L8\",null,{\"propsForComponent\":{\"params\":{}},\"Component\":\"$9\"}],null],\"segment\":\"__PAGE__\"},\"styles\":[]}]}]]}],null]}]]\n"])</script><script>self.__next_f.push([1,"3:[[[\"$\",\"meta\",null,{\"charSet\":\"utf-8\"}],[\"$\",\"title\",null,{\"children\":\"GuideLLM\"}],[\"$\",\"meta\",null,{\"name\":\"description\",\"content\":\"LLM Benchmarking Tool\"}],null,null,[\"$\",\"link\",null,{\"rel\":\"manifest\",\"href\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0/manifest.json\"}],null,null,null,null,null,[\"$\",\"meta\",null,{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],null,null,null,null,null,null,null,null,null,null,[]],[null,null,null,null],null,null,[null,null,null,null,null],null,null,null,null,[null,[[\"$\",\"link\",null,{\"rel\":\"icon\",\"href\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon.png\"}]],[[\"$\",\"link\",null,{\"rel\":\"apple-touch-icon\",\"href\":\"https://blog.vllm.ai/guidellm/ui/v0.5.0/favicon-192x192.png\"}]],null]]\n"])</script>
