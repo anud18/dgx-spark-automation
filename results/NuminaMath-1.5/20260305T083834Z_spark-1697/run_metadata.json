@@ -1,0 +1,13 @@
+{
+  "runner": "spark-1697",
+  "target_url": "http://localhost:8000",
+  "dataset": "AI-MO/NuminaMath-1.5",
+  "rate_type": "concurrent",
+  "rate": "32",
+  "max_seconds": "600",
+  "data_column_mapper": "{\"text_column\":\"problem\"}",
+  "note": "vLLM 0.15.0",
+  "timestamp": "20260305T083834Z",
+  "workflow_run_id": "22708045516",
+  "workflow_run_url": "https://github.com/anud18/dgx-spark-automation/actions/runs/22708045516"
+}
