@@ -39,6 +39,11 @@ on:
         required: true
         type: string
         default: '60'
+      note:
+        description: 'Experiment note (e.g., vLLM 0.13.0, tensor_parallel=4)'
+        required: false
+        type: string
+        default: ''
       output_path:
         description: 'Output directory path'
         required: false
@@ -206,6 +211,7 @@ jobs:
               'rate': '${{ inputs.rate }}',
               'max_seconds': '${{ inputs.max_seconds }}',
               'data_column_mapper': '${{ env.DATA_COLUMN_MAPPER }}',
+              'note': '${{ inputs.note }}',
               'timestamp': '${TIMESTAMP}',
               'workflow_run_id': '${{ github.run_id }}',
               'workflow_run_url': 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}',
@@ -218,6 +224,7 @@ jobs:
           export RESULT_DIR DATASET_NAME
           export DATASET_FULL="${{ inputs.dataset }}"
           export MAX_SECONDS="${{ inputs.max_seconds }}"
+          export NOTE="${{ inputs.note }}"
           python3 - <<PYEOF
           import json, os
           from pathlib import Path
@@ -258,6 +265,7 @@ jobs:
           dataset_name = os.environ["DATASET_NAME"]
           dataset_full = os.environ["DATASET_FULL"]
           max_sec      = os.environ.get("MAX_SECONDS", "?")
+          note         = os.environ.get("NOTE", "").strip()
           bench_file   = Path(result_dir) / "benchmarks.json"
           if not bench_file.exists():
               print("No benchmarks.json, skipping report"); exit(0)
@@ -282,6 +290,8 @@ jobs:
           lines = []
           lines.append("# Benchmark 報告 — " + label + "\n")
           lines.append("> " + desc + "\n")
+          if note:
+              lines.append("> **實驗備註：** " + note + "\n")
 
           for b in data["benchmarks"]:
               m    = b["metrics"]
