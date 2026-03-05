@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-03-05T06:57:43Z",
+  "os": "Linux",
+  "kernel": "6.14.0-1015-nvidia",
+  "hostname": "spark-1697",
+  "cpu": {
+    "model": "Cortex-X925",
+    "architecture": "aarch64",
+    "sockets": 1,
+    "cores_per_socket": 10,
+    "threads_per_core": 1,
+    "total_cores": 10,
+    "total_threads": 10
+  },
+  "memory": {
+    "total_bytes": 128524025856,
+    "available_bytes": 5318041600
+  },
+  "gpus": [
+    {
+      "index": 0,
+      "name": "NVIDIA GB10",
+      "driver_version": "580.95.05",
+      "memory_total_mib": null,
+      "compute_capability": "12.1",
+      "uuid": "GPU-5ebb2fe4-484b-ec8f-a8ae-8f17b45b369e"
+    }
+  ]
+}
