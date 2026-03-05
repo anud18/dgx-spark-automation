@@ -39,11 +39,6 @@ on:
         required: true
         type: string
         default: '60'
-      data_column:
-        description: 'Data column name in the dataset'
-        required: false
-        type: string
-        default: 'code'
       output_path:
         description: 'Output directory path'
         required: false
@@ -127,13 +122,37 @@ jobs:
           ~/.local/bin/uv venv
           source .venv/bin/activate
           ~/.local/bin/uv pip install guidellm
-          guidellm benchmark \
+
+          # Determine data column and extra args based on dataset
+          case "${{ inputs.dataset }}" in
+            "AI-MO/NuminaMath-1.5")
+              DATA_COLUMN="problem"
+              DATA_EXTRA_ARGS=""
+              ;;
+            "dataset/ShareGPT.json")
+              DATA_COLUMN="value"
+              DATA_EXTRA_ARGS=""
+              ;;
+            "abisee/cnn_dailymail")
+              DATA_COLUMN="article"
+              DATA_EXTRA_ARGS="--data-args '{\"name\": \"3.0.0\"}'"
+              ;;
+            *)
+              DATA_COLUMN="code"
+              DATA_EXTRA_ARGS=""
+              ;;
+          esac
+
+          echo "DATA_COLUMN=${DATA_COLUMN}" >> $GITHUB_ENV
+
+          eval guidellm benchmark \
             --target "${{ inputs.target_url }}" \
-            --data ${{ inputs.dataset }} \
+            --data "${{ inputs.dataset }}" \
             --rate-type ${{ inputs.rate_type }} \
             --rate ${{ inputs.rate }} \
             --max-seconds ${{ inputs.max_seconds }} \
-            --data-column-mapper '{"text_column": "${{ inputs.data_column }}"}' \
+            --data-column-mapper "{\"text_column\": \"${DATA_COLUMN}\"}" \
+            ${DATA_EXTRA_ARGS} \
             --output-dir ${{ inputs.output_path }}
 
       - name: Upload results as artifact
@@ -175,7 +194,7 @@ jobs:
               'rate_type': '${{ inputs.rate_type }}',
               'rate': '${{ inputs.rate }}',
               'max_seconds': '${{ inputs.max_seconds }}',
-              'data_column': '${{ inputs.data_column }}',
+              'data_column': '${{ env.DATA_COLUMN }}',
               'timestamp': '${TIMESTAMP}',
               'workflow_run_id': '${{ github.run_id }}',
               'workflow_run_url': 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}',
