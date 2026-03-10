@@ -129,8 +129,8 @@ jobs:
 
       - name: Run Benchmark
         run: |
-          ~/.local/bin/uv venv
-          source .venv/bin/activate
+          # ~/.local/bin/uv venv
+          source ~/.venv/bin/activate
           ~/.local/bin/uv pip install guidellm
 
           # Determine data column and extra args based on dataset
