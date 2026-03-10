@@ -1,5 +1,58 @@
-# Benchmark Report - ShareGPT_Vicuna_unfiltered - General Chat
+# Benchmark 報告 — ShareGPT — 一般對話
 
-Real user conversations from ShareGPT_Vicuna_unfiltered.
+> 真實使用者與 AI 的對話紀錄（ShareGPT_Vicuna_unfiltered），涵蓋各種日常問答與指令場景。
 
-- Concurrency 10 | Avg input 19 tokens, output 539 tokens | TTFT 74ms | 257 tokens/s | 7.0 active users
+## 執行配置：10 個並發用戶，共執行 60 秒
+
+### 效能評分
+
+**Goodput: 97.4%**（38 / 39 requests 同時滿足 TTFT<=200ms, TPOT<=50ms, ITL<=50ms）
+
+| 指標 | 門檻 | AVG 分數 | P90 分數 | P95 分數 | 綜合分數 | 等級 |
+|:-----|-----:|--------:|--------:|--------:|--------:|:----:|
+| TTFT | <=200ms | 100 | 100 | 100 | 100 | **A** |
+| TPOT | <=50ms | 97 | 96 | 95 | 96 | **A** |
+| ITL | <=50ms | 97 | 96 | 95 | 96 | **A** |
+| **總分** | | | | | **97** | **A** |
+
+### 摘要
+
+本次 benchmark 以 **10 個並發用戶**持續執行 **60 秒**。
+Dataset 中平均每個 prompt 含 **20 個 input token**，模型回覆平均 **539 個 output token**。
+
+- **TTFT（到第一個字的等待時間）**：平均 **74.2ms**（P95: 83.1ms）— 用戶送出 prompt 後等多久才開始看到回覆
+- **TPOT（每個 output token 的生成時間）**：平均 **27.0ms**（P95: 28.7ms）— 體感約 37 tok/s 的生成速度
+- **ITL（Token 間延遲）**：平均 **26.9ms**（P95: 28.6ms）
+- **E2E 延遲**：平均 **14.61s**（P95: 34.32s）— 從送出 prompt 到收到完整回覆的總時間
+- **Token Throughput**：output **257.2 tok/s**，total **266.7 tok/s**
+- **Request Throughput**：**0.467 req/s**
+- **平均活躍用戶數**：**7.0** / 10
+
+### 詳細指標
+
+| 指標 | 平均 | P50 | P95 | P99 |
+|:-----|-----:|----:|----:|----:|
+| TTFT (ms) | 74.2 | 75.5 | 83.1 | 83.4 |
+| TPOT (ms) | 27.0 | 27.1 | 28.7 | 28.7 |
+| ITL (ms) | 26.9 | 27.0 | 28.6 | 28.6 |
+| E2E Latency (s) | 14.609 | 13.437 | 34.317 | 37.621 |
+| Output Throughput (tok/s) | 257.2 | 196.3 | 659.1 | 1205.6 |
+| Total Throughput (tok/s) | 266.7 | 196.3 | 663.3 | 1247.2 |
+| RPS (req/s) | 0.467 | 0.441 | 0.988 | 2.906 |
+| Active Users | 7.0 | 8.0 | 10.0 | 10.0 |
+| Avg Input Tokens | 20.0 | 18.0 | 42.0 | 44.0 |
+| Avg Output Tokens | 539.4 | 524.0 | 1246.0 | 1334.0 |
+
+### 與前次執行比較（20260305T070955Z_spark-1697）
+
+> v = 改善（數值下降），^ = 退步（數值上升），- = 持平
+
+| 指標 | 本次 | 前次 | 變化 |
+|:-----|-----:|-----:|:-----|
+| TTFT (ms) | 74.20ms | 73.26ms | ^ +1.3% |
+| TPOT (ms) | 27.03ms | 27.12ms | - -0.3% |
+| ITL (ms) | 26.94ms | 27.03ms | - -0.3% |
+| E2E Latency (s) | 14.61s | 14.54s | - +0.5% |
+| Output Throughput (t/s) | 257.23 | 280.82 | ^ -8.4% |
+| RPS (req/s) | 0.47 | 0.53 | ^ -12.5% |
+
