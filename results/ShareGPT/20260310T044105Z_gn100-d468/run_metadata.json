@@ -1,0 +1,13 @@
+{
+  "runner": "gn100-d468",
+  "target_url": "http://localhost:8000",
+  "dataset": "dataset/ShareGPT.json",
+  "rate_type": "concurrent",
+  "rate": "32",
+  "max_seconds": "600",
+  "data_column_mapper": "{\"text_column\":\"text\"}",
+  "note": "",
+  "timestamp": "20260310T044105Z",
+  "workflow_run_id": "22886738463",
+  "workflow_run_url": "https://github.com/anud18/dgx-spark-automation/actions/runs/22886738463"
+}
