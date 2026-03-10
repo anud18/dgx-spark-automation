@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benchmark Dashboard</title>
+<style>
+  :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff; --green: #3fb950; --red: #f85149; --yellow: #d29922; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.5; }
+  h1 { font-size: 24px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin: 24px 0 12px; color: var(--accent); }
+  .subtitle { color: var(--muted); margin-bottom: 20px; font-size: 14px; }
+  .controls { display: flex; gap: 16px; flex-wrap: wrap; align-items: end; margin-bottom: 24px; }
+  .control-group { display: flex; flex-direction: column; gap: 4px; }
+  .control-group label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  select { background: var(--card); color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; font-size: 13px; min-width: 260px; cursor: pointer; }
+  select:focus { outline: none; border-color: var(--accent); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+  .card-title { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .card-value { font-size: 28px; font-weight: 700; }
+  .card-detail { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .grade { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 13px; }
+  .grade-A { background: #238636; color: #fff; }
+  .grade-B { background: #1a7f37; color: #fff; }
+  .grade-C { background: #9a6700; color: #fff; }
+  .grade-D { background: #da3633; color: #fff; }
+  .goodput-bar { height: 6px; background: var(--border); border-radius: 3px; margin-top: 6px; overflow: hidden; }
+  .goodput-fill { height: 100%; border-radius: 3px; transition: width 0.5s; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  td:first-child, th:first-child { text-align: left; }
+  .delta { font-size: 11px; padding: 1px 5px; border-radius: 3px; margin-left: 2px; }
+  .delta.better { background: rgba(63,185,80,0.15); color: var(--green); }
+  .delta.worse { background: rgba(248,81,73,0.15); color: var(--red); }
+  .delta.same { background: rgba(139,148,158,0.15); color: var(--muted); }
+  .bar-row { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+  .bar-label { font-size: 12px; color: var(--muted); min-width: 80px; text-align: right; }
+  .bar-track { flex: 1; height: 20px; background: var(--border); border-radius: 4px; overflow: hidden; position: relative; }
+  .bar-a, .bar-b { height: 10px; position: absolute; left: 0; border-radius: 2px; transition: width 0.5s; min-width: 2px; }
+  .bar-a { top: 0; background: var(--accent); }
+  .bar-b { top: 10px; background: var(--yellow); }
+  .bar-val { font-size: 11px; color: var(--muted); min-width: 50px; }
+  .loading { text-align: center; padding: 48px; color: var(--muted); }
+  .error { text-align: center; padding: 24px; color: var(--red); }
+  .legend { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .legend span { margin-right: 12px; }
+  @media (max-width: 768px) { .controls { flex-direction: column; } select { min-width: 100%; } }
+</style>
+</head>
+<body>
+
+<h1>Benchmark Dashboard</h1>
+<p class="subtitle">從 benchmark-results branch 動態載入資料，選擇兩個 run 比較效能</p>
+
+<div class="controls">
+  <div class="control-group">
+    <label>Repository</label>
+    <select id="repo-select" style="min-width:200px">
+      <option value="anud18/dgx-spark-automation">anud18/dgx-spark-automation</option>
+    </select>
+  </div>
+  <div class="control-group">
+    <label>Dataset</label>
+    <select id="dataset-select"><option value="">Loading...</option></select>
+  </div>
+  <div class="control-group">
+    <label>Run A（基準）</label>
+    <select id="run-a-select"><option value="">—</option></select>
+  </div>
+  <div class="control-group">
+    <label>Run B（比較）</label>
+    <select id="run-b-select"><option value="">（不比較）</option></select>
+  </div>
+</div>
+
+<div id="dashboard"><div class="loading">正在載入 benchmark 資料...</div></div>
+
+<script>
+const THRESHOLDS = {
+  "ShareGPT":       { ttft: 200, tpot: 50, itl: 50 },
+  "InstructCoder":  { ttft: 300, tpot: 50, itl: 50 },
+  "cnn_dailymail":  { ttft: 500, tpot: 50, itl: 50 },
+  "NuminaMath-1.5": { ttft: 300, tpot: 40, itl: 40 },
+};
+const DEFAULT_THR = { ttft: 300, tpot: 50, itl: 50 };
+
+// Cache fetched benchmark data
+const cache = {};
+
+function getRepo() { return document.getElementById('repo-select').value; }
+function rawUrl(path) { return `https://raw.githubusercontent.com/${getRepo()}/benchmark-results/${path}`; }
+
+// Discover all runs via GitHub API (single tree call)
+async function discoverRuns() {
+  const repo = getRepo();
+  const resp = await fetch(`https://api.github.com/repos/${repo}/git/trees/benchmark-results?recursive=1`);
+  if (!resp.ok) throw new Error(`GitHub API error: ${resp.status}`);
+  const data = await resp.json();
+
+  const runs = {};
+  for (const item of data.tree) {
+    const m = item.path.match(/^results\/([^/]+)\/([^/]+)\/benchmarks\.json$/);
+    if (m) {
+      const [, dataset, run] = m;
+      if (!runs[dataset]) runs[dataset] = [];
+      runs[dataset].push(run);
+    }
+  }
+  // Sort runs within each dataset
+  for (const d in runs) runs[d].sort();
+  return runs;
+}
+
+// Fetch and parse a run's data
+async function fetchRun(dataset, run) {
+  const key = `${dataset}/${run}`;
+  if (cache[key]) return cache[key];
+
+  const [benchResp, metaResp] = await Promise.all([
+    fetch(rawUrl(`results/${key}/benchmarks.json`)),
+    fetch(rawUrl(`results/${key}/run_metadata.json`)),
+  ]);
+
+  if (!benchResp.ok) return null;
+  const benchData = await benchResp.json();
+  const meta = metaResp.ok ? await metaResp.json() : {};
+
+  const b = benchData.benchmarks?.[0];
+  if (!b) return null;
+
+  const m = b.metrics;
+  const sv = (metric, field) => {
+    if (!metric) return null;
+    const r = metric.successful || metric;
+    if (field === 'pct') return r.percentiles || {};
+    return r[field || 'mean'];
+  };
+
+  const thr = THRESHOLDS[dataset] || DEFAULT_THR;
+  const reqs = b.requests || {};
+  const allReqs = [...(reqs.successful || []), ...(reqs.incomplete || [])];
+  let goodCount = 0;
+  for (const rq of allReqs) {
+    if (rq.time_to_first_token_ms != null && rq.time_per_output_token_ms != null && rq.inter_token_latency_ms != null
+      && rq.time_to_first_token_ms <= thr.ttft && rq.time_per_output_token_ms <= thr.tpot && rq.inter_token_latency_ms <= thr.itl) {
+      goodCount++;
+    }
+  }
+
+  const pct = k => sv(m[k], 'pct') || {};
+  const result = {
+    dataset, run, runner: meta.runner || '', note: meta.note || '',
+    concurrency: b.config?.strategy?.worker_count || b.config?.strategy?.streams,
+    duration: b.duration,
+    thresholds: thr,
+    goodput: { good: goodCount, total: allReqs.length, pct: allReqs.length ? +(goodCount / allReqs.length * 100).toFixed(1) : 0 },
+    prompt_tokens: sv(m.prompt_token_count), output_tokens: sv(m.output_token_count),
+    ttft: { avg: sv(m.time_to_first_token_ms), p50: pct('time_to_first_token_ms').p50, p90: pct('time_to_first_token_ms').p90, p95: pct('time_to_first_token_ms').p95, p99: pct('time_to_first_token_ms').p99 },
+    tpot: { avg: sv(m.time_per_output_token_ms), p50: pct('time_per_output_token_ms').p50, p90: pct('time_per_output_token_ms').p90, p95: pct('time_per_output_token_ms').p95, p99: pct('time_per_output_token_ms').p99 },
+    itl:  { avg: sv(m.inter_token_latency_ms), p50: pct('inter_token_latency_ms').p50, p90: pct('inter_token_latency_ms').p90, p95: pct('inter_token_latency_ms').p95, p99: pct('inter_token_latency_ms').p99 },
+    e2e:  { avg: sv(m.request_latency), p50: pct('request_latency').p50, p90: pct('request_latency').p90, p95: pct('request_latency').p95 },
+    output_tps: sv(m.output_tokens_per_second), total_tps: sv(m.tokens_per_second),
+    rps: sv(m.requests_per_second), active_users: sv(m.request_concurrency),
+  };
+  cache[key] = result;
+  return result;
+}
+
+// Scoring
+function scoreMetric(val, thr) {
+  if (val == null) return null;
+  if (val <= thr * 0.5) return 100;
+  if (val >= thr * 2) return 0;
+  return Math.max(0, Math.min(100, 100 * (thr * 2 - val) / (thr * 1.5)));
+}
+function grade(s) { return s == null ? 'N/A' : s >= 90 ? 'A' : s >= 75 ? 'B' : s >= 60 ? 'C' : 'D'; }
+function calcScores(run) {
+  const sc = {};
+  for (const [name, m, thr] of [['TTFT', run.ttft, run.thresholds.ttft], ['TPOT', run.tpot, run.thresholds.tpot], ['ITL', run.itl, run.thresholds.itl]]) {
+    const avg = scoreMetric(m.avg, thr), p90 = scoreMetric(m.p90, thr), p95 = scoreMetric(m.p95, thr);
+    sc[name] = { avg, p90, p95, overall: (avg != null && p90 != null && p95 != null) ? avg * 0.3 + p90 * 0.3 + p95 * 0.4 : null };
+  }
+  const vals = Object.values(sc).map(s => s.overall).filter(v => v != null);
+  sc.total = vals.length ? vals.reduce((a, b) => a + b) / vals.length : null;
+  return sc;
+}
+
+// Rendering helpers
+function fmt(v, d = 1) { return v != null ? v.toFixed(d) : 'N/A'; }
+function deltaTag(cur, prev, lowerBetter = true) {
+  if (cur == null || prev == null) return '';
+  const d = prev ? (cur - prev) / prev * 100 : 0;
+  if (Math.abs(d) < 0.5) return `<span class="delta same">— ${d.toFixed(1)}%</span>`;
+  const better = lowerBetter ? d < 0 : d > 0;
+  return `<span class="delta ${better ? 'better' : 'worse'}">${better ? '▼' : '▲'} ${d > 0 ? '+' : ''}${d.toFixed(1)}%</span>`;
+}
+function barRow(label, vA, vB, maxV) {
+  return `<div class="bar-row">
+    <div class="bar-label">${label}</div>
+    <div class="bar-track">
+      <div class="bar-a" style="width:${maxV ? vA / maxV * 100 : 0}%"></div>
+      <div class="bar-b" style="width:${maxV ? vB / maxV * 100 : 0}%"></div>
+    </div>
+    <div class="bar-val">${fmt(vA, 1)} / ${fmt(vB, 1)}</div>
+  </div>`;
+}
+function gpColor(pct) { return pct >= 90 ? 'var(--green)' : pct >= 70 ? 'var(--yellow)' : 'var(--red)'; }
+
+function render(a, b) {
+  const el = document.getElementById('dashboard');
+  if (!a) { el.innerHTML = '<div class="loading">請選擇 Run</div>'; return; }
+
+  const sa = calcScores(a), sb = b ? calcScores(b) : null;
+  let h = '';
+
+  // Cards
+  h += '<div class="grid">';
+  h += `<div class="card"><div class="card-title">Goodput</div>
+    <div class="card-value">${a.goodput.pct}%${b ? ` <span style="font-size:16px;color:var(--muted)">vs</span> ${b.goodput.pct}%` : ''}</div>
+    <div class="card-detail">${a.goodput.good}/${a.goodput.total} 通過${b ? ` ｜ ${b.goodput.good}/${b.goodput.total}` : ''}</div>
+    <div class="goodput-bar"><div class="goodput-fill" style="width:${a.goodput.pct}%;background:${gpColor(a.goodput.pct)}"></div></div>
+    ${b ? `<div class="goodput-bar" style="margin-top:3px"><div class="goodput-fill" style="width:${b.goodput.pct}%;background:${gpColor(b.goodput.pct)}"></div></div>` : ''}</div>`;
+
+  h += `<div class="card"><div class="card-title">Overall Score</div>
+    <div class="card-value">${fmt(sa.total, 0)} <span class="grade grade-${grade(sa.total)}">${grade(sa.total)}</span>
+    ${sb ? ` <span style="font-size:16px;color:var(--muted)">vs</span> ${fmt(sb.total, 0)} <span class="grade grade-${grade(sb.total)}">${grade(sb.total)}</span>` : ''}</div>
+    <div class="card-detail">TTFT / TPOT / ITL 綜合</div></div>`;
+
+  h += `<div class="card"><div class="card-title">Output Throughput</div>
+    <div class="card-value">${fmt(a.output_tps, 0)} <span style="font-size:14px;color:var(--muted)">tok/s</span></div>
+    <div class="card-detail">${b ? `vs ${fmt(b.output_tps, 0)} tok/s ${deltaTag(a.output_tps, b.output_tps, false)}` : `${fmt(a.rps, 2)} req/s ｜ Total ${fmt(a.total_tps, 0)} tok/s`}</div></div>`;
+
+  h += `<div class="card"><div class="card-title">Config</div>
+    <div class="card-value">${a.concurrency} <span style="font-size:14px;color:var(--muted)">users × ${fmt(a.duration, 0)}s</span></div>
+    <div class="card-detail">Active ${fmt(a.active_users, 1)} ｜ In ${fmt(a.prompt_tokens, 0)} / Out ${fmt(a.output_tokens, 0)} tok</div></div>`;
+  h += '</div>';
+
+  // Scoring table
+  h += '<h2>效能評分</h2><div class="card"><table>';
+  h += '<tr><th>指標</th><th>門檻</th><th>AVG</th><th>P90</th><th>P95</th><th>綜合</th><th>等級</th></tr>';
+  for (const name of ['TTFT', 'TPOT', 'ITL']) {
+    const s = sa[name], thr = a.thresholds[name.toLowerCase()];
+    h += `<tr><td>${name}</td><td>≤${thr}ms</td><td>${fmt(s.avg, 0)}</td><td>${fmt(s.p90, 0)}</td><td>${fmt(s.p95, 0)}</td>
+      <td><b>${fmt(s.overall, 0)}</b></td><td><span class="grade grade-${grade(s.overall)}">${grade(s.overall)}</span></td></tr>`;
+  }
+  h += `<tr style="border-top:2px solid var(--border)"><td><b>總分</b></td><td></td><td></td><td></td><td></td>
+    <td><b>${fmt(sa.total, 0)}</b></td><td><span class="grade grade-${grade(sa.total)}">${grade(sa.total)}</span></td></tr>`;
+  h += '</table></div>';
+
+  // Latency comparison
+  h += '<h2>延遲指標</h2><div class="card"><table>';
+  h += `<tr><th>指標</th><th>AVG${b ? ' (A)' : ''}</th>`;
+  if (b) h += '<th>AVG (B)</th><th>變化</th>';
+  h += '<th>P50</th><th>P90</th><th>P95</th><th>P99</th></tr>';
+  for (const [lbl, ma, mb, isSec] of [['TTFT (ms)', a.ttft, b?.ttft, false], ['TPOT (ms)', a.tpot, b?.tpot, false], ['ITL (ms)', a.itl, b?.itl, false], ['E2E (s)', a.e2e, b?.e2e, true]]) {
+    const d = isSec ? 3 : 1;
+    h += `<tr><td>${lbl}</td><td>${fmt(ma?.avg, d)}</td>`;
+    if (b) h += `<td>${fmt(mb?.avg, d)}</td><td>${deltaTag(ma?.avg, mb?.avg)}</td>`;
+    h += `<td>${fmt(ma?.p50, d)}</td><td>${fmt(ma?.p90, d)}</td><td>${fmt(ma?.p95, d)}</td><td>${fmt(ma?.p99, d)}</td></tr>`;
+  }
+  h += '</table></div>';
+
+  // Visual bars
+  if (b) {
+    h += '<h2>視覺化比較</h2><div class="card">';
+    const maxL = Math.max(a.ttft.avg||0, b.ttft.avg||0, a.tpot.avg||0, b.tpot.avg||0, a.itl.avg||0, b.itl.avg||0) * 1.2;
+    h += barRow('TTFT', a.ttft.avg, b.ttft.avg, maxL);
+    h += barRow('TPOT', a.tpot.avg, b.tpot.avg, maxL);
+    h += barRow('ITL', a.itl.avg, b.itl.avg, maxL);
+    h += `<div class="legend" style="margin:8px 0 12px"><span style="color:var(--accent)">■ Run A</span><span style="color:var(--yellow)">■ Run B</span> (越短越好)</div>`;
+    const maxT = Math.max(a.output_tps||0, b.output_tps||0) * 1.2;
+    h += barRow('Output tok/s', a.output_tps, b.output_tps, maxT);
+    const maxR = Math.max(a.rps||0, b.rps||0) * 1.2;
+    h += barRow('RPS', a.rps, b.rps, maxR);
+    h += `<div class="legend"><span style="color:var(--accent)">■ Run A</span><span style="color:var(--yellow)">■ Run B</span> (越高越好)</div>`;
+    h += '</div>';
+  }
+
+  // Throughput
+  h += '<h2>吞吐量</h2><div class="card"><table>';
+  h += `<tr><th>指標</th><th>Run A</th>${b ? '<th>Run B</th><th>變化</th>' : ''}</tr>`;
+  for (const [lbl, va, vb, lb] of [
+    ['Output (tok/s)', a.output_tps, b?.output_tps, false],
+    ['Total (tok/s)', a.total_tps, b?.total_tps, false],
+    ['RPS (req/s)', a.rps, b?.rps, false],
+    ['Active Users', a.active_users, b?.active_users, false],
+  ]) {
+    const d = lbl.includes('RPS') ? 3 : 1;
+    h += `<tr><td>${lbl}</td><td>${fmt(va, d)}</td>`;
+    if (b) h += `<td>${fmt(vb, d)}</td><td>${deltaTag(va, vb, lb)}</td>`;
+    h += '</tr>';
+  }
+  h += '</table></div>';
+
+  // Notes
+  if (a.note || b?.note) {
+    h += '<h2>實驗備註</h2><div class="card">';
+    if (a.note) h += `<div style="margin-bottom:4px"><span style="color:var(--accent)">A:</span> ${a.note}</div>`;
+    if (b?.note) h += `<div><span style="color:var(--yellow)">B:</span> ${b.note}</div>`;
+    h += '</div>';
+  }
+
+  el.innerHTML = h;
+}
+
+// State
+let allRuns = {};
+
+function runLabel(dataset, run) {
+  const c = cache[`${dataset}/${run}`];
+  let label = run;
+  if (c?.runner) label += ` [${c.runner}]`;
+  if (c?.note) label += ` — ${c.note}`;
+  return label;
+}
+
+function populateRuns() {
+  const dataset = document.getElementById('dataset-select').value;
+  const runs = allRuns[dataset] || [];
+  for (const id of ['run-a-select', 'run-b-select']) {
+    const sel = document.getElementById(id);
+    sel.innerHTML = id === 'run-b-select' ? '<option value="">（不比較）</option>' : '';
+    runs.forEach(r => {
+      const opt = document.createElement('option');
+      opt.value = r;
+      opt.textContent = r;
+      sel.appendChild(opt);
+    });
+    if (id === 'run-a-select' && runs.length) sel.value = runs[runs.length - 1];
+    if (id === 'run-b-select' && runs.length > 1) sel.value = runs[runs.length - 2];
+  }
+  loadAndRender();
+}
+
+async function loadAndRender() {
+  const dataset = document.getElementById('dataset-select').value;
+  const runA = document.getElementById('run-a-select').value;
+  const runB = document.getElementById('run-b-select').value;
+
+  if (!runA) { render(null, null); return; }
+
+  document.getElementById('dashboard').innerHTML = '<div class="loading">載入中...</div>';
+
+  try {
+    const [a, b] = await Promise.all([
+      fetchRun(dataset, runA),
+      runB ? fetchRun(dataset, runB) : Promise.resolve(null),
+    ]);
+
+    // Update option labels with metadata
+    for (const id of ['run-a-select', 'run-b-select']) {
+      const sel = document.getElementById(id);
+      for (const opt of sel.options) {
+        if (opt.value && cache[`${dataset}/${opt.value}`]) {
+          opt.textContent = runLabel(dataset, opt.value);
+        }
+      }
+    }
+
+    render(a, b);
+  } catch (e) {
+    document.getElementById('dashboard').innerHTML = `<div class="error">載入失敗: ${e.message}</div>`;
+  }
+}
+
+async function init() {
+  try {
+    allRuns = await discoverRuns();
+    const datasets = Object.keys(allRuns).sort();
+    const dsel = document.getElementById('dataset-select');
+    dsel.innerHTML = '';
+    datasets.forEach(d => {
+      const opt = document.createElement('option');
+      opt.value = d;
+      opt.textContent = `${d} (${allRuns[d].length} runs)`;
+      dsel.appendChild(opt);
+    });
+    dsel.addEventListener('change', populateRuns);
+    document.getElementById('run-a-select').addEventListener('change', loadAndRender);
+    document.getElementById('run-b-select').addEventListener('change', loadAndRender);
+    populateRuns();
+  } catch (e) {
+    document.getElementById('dashboard').innerHTML = `<div class="error">無法載入資料: ${e.message}<br><br>確認 repo 是 public 且 benchmark-results branch 存在</div>`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>
