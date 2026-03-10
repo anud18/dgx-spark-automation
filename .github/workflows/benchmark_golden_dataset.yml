@@ -228,6 +228,7 @@ jobs:
           python3 - <<PYEOF
           import json, os
           from pathlib import Path
+
           DATASET_INFO = {
               "InstructCoder":  (
                   "InstructCoder — Coding 任務",
@@ -246,14 +247,40 @@ jobs:
                   "CNN 與 Daily Mail 共 30 萬篇新聞文章的摘要任務。特性：長輸入、短輸出（Summarization）。"
               ),
           }
+
+          # Per-dataset SLA thresholds: (TTFT_ms, TPOT_ms, ITL_ms)
+          THRESHOLDS = {
+              "ShareGPT":       (200, 50, 50),
+              "InstructCoder":  (300, 50, 50),
+              "cnn_dailymail":  (500, 50, 50),
+              "NuminaMath-1.5": (300, 40, 40),
+          }
+          DEFAULT_THRESHOLD = (300, 50, 50)
+
           def sv(metric, field="mean"):
               if not metric: return None
               r = metric.get("successful", metric)
               if field == "pct":
                   return r.get("percentiles", {})
               return r.get(field)
+
           def fmt(v, decimals=1, fallback="N/A"):
               return ("%.{}f".format(decimals) % v) if v is not None else fallback
+
+          def score_metric(val, threshold):
+              """Score 0-100: 100 if val<=threshold*0.5, 0 if val>=threshold*2, linear between."""
+              if val is None or threshold is None: return None
+              if val <= threshold * 0.5: return 100
+              if val >= threshold * 2: return 0
+              return max(0, min(100, 100 * (threshold * 2 - val) / (threshold * 1.5)))
+
+          def grade(s):
+              if s is None: return "N/A"
+              if s >= 90: return "A"
+              if s >= 75: return "B"
+              if s >= 60: return "C"
+              return "D"
+
           def delta_row(name, cur, prv, unit="", lower_better=True):
               if cur is None or prv is None: return None
               d = cur - prv
@@ -272,6 +299,7 @@ jobs:
           with open(bench_file) as f:
               data = json.load(f)
           label, desc = DATASET_INFO.get(dataset_name, (dataset_full, ""))
+          t_ttft, t_tpot, t_itl = THRESHOLDS.get(dataset_name, DEFAULT_THRESHOLD)
 
           # Find previous run for comparison
           prev_m = None
@@ -315,7 +343,63 @@ jobs:
               itl_p  = sv(m.get("inter_token_latency_ms"), "pct")
               e2e_p  = sv(m.get("request_latency"), "pct")
 
+              # --- Goodput: per-request pass rate ---
+              reqs = b.get("requests", {})
+              all_reqs = list(reqs.get("successful", [])) + list(reqs.get("incomplete", []))
+              total_reqs = len(all_reqs)
+              good_count = 0
+              for rq in all_reqs:
+                  r_ttft = rq.get("time_to_first_token_ms")
+                  r_tpot = rq.get("time_per_output_token_ms")
+                  r_itl  = rq.get("inter_token_latency_ms")
+                  if r_ttft is None or r_tpot is None or r_itl is None:
+                      continue
+                  if r_ttft <= t_ttft and r_tpot <= t_tpot and r_itl <= t_itl:
+                      good_count += 1
+              goodput_pct = (good_count / total_reqs * 100) if total_reqs else 0
+
+              # --- Scoring: AVG / P90 / P95 ---
+              ttft_p90 = ttft_p.get("p90") if ttft_p else None
+              tpot_p90 = tpot_p.get("p90") if tpot_p else None
+              itl_p90  = itl_p.get("p90") if itl_p else None
+              ttft_p95 = ttft_p.get("p95") if ttft_p else None
+              tpot_p95 = tpot_p.get("p95") if tpot_p else None
+              itl_p95  = itl_p.get("p95") if itl_p else None
+
+              scores = {}
+              for name, vals, thr in [
+                  ("TTFT", (ttft, ttft_p90, ttft_p95), t_ttft),
+                  ("TPOT", (tpot, tpot_p90, tpot_p95), t_tpot),
+                  ("ITL",  (itl,  itl_p90,  itl_p95),  t_itl),
+              ]:
+                  avg_s = score_metric(vals[0], thr)
+                  p90_s = score_metric(vals[1], thr)
+                  p95_s = score_metric(vals[2], thr)
+                  overall = None
+                  if avg_s is not None and p90_s is not None and p95_s is not None:
+                      overall = avg_s * 0.3 + p90_s * 0.3 + p95_s * 0.4
+                  scores[name] = {"avg": avg_s, "p90": p90_s, "p95": p95_s, "overall": overall}
+
+              all_scores = [s["overall"] for s in scores.values() if s["overall"] is not None]
+              total_score = sum(all_scores) / len(all_scores) if all_scores else None
+
+              # --- Report output ---
               lines.append("## 執行配置：%d 個並發用戶，共執行 %s 秒\n" % (conc, fmt(dur, 0)))
+
+              lines.append("### 效能評分\n")
+              lines.append("**Goodput: %.1f%%**（%d / %d requests 同時滿足 TTFT<=%dms, TPOT<=%dms, ITL<=%dms）\n"
+                  % (goodput_pct, good_count, total_reqs, t_ttft, t_tpot, t_itl))
+              lines.append("| 指標 | 門檻 | AVG 分數 | P90 分數 | P95 分數 | 綜合分數 | 等級 |")
+              lines.append("|:-----|-----:|--------:|--------:|--------:|--------:|:----:|")
+              for name in ["TTFT", "TPOT", "ITL"]:
+                  s = scores[name]
+                  thr = {"TTFT": t_ttft, "TPOT": t_tpot, "ITL": t_itl}[name]
+                  lines.append("| %s | <=%dms | %s | %s | %s | %s | **%s** |"
+                      % (name, thr, fmt(s["avg"],0), fmt(s["p90"],0), fmt(s["p95"],0), fmt(s["overall"],0), grade(s["overall"])))
+              lines.append("| **總分** | | | | | **%s** | **%s** |" % (fmt(total_score, 0), grade(total_score)))
+              lines.append("")
+
+              # --- Summary ---
               lines.append("### 摘要\n")
               lines.append(
                   "本次 benchmark 以 **%d 個並發用戶**持續執行 **%s 秒**。" % (conc, fmt(dur, 0))
@@ -324,20 +408,20 @@ jobs:
                   "Dataset 中平均每個 prompt 含 **%s 個 input token**，模型回覆平均 **%s 個 output token**。\n"
                   % (fmt(prompt, 0), fmt(output, 0))
               )
+              tpot_hz = (1000 / tpot) if tpot else None
               lines.append(
                   "- **TTFT（到第一個字的等待時間）**：平均 **%sms**（P95: %sms）"
                   " — 用戶送出 prompt 後等多久才開始看到回覆"
-                  % (fmt(ttft, 1), fmt(ttft_p.get("p95") if ttft_p else None, 1))
+                  % (fmt(ttft, 1), fmt(ttft_p95, 1))
               )
-              tpot_hz = (1000 / tpot) if tpot else None
               lines.append(
                   "- **TPOT（每個 output token 的生成時間）**：平均 **%sms**（P95: %sms）"
                   " — 體感約 %s tok/s 的生成速度"
-                  % (fmt(tpot, 1), fmt(tpot_p.get("p95") if tpot_p else None, 1), fmt(tpot_hz, 0))
+                  % (fmt(tpot, 1), fmt(tpot_p95, 1), fmt(tpot_hz, 0))
               )
               lines.append(
                   "- **ITL（Token 間延遲）**：平均 **%sms**（P95: %sms）"
-                  % (fmt(itl, 1), fmt(itl_p.get("p95") if itl_p else None, 1))
+                  % (fmt(itl, 1), fmt(itl_p95, 1))
               )
               lines.append(
                   "- **E2E 延遲**：平均 **%ss**（P95: %ss）"
@@ -355,6 +439,7 @@ jobs:
                   "- **平均活躍用戶數**：**%s** / %d\n" % (fmt(users, 1), conc)
               )
 
+              # --- Detailed metrics table ---
               lines.append("### 詳細指標\n")
               lines.append("| 指標 | 平均 | P50 | P95 | P99 |")
               lines.append("|:-----|-----:|----:|----:|----:|")
@@ -387,6 +472,7 @@ jobs:
                   lines.append(r)
               lines.append("")
 
+              # --- Comparison with previous run ---
               if prev_m:
                   lines.append("### 與前次執行比較（%s）\n" % prev_name)
                   lines.append("> v = 改善（數值下降），^ = 退步（數值上升），- = 持平")
