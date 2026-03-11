@@ -10,8 +10,8 @@ jobs:
     steps:
       - name: Download VS Code CLI
         run: |
-          curl -L https://aka.ms/vscode-server-linux-x64 -o vscode_cli.tar.gz
-          tar -xzf vscode_cli.tar.gz
+          curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode_cli.tar.gz
+          tar -xf vscode_cli.tar.gz
           mv code vscode
           chmod +x vscode
 
