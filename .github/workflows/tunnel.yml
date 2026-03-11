@@ -25,5 +25,5 @@ jobs:
         run: |
           ./vscode tunnel \
             --accept-server-license-terms \
-            --name my-work-server
+            --name my-work-server &
 
