@@ -5,7 +5,7 @@ on:
 
 jobs:
   tunnel:
-    runs-on: spark-1697
+    runs-on: jotp
 
     steps:
       - name: Download VS Code CLI
